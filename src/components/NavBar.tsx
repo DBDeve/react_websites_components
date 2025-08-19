@@ -1,4 +1,4 @@
-//da compilare
+// @ts-check
 
 import React from "react";
 
