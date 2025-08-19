@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx", // ✅ oppure "react" se usi React <17
-    "target": "ES2020",
+    "target": "ES6",
     "module": "ESNext",
     "declaration": true,
-    "outDir": "./dist",
-    "strict": true,
-    "esModuleInterop": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
-    "allowJs": true,
-    "checkJs": true,
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
