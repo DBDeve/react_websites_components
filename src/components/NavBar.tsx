@@ -3,30 +3,32 @@
 import React from "react";
 
 type completeNav ={
-    menu: { align: "left" | "center" | "right" },       // obbligatorio
-    logo: { align: "left" | "center" | "right" }   // obbligatorio
-    social: { align: "left" | "center" | "right" },     // opzionale
-    backGRoundColor?: string,                     // opzionale
-    fixed: boolean 
-  }
-  type completeNav1 ={
-    menu: { align: "left" | "center" | "right" },       // obbligatorio
-    social: { align: "left" | "center" | "right" },     // opzionale
-    backGRoundColor?: string,                     // opzionale
-    fixed: boolean 
-  }
-  type completeNav2 ={
-    menu: { align: "left" | "center" | "right" },       // obbligatorio
-    logo: { align: "left" | "center" | "right" },   // obbligatorio
-    backGRoundColor?: string,                     // opzionale
-    fixed: boolean 
-  }
-  
-  type completeNav3 ={
-    menu: { align: "left" | "center" | "right" },       // obbligatorio
-    backGRoundColor?: string,                     // opzionale
-    fixed: boolean 
-  }
+  menu: { align: "left" | "center" | "right" },       // obbligatorio
+  logo: { align: "left" | "center" | "right" }   // obbligatorio
+  social: { align: "left" | "center" | "right" },     // opzionale
+  backGRoundColor?: string,                     // opzionale
+  fixed: boolean 
+}
+
+type completeNav1 ={
+  menu: { align: "left" | "center" | "right" },       // obbligatorio
+  social: { align: "left" | "center" | "right" },     // opzionale
+  backGRoundColor?: string,                     // opzionale
+  fixed: boolean 
+}
+
+type completeNav2 ={
+  menu: { align: "left" | "center" | "right" },       // obbligatorio
+  logo: { align: "left" | "center" | "right" },   // obbligatorio
+  backGRoundColor?: string,                     // opzionale
+  fixed: boolean 
+}
+
+type completeNav3 ={
+  menu: { align: "left" | "center" | "right" },       // obbligatorio
+  backGRoundColor?: string,                     // opzionale
+  fixed: boolean 
+}
 
 type NavBarOptions = {
   menu: { align: "left" | "center" | "right" };         // obbligatorio
