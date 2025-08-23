@@ -156,7 +156,7 @@ export const NavBarIcon:React.FC<NavbarIcon> = ({iconList,align,componetGrow})=>
   )
 }
 
-type NavBarLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
+type NavBarLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} 
 export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>{
   return (
     <div id="logo_image" aria-label="immagine logo" className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
