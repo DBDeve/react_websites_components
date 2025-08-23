@@ -427,41 +427,44 @@ function requireJsxRuntime () {
 
 var jsxRuntimeExports = requireJsxRuntime();
 
-function createNavBar(navBar) {
-    const alignMap = {
-        left: 'flex-start',
-        center: 'center',
-        right: 'flex-end',
-    };
-    const ReactComponent = ({ menuData, socialIcon, logoImage }) => {
-        console.log(menuData);
-        console.log("navbar", navBar);
-        return (jsxRuntimeExports.jsxs("div", { style: Object.assign(Object.assign(Object.assign({ display: 'inline-flex', width: '100%' }, (navBar.fixed === true ? { position: 'fixed' } : {})), { padding: '10px' }), (navBar.backGRoundColor === undefined ? {} : { backgroundColor: navBar.backGRoundColor })), children: [jsxRuntimeExports.jsx("div", { id: "menu", style: { flex: '2', display: 'inline-flex', justifyContent: alignMap[navBar.menu.align] }, children: menuData.map((page, index) => (jsxRuntimeExports.jsx("span", { style: { padding: '0.9%', borderRight: index < menuData.length - 1 ? '1px solid gray' : 'none', }, children: jsxRuntimeExports.jsx("a", { href: `${page.pagePath}`, style: { textDecoration: 'none', color: 'inherit' }, children: page.pageTitle }) }, index))) }), 'social' in navBar && (jsxRuntimeExports.jsx("div", { id: "social", style: {
-                        flex: '1',
-                        display: 'inline-flex',
-                        justifyContent: alignMap[navBar.social.align]
-                    }, children: "social" })), jsxRuntimeExports.jsx("div", { id: "logo", style: { flex: '1', textAlign: 'center' }, children: " logo " })] }));
-    };
-    return ReactComponent;
-}
-function createNavBarFactory1(options) {
-    const { menu, logo, social, fixed, backGRoundColor } = options;
-    if (logo && social) {
-        const navbar = { menu, logo, social, fixed, backGRoundColor };
-        return createNavBar(navbar);
-    }
-    else if (logo) {
-        const navbar = { menu, logo, fixed, backGRoundColor };
-        return createNavBar(navbar);
-    }
-    else if (social) {
-        const navbar = { menu, social, fixed, backGRoundColor };
-        return createNavBar(navbar);
-    }
-    else {
-        const navbar = { menu, fixed, backGRoundColor };
-        return createNavBar(navbar);
-    }
-}
+var styles = {"header":"Header-module_header__wbp8n","fixed":"Header-module_fixed__Vgp5u","navbar":"Header-module_navbar__HLD67","alignComponent":"Header-module_alignComponent__5dfOj","justifyLeft":"Header-module_justifyLeft__WN-1E","justifyCenter":"Header-module_justifyCenter__TWvZA","justifyRight":"Header-module_justifyRight__hNoYn","il":"Header-module_il__b88KG","borderRight":"Header-module_borderRight__QKdkb","touchTarget":"Header-module_touchTarget__NzhFL"};
 
-export { createNavBarFactory1 };
+// nomi dei componenti dopo const sempre maiuscoli
+const alignMap = {
+    left: `${styles.justifyLeft}`,
+    center: `${styles.justifyCenter}`,
+    right: `${styles.justifyRight}`,
+};
+const NavBar = ({ menuData, align, componetGrow }) => {
+    return (jsxRuntimeExports.jsx("nav", { id: "navbar", role: "navigation", "aria-label": "Navigazione principale", style: { '--componet-Grow': componetGrow }, className: styles.navbar, children: jsxRuntimeExports.jsx("ul", { className: `${styles.alignComponent} ${alignMap[align]} `, style: { '--componet-Grow': componetGrow }, children: menuData.map((page, index) => (jsxRuntimeExports.jsx("li", { className: `${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`, children: jsxRuntimeExports.jsx("a", { href: `${page.pagePath}`, children: page.pageTitle }) }, index))) }) }));
+};
+const NavBarIcon = ({ iconList, align, componetGrow }) => {
+    return (jsxRuntimeExports.jsxs("div", { id: "social_icon", "aria-label": "icone social", className: `${styles.alignComponent} ${alignMap[align]}`, style: { '--componet-Grow': componetGrow }, children: [iconList.facebook &&
+                jsxRuntimeExports.jsx("a", { href: iconList.facebook.link, "aria-label": "Facebook", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-facebook fa-2x" }) }), iconList.instagram &&
+                jsxRuntimeExports.jsx("a", { href: iconList.instagram.link, "aria-label": "Instagram", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-instagram fa-2x" }) }), iconList.twitter &&
+                jsxRuntimeExports.jsx("a", { href: iconList.twitter.link, "aria-label": "Twitter", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-twitter fa-2x" }) }), iconList.linkedin &&
+                jsxRuntimeExports.jsx("a", { href: iconList.linkedin.link, "aria-label": "LinkedIn", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-linkedin fa-2x" }) }), iconList.youtube &&
+                jsxRuntimeExports.jsx("a", { href: iconList.youtube.link, "aria-label": "YouTube", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-youtube" }) }), iconList.tiktok &&
+                jsxRuntimeExports.jsx("a", { href: iconList.tiktok.link, "aria-label": "TikTok", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-tiktok" }) }), iconList.snapchat &&
+                jsxRuntimeExports.jsx("a", { href: iconList.snapchat.link, "aria-label": "Snapchat", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-snapchat-ghost" }) }), iconList.pinterest &&
+                jsxRuntimeExports.jsx("a", { href: iconList.pinterest.link, "aria-label": "Pinterest", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-pinterest" }) }), iconList.reddit &&
+                jsxRuntimeExports.jsx("a", { href: iconList.reddit.link, "aria-label": "Reddit", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-reddit" }) }), iconList.discord &&
+                jsxRuntimeExports.jsx("a", { href: iconList.discord.link, "aria-label": "Discord", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-discord" }) }), iconList.telegram &&
+                jsxRuntimeExports.jsx("a", { href: iconList.telegram.link, "aria-label": "Telegram", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-telegram" }) }), iconList.whatsapp &&
+                jsxRuntimeExports.jsx("a", { href: iconList.whatsapp.link, "aria-label": "WhatsApp", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-whatsapp" }) }), iconList.github &&
+                jsxRuntimeExports.jsx("a", { href: iconList.github.link, "aria-label": "GitHub", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-github fa-2x" }) }), iconList.twitch &&
+                jsxRuntimeExports.jsx("a", { href: iconList.twitch.link, "aria-label": "Twitch", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-twitch fa-2x" }) }), iconList.behance &&
+                jsxRuntimeExports.jsx("a", { href: iconList.behance.link, "aria-label": "Behance", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-behance" }) }), iconList.dribbble &&
+                jsxRuntimeExports.jsx("a", { href: iconList.dribbble.link, "aria-label": "Dribbble", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-dribbble" }) }), iconList.medium &&
+                jsxRuntimeExports.jsx("a", { href: iconList.medium.link, "aria-label": "Medium", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-medium" }) }), iconList.vimeo &&
+                jsxRuntimeExports.jsx("a", { href: iconList.vimeo.link, "aria-label": "Vimeo", rel: "noopener noreferrer", target: "_blank", className: `${styles.touchTarget}`, children: jsxRuntimeExports.jsx("i", { className: "fab fa-vimeo" }) })] }));
+};
+const NavBarLogo = ({ urlImage, align, componetGrow }) => {
+    return (jsxRuntimeExports.jsx("div", { id: "logo_image", "aria-label": "immagine logo", className: `${styles.alignComponent} ${alignMap[align]}`, style: { '--componet-Grow': componetGrow }, children: jsxRuntimeExports.jsx("a", { href: "/", "aria-label": "Homepage", children: jsxRuntimeExports.jsx("img", { src: `${urlImage}`, alt: "Logo azienda", width: 50, height: 25 }) }) }));
+};
+const Header = ({ backGroundColor, fixed, children }) => {
+    const positionClass = fixed ? styles.fixed : 'no_fixed';
+    return (jsxRuntimeExports.jsx("header", { role: "banner", style: { '--bg-color': backGroundColor }, className: `${styles.header} ${positionClass}`, children: children }));
+};
+
+export { Header, NavBar, NavBarIcon, NavBarLogo };
