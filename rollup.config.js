@@ -25,7 +25,7 @@ export default {
     typescript({ useTsconfigDeclarationDir: true }),
     postcss({
       modules: true,
-      extract: true
+      extract: true,
     })
   ]
 };
