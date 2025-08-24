@@ -26,9 +26,10 @@ export default [
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
       postcss({
-        extract: 'index.css',
-        modules: true,
+        modules: true, // ⬅️ abilita CSS Modules
+        extract: true, // ⬅️ estrae i CSS in un file separato
         minimize: true,
+        sourceMap: true,
       })
     ]
   },
