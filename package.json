@@ -21,5 +21,12 @@
   },
   "main": "dist/my-react-lib.es.js",
   "module": "dist/my-react-lib.es.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "exports": {
+  ".": {
+    "import": "./dist/my-react-lib.es.js",
+    "require": "./dist/my-react-lib.cjs.js",
+    "types": "./dist/index.d.ts"
+  }
+}
 }
