@@ -26,6 +26,7 @@ export default {
     postcss({
       modules: true,
       extract: true,
+      minimize: true,
     })
   ]
 };
