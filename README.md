@@ -1,1 +1,0 @@
-npm install git+https://github.com/DBDeve/react_components.git
