@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && rollup -c"
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "DBDeve",
@@ -16,24 +15,19 @@
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
-    "rollup": "^4.46.3",
+    "rollup": "^4.48.0",
     "rollup-plugin-dts": "^6.2.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^5.9.2"
   },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.0.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "rollup-plugin-typescript2": "^0.36.0"
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "dist/*.css"
-  ]
+  "files": ["dist"]
 }

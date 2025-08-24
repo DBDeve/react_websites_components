@@ -1,6 +1,6 @@
 import React, { ReactElement,ReactNode } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import styles from '../styles/Header.module.css';
+import styles from './Header.module.css';
 
 // nomi dei componenti dopo const sempre maiuscoli
 
