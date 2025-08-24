@@ -70,16 +70,16 @@ function le() {
         ), e.$$typeof) {
           case q:
             return "Portal";
-          case B:
-            return (e.displayName || "Context") + ".Provider";
           case H:
+            return (e.displayName || "Context") + ".Provider";
+          case B:
             return (e._context.displayName || "Context") + ".Consumer";
           case X:
             var t = e.render;
             return e = e.displayName, e || (e = t.displayName || t.name || "", e = e !== "" ? "ForwardRef(" + e + ")" : "ForwardRef"), e;
           case K:
             return t = e.displayName || null, t !== null ? t : r(e.type) || "Memo";
-          case A:
+          case P:
             t = e._payload, e = e._init;
             try {
               return r(e(t));
@@ -110,7 +110,7 @@ function le() {
     }
     function u(e) {
       if (e === T) return "<>";
-      if (typeof e == "object" && e !== null && e.$$typeof === A)
+      if (typeof e == "object" && e !== null && e.$$typeof === P)
         return "<...>";
       try {
         var t = r(e);
@@ -127,7 +127,7 @@ function le() {
       return Error("react-stack-top-frame");
     }
     function g(e) {
-      if (P.call(e, "key")) {
+      if (S.call(e, "key")) {
         var t = Object.getOwnPropertyDescriptor(e, "key").get;
         if (t && t.isReactWarning) return !1;
       }
@@ -145,22 +145,22 @@ function le() {
         configurable: !0
       });
     }
-    function G() {
+    function U() {
       var e = r(this.type);
       return Y[e] || (Y[e] = !0, console.error(
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), e = this.props.ref, e !== void 0 ? e : null;
     }
-    function U(e, t, l, o, d, b, N, E) {
+    function z(e, t, l, o, d, b, N, E) {
       return l = b.ref, e = {
-        $$typeof: S,
+        $$typeof: A,
         type: e,
         key: t,
         props: b,
         _owner: d
       }, (l !== void 0 ? l : null) !== null ? Object.defineProperty(e, "ref", {
         enumerable: !1,
-        get: G
+        get: U
       }) : Object.defineProperty(e, "ref", { enumerable: !1, value: null }), e._store = {}, Object.defineProperty(e._store, "validated", {
         configurable: !1,
         enumerable: !1,
@@ -196,7 +196,7 @@ function le() {
               "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
             );
         else O(s);
-      if (P.call(t, "key")) {
+      if (S.call(t, "key")) {
         s = r(e);
         var h = Object.keys(t).filter(function(ae) {
           return ae !== "key";
@@ -216,13 +216,13 @@ React keys must be passed directly to JSX without using spread:
       }
       if (s = null, l !== void 0 && (i(l), s = "" + l), g(t) && (i(t.key), s = "" + t.key), "key" in t) {
         l = {};
-        for (var y in t)
-          y !== "key" && (l[y] = t[y]);
+        for (var w in t)
+          w !== "key" && (l[w] = t[w]);
       } else l = t;
       return s && _(
         l,
         typeof e == "function" ? e.displayName || e.name || "Unknown" : e
-      ), U(
+      ), z(
         e,
         s,
         b,
@@ -234,9 +234,9 @@ React keys must be passed directly to JSX without using spread:
       );
     }
     function O(e) {
-      typeof e == "object" && e !== null && e.$$typeof === S && e._store && (e._store.validated = 1);
+      typeof e == "object" && e !== null && e.$$typeof === A && e._store && (e._store.validated = 1);
     }
-    var k = te, S = Symbol.for("react.transitional.element"), q = Symbol.for("react.portal"), T = Symbol.for("react.fragment"), J = Symbol.for("react.strict_mode"), V = Symbol.for("react.profiler"), H = Symbol.for("react.consumer"), B = Symbol.for("react.context"), X = Symbol.for("react.forward_ref"), Z = Symbol.for("react.suspense"), Q = Symbol.for("react.suspense_list"), K = Symbol.for("react.memo"), A = Symbol.for("react.lazy"), L = Symbol.for("react.activity"), ee = Symbol.for("react.client.reference"), R = k.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, P = Object.prototype.hasOwnProperty, re = Array.isArray, v = console.createTask ? console.createTask : function() {
+    var k = te, A = Symbol.for("react.transitional.element"), q = Symbol.for("react.portal"), T = Symbol.for("react.fragment"), J = Symbol.for("react.strict_mode"), V = Symbol.for("react.profiler"), B = Symbol.for("react.consumer"), H = Symbol.for("react.context"), X = Symbol.for("react.forward_ref"), Z = Symbol.for("react.suspense"), Q = Symbol.for("react.suspense_list"), K = Symbol.for("react.memo"), P = Symbol.for("react.lazy"), L = Symbol.for("react.activity"), ee = Symbol.for("react.client.reference"), R = k.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, S = Object.prototype.hasOwnProperty, re = Array.isArray, v = console.createTask ? console.createTask : function() {
       return null;
     };
     k = {
@@ -275,9 +275,9 @@ React keys must be passed directly to JSX without using spread:
     };
   })()), j;
 }
-var z;
+var G;
 function oe() {
-  return z || (z = 1, process.env.NODE_ENV === "production" ? x.exports = ne() : x.exports = le()), x.exports;
+  return G || (G = 1, process.env.NODE_ENV === "production" ? x.exports = ne() : x.exports = le()), x.exports;
 }
 var a = oe();
 const se = "_header_jg25m_5", ie = "_fixed_jg25m_19", ce = "_navbar_jg25m_27", fe = "_alignComponent_jg25m_37", ue = "_justifyLeft_jg25m_49", me = "_justifyCenter_jg25m_55", be = "_justifyRight_jg25m_61", de = "_il_jg25m_69", he = "_borderRight_jg25m_75", ge = "_touchTarget_jg25m_85", n = {
@@ -291,11 +291,11 @@ const se = "_header_jg25m_5", ie = "_fixed_jg25m_19", ce = "_navbar_jg25m_27", f
   il: de,
   borderRight: he,
   touchTarget: ge
-}, w = {
+}, y = {
   left: `${n.justifyLeft}`,
   center: `${n.justifyCenter}`,
   right: `${n.justifyRight}`
-}, _e = ({ menuData: r, align: f, componetGrow: i }) => /* @__PURE__ */ a.jsx("nav", { id: "navbar", role: "navigation", "aria-label": "Navigazione principale", style: { "--componet-Grow": i }, className: n.navbar, children: /* @__PURE__ */ a.jsx("ul", { className: `${n.alignComponent} ${w[f]} `, style: { "--componet-Grow": i }, children: r.map((u, c) => /* @__PURE__ */ a.jsx("li", { className: `${n.il} ${c < r.length - 1 ? n.borderRight : "no_borderRight"}`, children: /* @__PURE__ */ a.jsx("a", { href: `${u.pagePath}`, children: u.pageTitle }) }, c)) }) }), pe = ({ iconList: r, align: f, componetGrow: i }) => /* @__PURE__ */ a.jsxs("div", { id: "social_icon", "aria-label": "icone social", className: `${n.alignComponent} ${w[f]}`, style: { "--componet-Grow": i }, children: [
+}, je = ({ menuData: r, align: f, componetGrow: i }) => /* @__PURE__ */ a.jsx("nav", { id: "navbar", role: "navigation", "aria-label": "Navigazione principale", style: { "--componet-Grow": i }, className: n.navbar, children: /* @__PURE__ */ a.jsx("ul", { className: `${n.alignComponent} ${y[f]} `, style: { "--componet-Grow": i }, children: r.map((u, c) => /* @__PURE__ */ a.jsx("li", { className: `${n.il} ${c < r.length - 1 ? n.borderRight : "no_borderRight"}`, children: /* @__PURE__ */ a.jsx("a", { href: `${u.pagePath}`, children: u.pageTitle }) }, c)) }) }), ke = ({ iconList: r, align: f, componetGrow: i }) => /* @__PURE__ */ a.jsxs("div", { id: "social_icon", "aria-label": "icone social", className: `${n.alignComponent} ${y[f]}`, style: { "--componet-Grow": i }, children: [
   r.facebook && /* @__PURE__ */ a.jsx("a", { href: r.facebook.link, "aria-label": "Facebook", rel: "noopener noreferrer", target: "_blank", className: `${n.touchTarget}`, children: /* @__PURE__ */ a.jsx("i", { className: "fab fa-facebook fa-2x" }) }),
   r.instagram && /* @__PURE__ */ a.jsx("a", { href: r.instagram.link, "aria-label": "Instagram", rel: "noopener noreferrer", target: "_blank", className: `${n.touchTarget}`, children: /* @__PURE__ */ a.jsx("i", { className: "fab fa-instagram fa-2x" }) }),
   r.twitter && /* @__PURE__ */ a.jsx("a", { href: r.twitter.link, "aria-label": "Twitter", rel: "noopener noreferrer", target: "_blank", className: `${n.touchTarget}`, children: /* @__PURE__ */ a.jsx("i", { className: "fab fa-twitter fa-2x" }) }),
@@ -314,16 +314,13 @@ const se = "_header_jg25m_5", ie = "_fixed_jg25m_19", ce = "_navbar_jg25m_27", f
   r.dribbble && /* @__PURE__ */ a.jsx("a", { href: r.dribbble.link, "aria-label": "Dribbble", rel: "noopener noreferrer", target: "_blank", className: `${n.touchTarget}`, children: /* @__PURE__ */ a.jsx("i", { className: "fab fa-dribbble" }) }),
   r.medium && /* @__PURE__ */ a.jsx("a", { href: r.medium.link, "aria-label": "Medium", rel: "noopener noreferrer", target: "_blank", className: `${n.touchTarget}`, children: /* @__PURE__ */ a.jsx("i", { className: "fab fa-medium" }) }),
   r.vimeo && /* @__PURE__ */ a.jsx("a", { href: r.vimeo.link, "aria-label": "Vimeo", rel: "noopener noreferrer", target: "_blank", className: `${n.touchTarget}`, children: /* @__PURE__ */ a.jsx("i", { className: "fab fa-vimeo" }) })
-] }), je = ({ urlImage: r, align: f, componetGrow: i }) => /* @__PURE__ */ a.jsx("div", { id: "logo_image", "aria-label": "immagine logo", className: `${n.alignComponent} ${w[f]}`, style: { "--componet-Grow": i }, children: /* @__PURE__ */ a.jsx("a", { href: "/", "aria-label": "Homepage", children: /* @__PURE__ */ a.jsx("img", { src: `${r}`, alt: "Logo azienda", width: 50, height: 25 }) }) }), ke = ({ backGroundColor: r, fixed: f, children: i }) => {
+] }), xe = ({ urlImage: r, align: f, componetGrow: i }) => /* @__PURE__ */ a.jsx("div", { id: "logo_image", "aria-label": "immagine logo", className: `${n.alignComponent} ${y[f]}`, style: { "--componet-Grow": i }, children: /* @__PURE__ */ a.jsx("a", { href: "/", "aria-label": "Homepage", children: /* @__PURE__ */ a.jsx("img", { src: `${r}`, alt: "Logo azienda", width: 50, height: 25 }) }) }), Te = ({ backGroundColor: r, fixed: f, children: i }) => {
   const u = f ? n.fixed : "no_fixed";
   return /* @__PURE__ */ a.jsx("header", { role: "banner", style: { "--bg-color": r }, className: `${n.header} ${u}`, children: i });
-}, Re = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  Header: ke,
-  NavBar: _e,
-  NavBarIcon: pe,
-  NavBarLogo: je
-}, Symbol.toStringTag, { value: "Module" }));
+};
 export {
-  Re as Header
+  Te as Header,
+  je as NavBar,
+  ke as NavBarIcon,
+  xe as NavBarLogo
 };
