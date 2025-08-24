@@ -1,3 +1,5 @@
+'use strict';
+
 var jsxRuntime = {exports: {}};
 
 var reactJsxRuntime_production = {};
@@ -2290,5 +2292,8 @@ const Header = ({ backGroundColor, fixed, children }) => {
     return (jsxRuntimeExports.jsx("header", { role: "banner", style: { '--bg-color': backGroundColor }, className: `${styles.header} ${positionClass}`, children: children }));
 };
 
-export { Header, NavBar, NavBarIcon, NavBarLogo };
-//# sourceMappingURL=index.js.map
+exports.Header = Header;
+exports.NavBar = NavBar;
+exports.NavBarIcon = NavBarIcon;
+exports.NavBarLogo = NavBarLogo;
+//# sourceMappingURL=index.cjs.js.map

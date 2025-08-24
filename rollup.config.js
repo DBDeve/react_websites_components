@@ -1,33 +1,39 @@
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
+import postcss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
+import dts from 'rollup-plugin-dts';
 
-export default {
-  input: 'src/index.tsx',
-  output: [
-    {
-      file: 'dist/index.js',
-      format: 'cjs',
-      exports: 'named'
-    },
-    {
-      file: 'dist/index.esm.js',
-      format: 'esm'
-    }
-  ],
-  plugins: [
-    resolve(),
-    commonjs(),
-    postcss({
-      extract: true,       // genera un file CSS separato
-      minimize: true,      // minifica il CSS
-      modules: true       // metti true se usi CSS Modules
-    }),
-    typescript({
-      tsconfig: './tsconfig.json',
-      useTsconfigDeclarationDir: true
-    })
-  ],
-  external: ['react', 'react-dom']
-};
+export default [
+  {
+    input: 'src/index.tsx',
+    output: [
+      {
+        file: 'dist/index.js',
+        format: 'esm',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/index.cjs.js',
+        format: 'cjs',
+        sourcemap: true,
+      }
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: './tsconfig.json' }),
+      postcss({
+        modules: true,
+        extract: true,
+      })
+    ]
+  },
+  {
+    input: 'dist/types/index.d.ts',
+    output: [{ file: 'dist/index.d.ts', format: 'es' }],
+    plugins: [dts()]
+  }
+];
