@@ -12,7 +12,7 @@ export default {
     typescript(),
     postcss({
       modules: true,
-      extract: true, // genera dist/styles.css
+      extract: 'styles.css', // genera dist/styles.css
     }),
   ],
   external: ['react', 'react-dom'], // evita di includere React nel bundle
