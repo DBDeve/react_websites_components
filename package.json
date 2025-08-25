@@ -31,5 +31,6 @@
   "style": "dist/index.css",
   "files": [
     "dist"
-  ]
+  ],
+  "type": "module"
 }

@@ -1,28 +1,19 @@
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 
 export default {
   input: 'src/index.ts',
   output: {
     dir: 'dist',
     format: 'esm',
-    sourcemap: true,
-    preserveModules: true,
-    preserveModulesRoot: 'src'
+    banner: `import './styles.css';`
   },
   plugins: [
-    resolve(),
-    commonjs(),
     typescript(),
     postcss({
       modules: true,
-      minimize: true,
-      sourceMap: true,
-      extract: false, // ⛔ niente file CSS globali
-      inject: false,
-    })
+      extract: 'styles.css', // genera dist/styles.css
+    }),
   ],
-  external: ['react', 'react-dom']
+  external: ['react', 'react-dom','@fortawesome/fontawesome-free/css/all.min.css'], // evita di includere React nel bundle
 };
