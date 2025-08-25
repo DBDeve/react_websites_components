@@ -1,4 +1,5 @@
-import { default as React, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 type NavBar = {
     menuData: {
         pageTitle: string;
