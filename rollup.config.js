@@ -1,19 +1,49 @@
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import dts from 'rollup-plugin-dts'
 
-export default {
-  input: 'src/index.ts',
+const entries = {
+  Footer: 'src/Footer/index.ts',
+  Header: 'src/Header/index.ts'
+}
+
+/** 
+ * Config 1: JS + CSS 
+ */
+const bundleConfig = {
+  input:  entries,
   output: {
     dir: 'dist',
     format: 'esm',
-    banner: `import './styles.css';`
+    entryFileNames: '[name]/[name].js',
+    assetFileNames: '[name]/[name].css'    // CSS estratto
   },
   plugins: [
-    typescript(),
-    postcss({
-      modules: true,
-      extract: 'styles.css', // genera dist/styles.css
+    typescript({
+      tsconfig: './tsconfig.json',
+      // Lascia che TypeScript compili solo TS→JS, senza scrivere .d.ts
+      declaration: false
     }),
-  ],
-  external: ['react', 'react-dom','@fortawesome/fontawesome-free/css/all.min.css'], // evita di includere React nel bundle
-};
+    postcss( {
+      extract: true,       // <-- estrai tutto in un .css
+      minimize: true
+    })
+  ]
+}
+
+/** 
+ * Config 2: Dichiarazioni .d.ts 
+ */
+const typesConfig = {
+  input:  entries,
+  output: {
+    dir: 'dist',
+    format: 'es',
+    entryFileNames: '[name]/[name].d.ts'
+  },
+  plugins: [
+    dts()
+  ]
+}
+
+export default [ bundleConfig, typesConfig ]

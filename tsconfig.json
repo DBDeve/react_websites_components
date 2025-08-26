@@ -3,12 +3,12 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react",
-    "declaration": true,
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "strict": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true
+    // disattiviamo la generazione .d.ts via tsc
+    "declaration": false
   },
   "include": ["src"]
 }
