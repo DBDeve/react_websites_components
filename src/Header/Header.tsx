@@ -1,4 +1,6 @@
-import React, { ReactElement,ReactNode } from 'react';
+'use client';
+
+import React, { ReactElement,ReactNode,useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
 
@@ -12,10 +14,27 @@ const alignMap = {
 
 type NavBar ={menuData:{pageTitle: string; pagePath: string}[],align:'left'|'center'|'right', componetGrow?:number};
 export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setIsVisible(!isVisible);
+  };
 
   return(
     <nav id ="navbar" role="navigation" aria-label="Navigazione principale" style={{ '--componet-Grow': componetGrow } as React.CSSProperties} className={styles.navbar}>
-      <ul className={`${styles.alignComponent} ${alignMap[align]} `} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}>
+      <button className={`${styles.menuMobileBottom}`} onClick={handleClick}>
+        <i className="fas fa-bars fa-2x"></i>
+      </button>
+      <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}>
+        {menuData.map((page, index) => (
+          <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`} key={index} >
+            <a href={`${page.pagePath}`}>
+              {page.pageTitle}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none'  } as React.CSSProperties}>
         {menuData.map((page, index) => (
           <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`} key={index} >
             <a href={`${page.pagePath}`}>
@@ -27,6 +46,7 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
     </nav>
   )
 }
+
 
 type NavbarIcon = {
   iconList:{facebook?: { link: string };

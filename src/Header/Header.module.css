@@ -16,6 +16,10 @@
   flex: var(--componet-Grow, 1 1 0);
 }
 
+.ul{
+  display: inherit;
+}
+
 .alignComponent{
   display: inline-flex;
   align-items: center;
@@ -46,3 +50,26 @@
   min-height: clamp(2.5rem, 5vw, 3rem);
   margin: 0.5rem;
 }
+
+.menuMobileBottom{
+  display: none;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+/* media query per mobile */
+@media (max-width: 768px) {
+  .ul {
+    display: none;
+  }
+  .menuMobileBottom {
+    display: inherit;
+    align-items: center;
+  }
+  .mobileMenu {
+    display: var(--menu-display, none);
+  }
+}
+  
