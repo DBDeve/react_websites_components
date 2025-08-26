@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tslib": "^2.8.1"
@@ -25,16 +26,16 @@
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.9.2"
   },
-   "exports": {
-      "./Header": {
-        "import": "./dist/Header/Header.js",
-        "types": "./dist/Header/Header.d.ts"
-      },
-      "./Footer": {
-        "import": "./dist/Footer/Footer.js",
-        "types": "./dist/Footer/Footer.d.ts"
-      }
+  "exports": {
+    "./Header": {
+      "import": "./dist/Header/Header.js",
+      "types": "./dist/Header/Header.d.ts"
     },
+    "./Footer": {
+      "import": "./dist/Footer/Footer.js",
+      "types": "./dist/Footer/Footer.d.ts"
+    }
+  },
   "files": [
     "dist",
     "README.md",

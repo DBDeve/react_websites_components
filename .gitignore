@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+next_dev
 
 # Build output
 *.log
