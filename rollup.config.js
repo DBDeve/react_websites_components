@@ -1,49 +1,41 @@
 import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
-import dts from 'rollup-plugin-dts'
+import postcss    from 'rollup-plugin-postcss';
+import dts        from 'rollup-plugin-dts';
 
-const entries = {
-  Footer: 'src/Footer/index.ts',
-  Header: 'src/Header/index.ts'
-}
+const components = ['Footer', 'Header'];
 
-/** 
- * Config 1: JS + CSS 
- */
-const bundleConfig = {
-  input:  entries,
-  output: {
-    dir: 'dist',
-    format: 'esm',
-    entryFileNames: '[name]/[name].js',
-    assetFileNames: '[name]/[name].css'    // CSS estratto
-  },
-  plugins: [
-    typescript({
-      tsconfig: './tsconfig.json',
-      // Lascia che TypeScript compili solo TS→JS, senza scrivere .d.ts
-      declaration: false
-    }),
-    postcss( {
-      extract: true,       // <-- estrai tutto in un .css
-      minimize: true
-    })
-  ]
-}
+export default components.flatMap(name => {
+  const input = `src/${name}/index.ts`;
 
-/** 
- * Config 2: Dichiarazioni .d.ts 
- */
-const typesConfig = {
-  input:  entries,
-  output: {
-    dir: 'dist',
-    format: 'es',
-    entryFileNames: '[name]/[name].d.ts'
-  },
-  plugins: [
-    dts()
-  ]
-}
+  // 1) JS + CSS
+  const jsConfig = {
+    input,
+    output: {
+      dir: `dist/${name}`,
+      format: 'esm',
+      banner: `import './${name}.css';`,
+      entryFileNames: `${name}.js`,
+      assetFileNames: `styles.css`
+    },
+    plugins: [
+      typescript({ declaration: false }),
+      postcss({
+        extract: true,  // estrae solo per questo componente
+        minimize: true
+      })
+    ]
+  };
 
-export default [ bundleConfig, typesConfig ]
+  // 2) Dichiarazioni .d.ts
+  const dtsConfig = {
+    input,
+    output: {
+      dir: `dist/${name}`,
+      format: 'es',
+      entryFileNames: `${name}.d.ts`
+    },
+    plugins: [ dts() ]
+  };
+
+  return [ jsConfig, dtsConfig ];
+});

@@ -5,7 +5,7 @@ import styles from './Footer.module.css';
 type Footer={}
 export const Footer:React.FC<Footer> = () => {
   return (
-    <footer id='footer'>
+    <footer id='footer' className={styles.footer}>
     </footer>
   );
 }
