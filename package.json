@@ -25,12 +25,20 @@
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.9.2"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "style": "dist/index.css",
+   "exports": {
+      "./Header": {
+        "import": "./dist/Header/Header.js",
+        "types": "./dist/Header/Header.d.ts"
+      },
+      "./Footer": {
+        "import": "./dist/Footer/Footer.js",
+        "types": "./dist/Footer/Footer.d.ts"
+      }
+    },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "package.json"
   ],
   "type": "module"
 }
