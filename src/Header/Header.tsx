@@ -28,7 +28,8 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
       <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}>
         {menuData.map((page, index) => (
           <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`} key={index} >
-            <a href={`${page.pagePath}`}>
+            {/* creare un variabile per l'inserimeto di colori con contrasti che funzionano universalmente */}
+            <a href={`${page.pagePath}`} style={{color:'#000000'}}>
               {page.pageTitle}
             </a>
           </li>

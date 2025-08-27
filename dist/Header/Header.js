@@ -19,7 +19,7 @@ const NavBar = ({ menuData, align, componetGrow }) => {
     return (React.createElement("nav", { id: "navbar", role: "navigation", "aria-label": "Navigazione principale", style: { '--componet-Grow': componetGrow }, className: styles.navbar },
         React.createElement("button", { "aria-label": "Apri menu mobile", className: `${styles.menuMobileBottom}`, onClick: handleClick }, isVisible ? React.createElement("i", { className: "fas fa-times fa-2x" }) : React.createElement("i", { className: "fas fa-bars fa-2x" })),
         React.createElement("ul", { id: "desktop_menu", className: `${styles.alignComponent} ${alignMap[align]} ${styles.ul}`, style: { '--componet-Grow': componetGrow } }, menuData.map((page, index) => (React.createElement("li", { className: `${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`, key: index },
-            React.createElement("a", { href: `${page.pagePath}` }, page.pageTitle))))),
+            React.createElement("a", { href: `${page.pagePath}`, style: { color: '#000000' } }, page.pageTitle))))),
         React.createElement("ul", { id: "mobile_menu", className: `${styles.mobileMenu}`, style: { '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none' } }, menuData.map((page, index) => (React.createElement("li", { className: `${styles.il} ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`, key: index },
             React.createElement("a", { href: `${page.pagePath}` }, page.pageTitle)))))));
 };
