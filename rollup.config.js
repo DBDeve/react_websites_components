@@ -13,7 +13,8 @@ export default components.flatMap(name => {
     output: {
       dir: `dist/${name}`,
       format: 'esm',
-      banner: `import './${name}.css';`,
+      banner: `"use client"; 
+import './${name}.css';`,
       entryFileNames: `${name}.js`,
       assetFileNames: `styles.css`
     },

@@ -42,6 +42,9 @@
 .borderRight {
   border-right: 1px solid gray;
 }
+.borderBottom {
+  border-bottom: 1px solid gray;
+}
 
 
 .touchTarget {
@@ -69,7 +72,13 @@
     align-items: center;
   }
   .mobileMenu {
-    display: var(--menu-display, none);
+    display: var(--menu-display);
+    background-color: var(--bg-color, 'white');
+    position:absolute;
+    top:100%;
+    right:0;
+    width: 100%;
+    z-index: 10;
   }
 }
   

@@ -1,8 +1,9 @@
+"use client"; 
 import './Header.css';
 import React, { useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-var styles = {"header":"Header-module_header__t8Q7Q","fixed":"Header-module_fixed__wrDcx","navbar":"Header-module_navbar__HYXZF","ul":"Header-module_ul__jQ6yQ","alignComponent":"Header-module_alignComponent__NTGVP","justifyLeft":"Header-module_justifyLeft__Dwmru","justifyCenter":"Header-module_justifyCenter__G-MUM","justifyRight":"Header-module_justifyRight__X5AdI","il":"Header-module_il__4UTfC","borderRight":"Header-module_borderRight__nxy2X","touchTarget":"Header-module_touchTarget__6AsQz","menuMobileBottom":"Header-module_menuMobileBottom__XBNGB","mobileMenu":"Header-module_mobileMenu__WmrK0"};
+var styles = {"header":"Header-module_header__t8Q7Q","fixed":"Header-module_fixed__wrDcx","navbar":"Header-module_navbar__HYXZF","ul":"Header-module_ul__jQ6yQ","alignComponent":"Header-module_alignComponent__NTGVP","justifyLeft":"Header-module_justifyLeft__Dwmru","justifyCenter":"Header-module_justifyCenter__G-MUM","justifyRight":"Header-module_justifyRight__X5AdI","il":"Header-module_il__4UTfC","borderRight":"Header-module_borderRight__nxy2X","borderBottom":"Header-module_borderBottom__TGst1","touchTarget":"Header-module_touchTarget__6AsQz","menuMobileBottom":"Header-module_menuMobileBottom__XBNGB","mobileMenu":"Header-module_mobileMenu__WmrK0"};
 
 // nomi dei componenti dopo const sempre maiuscoli
 const alignMap = {
@@ -16,11 +17,10 @@ const NavBar = ({ menuData, align, componetGrow }) => {
         setIsVisible(!isVisible);
     };
     return (React.createElement("nav", { id: "navbar", role: "navigation", "aria-label": "Navigazione principale", style: { '--componet-Grow': componetGrow }, className: styles.navbar },
-        React.createElement("button", { className: `${styles.menuMobileBottom}`, onClick: handleClick },
-            React.createElement("i", { className: "fas fa-bars fa-2x" })),
+        React.createElement("button", { "aria-label": "Apri menu mobile", className: `${styles.menuMobileBottom}`, onClick: handleClick }, isVisible ? React.createElement("i", { className: "fas fa-times fa-2x" }) : React.createElement("i", { className: "fas fa-bars fa-2x" })),
         React.createElement("ul", { id: "desktop_menu", className: `${styles.alignComponent} ${alignMap[align]} ${styles.ul}`, style: { '--componet-Grow': componetGrow } }, menuData.map((page, index) => (React.createElement("li", { className: `${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`, key: index },
             React.createElement("a", { href: `${page.pagePath}` }, page.pageTitle))))),
-        React.createElement("ul", { id: "mobile_menu", className: `${styles.mobileMenu}`, style: { '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none' } }, menuData.map((page, index) => (React.createElement("li", { className: `${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`, key: index },
+        React.createElement("ul", { id: "mobile_menu", className: `${styles.mobileMenu}`, style: { '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none' } }, menuData.map((page, index) => (React.createElement("li", { className: `${styles.il} ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`, key: index },
             React.createElement("a", { href: `${page.pagePath}` }, page.pageTitle)))))));
 };
 const NavBarIcon = ({ iconList, align, componetGrow }) => {

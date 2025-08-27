@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { ReactElement,ReactNode,useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -22,8 +22,8 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
 
   return(
     <nav id ="navbar" role="navigation" aria-label="Navigazione principale" style={{ '--componet-Grow': componetGrow } as React.CSSProperties} className={styles.navbar}>
-      <button className={`${styles.menuMobileBottom}`} onClick={handleClick}>
-        <i className="fas fa-bars fa-2x"></i>
+      <button aria-label="Apri menu mobile" className={`${styles.menuMobileBottom}`} onClick={handleClick}>
+        {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
       <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}>
         {menuData.map((page, index) => (
@@ -36,7 +36,7 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
       </ul>
       <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none'  } as React.CSSProperties}>
         {menuData.map((page, index) => (
-          <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`} key={index} >
+          <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`} key={index} >
             <a href={`${page.pagePath}`}>
               {page.pageTitle}
             </a>
