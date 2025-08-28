@@ -1,4 +1,4 @@
-npm install git+https://github.com/DBDeve/react_components.git
+npm install react_websites_components
 
 dev instruction
 
