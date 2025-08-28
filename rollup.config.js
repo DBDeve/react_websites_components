@@ -10,6 +10,11 @@ export default components.flatMap(name => {
   // 1) JS + CSS
   const jsConfig = {
     input,
+    external: [
+      'react',                                // modulo esatto
+      'react-dom',                            // altro modulo
+      '@fortawesome/fontawesome-free/css/all.min.css',                            // tutti i moduli che iniziano con “lodash”
+    ],
     output: {
       dir: `dist/${name}`,
       format: 'esm',
@@ -30,6 +35,11 @@ import './${name}.css';`,
   // 2) Dichiarazioni .d.ts
   const dtsConfig = {
     input,
+    external: [
+      'react',                                // modulo esatto
+      'react-dom',                            // altro modulo
+      '@fortawesome/fontawesome-free/css/all.min.css',                            // tutti i moduli che iniziano con “lodash”
+    ],
     output: {
       dir: `dist/${name}`,
       format: 'es',

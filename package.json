@@ -1,19 +1,26 @@
 {
-  "name": "react_components",
+  "name": "react_websites_components",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react", "javascript", "typescript", "rollup", "postcss", "css modules", "seo", "components", "websites"],
+  "author": " Dario Bertonati <dario.bertonatilavoro@gmail.com>",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
+  "description": "a set of react components for developing SEO-friendly websites",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DBDeve/react_websites_components.git"
+  },
+  
+  "peerDependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "tslib": "^2.8.1"
+    "react-dom": "^19.1.1"
   },
+  "dependencies": {"tslib": "^2.8.1"},
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
@@ -40,7 +47,7 @@
   "files": [
     "dist",
     "README.md",
-    "package.json"
+    "LICENSE"
   ],
   "type": "module"
 }
