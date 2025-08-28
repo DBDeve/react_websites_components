@@ -17,8 +17,8 @@
   
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {"tslib": "^2.8.1"},
   "devDependencies": {
