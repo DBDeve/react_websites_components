@@ -38,3 +38,15 @@
 .itemsAlignRight {
   align-items: flex-end;
 }
+
+.footerRows{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.footerColumn{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
