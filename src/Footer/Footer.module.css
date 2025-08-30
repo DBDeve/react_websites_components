@@ -1,21 +1,40 @@
 .footer{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   width: 100%;
   gap: 10px;
   padding: 10px;
+  background-color: var(--bg-Color, white);
 }
 
 .nav{
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 
 .ul{
   display: flex;
-  align-items: center;
   flex-direction: column;
+}
+
+
+.justifyLeft {
+  justify-content: left;
+}
+.justifyCenter {
+  justify-content: center;
+}
+.justifyRight {
+  justify-content: right;
+}
+
+.itemsAlignLeft {
+  align-items: flex-start;
+}
+.itemAlignCenter {
+  align-items: center;
+}
+.itemsAlignRight {
+  align-items: flex-end;
 }

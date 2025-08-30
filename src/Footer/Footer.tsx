@@ -2,33 +2,62 @@ import React, { Children, ReactElement,ReactNode } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Footer.module.css';
 
-type Footer={backgroundColor?:string, children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar>};
-export const Footer:React.FC<Footer> = ({backgroundColor,children}) => {
+const alignMap = {
+  left: `${styles.justifyLeft}`,
+  center: `${styles.justifyCenter}`,
+  right: `${styles.justifyRight}`,
+};
+
+type Footer={backgroundColor?:string, align: "left" | "center" | "right", children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall>};
+export const Footer:React.FC<Footer> = ({backgroundColor,children, align}) => {
   return (
-    <footer id='footer' className={styles.footer}>
+    <footer id='footer' className={`${styles.footer} ${alignMap[align]}`} style={{ '--bg-Color': backgroundColor } as React.CSSProperties}>
       {children}
     </footer>
   );
 }
 
+
+const alignItemsMap = {
+  left: `${styles.itemsAlignLeft}`,
+  center: `${styles.itemAlignCenter}`,
+  right: `${styles.itemsAlignRight}`,
+};
 /* ce ne può essere più di una */ 
-type FooterNavbar={title:string, linkList:{linkText: string; linkPath: string}[]};
-export const FooterNavbar:React.FC<FooterNavbar> = ({title, linkList}) => {
+type FooterNavbar={title:string, linkList:{linkText: string; linkPath: string}[], align: "left" | "center" | "right"};
+export const FooterNavbar:React.FC<FooterNavbar> = ({title, linkList,align}) => {
   return (
-  <nav className={styles.nav}>
+  <nav className={`${styles.nav} ${alignItemsMap[align]}`}>
     <h2>{title}</h2>
-     <ul className={styles.ul}>
-      {linkList.map((link) => (
-        <li><a href={`${link.linkPath}`}>{link.linkText}</a></li>
+     <ul className={`${styles.ul} ${alignItemsMap[align]}`}>
+      {linkList.map((link,index) => (
+        <li key={index}><a href={`${link.linkPath}`}>{link.linkText}</a></li>
       ))}
     </ul>
   </nav>
   )
 }
 
-type FotterAddress={addressData:{street?:string, city?:string, state?:string, zip?:string, country?:string, phone?:string, email?:string}};
+type FotterAddress={name:string, street?:string, CAP?:number, city?:string, state?:string, phone?:string, email?:string, website?:string};
+export const FotterAddress:React.FC<FotterAddress> = ({name,CAP,street,city,phone,email,website}) => {
+  return (
+    <address>
+      {name && <div>{name}</div>}
+      <div>{street && <div>{street}</div>} {CAP && <div>{CAP}</div>} {city && <div>{city}</div>}</div>
+      {phone && <div>Tel: +<a href={`tel:+${phone}`}>{phone}</a></div>}
+      {email && <div>Email: <a href ={`mailto:${email}`}>{email}</a></div>}
+      {website && <div> <a href ={`${website}`}>{website}</a></div>}
+    </address>
+  )
+}
+
 
 type FooterSmall = {};
+export const FooterSmall:React.FC<FooterSmall> = ({}) => {
+  return (
+    <small>&copy; 2025 Tutti i diritti riservati</small>
+  )
+}
 
 
 
