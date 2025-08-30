@@ -48,6 +48,11 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
   )
 }
 
+const iconSizeMap ={
+  small: 'fa-sm',
+  medium: 'fa-lg',
+  large: 'fa-2x'
+}
 
 type NavbarIcon = {
   iconList:{facebook?: { link: string };
@@ -78,101 +83,213 @@ type NavbarIcon = {
   vk?: { link: string };
   line?: { link: string };},
   align:'left'|'center'|'right', 
+  iconsSize:"small" | "medium" | "large",
   componetGrow?:number
 };
-export const NavBarIcon:React.FC<NavbarIcon> = ({iconList,align,componetGrow})=>{
+export const NavBarIcon:React.FC<NavbarIcon> = ({iconList,align,iconsSize,componetGrow})=>{
   return (
     <div id="social_icon" aria-label="icone social" className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
       {iconList.facebook &&
-        <a href={iconList.facebook.link} aria-label="Facebook" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-facebook fa-2x"></i>
+        <a
+          href={iconList.facebook.link}
+          aria-label="Facebook"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-facebook ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.instagram &&
-        <a href={iconList.instagram.link} aria-label="Instagram" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-instagram fa-2x"></i>
+        <a
+          href={iconList.instagram.link}
+          aria-label="Instagram"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+
+        >
+          <i className={`fab fa-instagram ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.twitter &&
-        <a href={iconList.twitter.link} aria-label="Twitter" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-twitter fa-2x"></i>
+        <a
+          href={iconList.twitter.link}
+          aria-label="Twitter"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+
+        >
+          <i className={`fab fa-twitter ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.linkedin &&
-        <a href={iconList.linkedin.link} aria-label="LinkedIn" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-linkedin fa-2x"></i>
+        <a
+          href={iconList.linkedin.link}
+          aria-label="LinkedIn"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-linkedin ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.youtube &&
-        <a href={iconList.youtube.link} aria-label="YouTube" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-youtube"></i>
+        <a
+          href={iconList.youtube.link}
+          aria-label="YouTube"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-youtube ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.tiktok &&
-        <a href={iconList.tiktok.link} aria-label="TikTok" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-tiktok"></i>
+        <a
+          href={iconList.tiktok.link}
+          aria-label="TikTok"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-tiktok ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.snapchat &&
-        <a href={iconList.snapchat.link} aria-label="Snapchat" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-snapchat-ghost"></i>
+        <a
+          href={iconList.snapchat.link}
+          aria-label="Snapchat"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-snapchat-ghost ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.pinterest &&
-        <a href={iconList.pinterest.link} aria-label="Pinterest" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-pinterest"></i>
+        <a
+          href={iconList.pinterest.link}
+          aria-label="Pinterest"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-pinterest ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.reddit &&
-        <a href={iconList.reddit.link} aria-label="Reddit" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-reddit"></i>
+        <a
+          href={iconList.reddit.link}
+          aria-label="Reddit"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-reddit ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.discord &&
-        <a href={iconList.discord.link} aria-label="Discord" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-discord"></i>
+        <a
+          href={iconList.discord.link}
+          aria-label="Discord"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-discord ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.telegram &&
-        <a href={iconList.telegram.link} aria-label="Telegram" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-telegram"></i>
+        <a
+          href={iconList.telegram.link}
+          aria-label="Telegram"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-telegram ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.whatsapp &&
-        <a href={iconList.whatsapp.link} aria-label="WhatsApp" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-whatsapp"></i>
+        <a
+          href={iconList.whatsapp.link}
+          aria-label="WhatsApp"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-whatsapp ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.github &&
-        <a href={iconList.github.link} aria-label="GitHub" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-github fa-2x"></i>
+        <a
+          href={iconList.github.link}
+          aria-label="GitHub"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-github ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.twitch &&
-        <a href={iconList.twitch.link} aria-label="Twitch" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-twitch fa-2x"></i>
+        <a
+          href={iconList.twitch.link}
+          aria-label="Twitch"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-twitch ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.behance &&
-        <a href={iconList.behance.link} aria-label="Behance" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-behance"></i>
+        <a
+          href={iconList.behance.link}
+          aria-label="Behance"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-behance ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.dribbble &&
-        <a href={iconList.dribbble.link} aria-label="Dribbble" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-dribbble"></i>
+        <a
+          href={iconList.dribbble.link}
+          aria-label="Dribbble"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-dribbble ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.medium &&
-        <a href={iconList.medium.link} aria-label="Medium" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-medium"></i>
+        <a
+          href={iconList.medium.link}
+          aria-label="Medium"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-medium ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
       {iconList.vimeo &&
-        <a href={iconList.vimeo.link} aria-label="Vimeo" rel="noopener noreferrer" target="_blank" className={`${styles.touchTarget}`}>
-          <i className="fab fa-vimeo"></i>
+        <a
+          href={iconList.vimeo.link}
+          aria-label="Vimeo"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={`${styles.touchTarget} ${styles.alignSocialIcon}`}
+        >
+          <i className={`fab fa-vimeo ${iconSizeMap[iconsSize]}`}></i>
         </a>
       }
+
     </div>
   )
 }
