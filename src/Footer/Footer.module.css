@@ -1,7 +1,7 @@
 .footer{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
   gap: 10px;
   padding: 10px;
@@ -44,9 +44,6 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-.footerColumn{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+.footerRowsAlign{
+  justify-content: var(--justify-content, center);
 }

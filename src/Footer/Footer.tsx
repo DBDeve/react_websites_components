@@ -8,10 +8,10 @@ const alignMap = {
   right: `${styles.justifyRight}`,
 };
 
-type Footer={backgroundColor?:string, align: "left" | "center" | "right", children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall> | ReactElement<typeof FooterRows>[] | ReactElement<typeof FooterRows>};
-export const Footer:React.FC<Footer> = ({backgroundColor,children, align}) => {
+type Footer={backgroundColor?:string, children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall> | ReactElement<typeof FooterRow>[] | ReactElement<typeof FooterRow>};
+export const Footer:React.FC<Footer> = ({backgroundColor,children}) => {
   return (
-    <footer id='footer' className={`${styles.footer} ${alignMap[align]}`} style={{ '--bg-Color': backgroundColor } as React.CSSProperties}>
+    <footer id='footer' className={`${styles.footer}`} style={{ '--bg-Color': backgroundColor } as React.CSSProperties}>
       {children}
     </footer>
   );
@@ -60,18 +60,11 @@ export const FooterSmall:React.FC<FooterSmall> = ({}) => {
 }
 
 
-// queste due sono invertire. riscrivere
-type FooterRows={children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall> | ReactElement<typeof FooterColums>[] | ReactElement<typeof FooterColums>};
-export const FooterRows:React.FC<FooterRows> = ({children}) => {
+// aggiungere possibilita di inserire l'align
+type FooterRow={align: "left" | "center" | "right",children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall>};
+export const FooterRow:React.FC<FooterRow> = ({align,children}) => {
   return(
-    <div className={styles.footerColumn}> {children}</div>
-  )
-}
-
-type FooterColumn={children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall>};
-export const FooterColums:React.FC<FooterColumn> = ({children}) => {
-  return(
-    <div className={styles.footerRows}> {children}</div>
+    <div className={`${styles.footerRows} ${styles.footerRowsAlign}`} style={{ '--justify-content': align } as React.CSSProperties}> {children}</div>
   )
 }
 

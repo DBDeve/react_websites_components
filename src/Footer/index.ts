@@ -1,1 +1,1 @@
-export {Footer,FooterNavbar,FooterColums,FooterRows} from './Footer'
+export {Footer,FooterNavbar,FooterRow} from './Footer'
