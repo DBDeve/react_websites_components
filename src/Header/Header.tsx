@@ -12,8 +12,8 @@ const alignMap = {
   right: `${styles.justifyRight}`,
 };
 
-type NavBar ={menuData:{pageTitle: string; pagePath: string}[],align:'left'|'center'|'right', componetGrow?:number};
-export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
+type NavBar ={menuData:{pageTitle: string; pagePath: string}[],align:'left'|'center'|'right', componetGrow?:number, hoverColor?:string};
+export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow,hoverColor})=>{
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -25,21 +25,21 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow})=>{
       <button aria-label="Apri menu mobile" className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
-      <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}>
+      <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow,'--hover-color': hoverColor} as React.CSSProperties}>
         {menuData.map((page, index) => (
           <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`} key={index} >
             {/* creare un variabile per l'inserimeto di colori con contrasti che funzionano universalmente */}
             <a href={`${page.pagePath}`} style={{color:'#000000'}}>
-              {page.pageTitle}
+              <p className={styles.menuText}>{page.pageTitle}</p>
             </a>
           </li>
         ))}
       </ul>
-      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none'  } as React.CSSProperties}>
+      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none','--hover-color': hoverColor  } as React.CSSProperties}>
         {menuData.map((page, index) => (
           <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`} key={index} >
             <a href={`${page.pagePath}`}>
-              {page.pageTitle}
+              <p className={styles.menuText}>{page.pageTitle}</p>
             </a>
           </li>
         ))}

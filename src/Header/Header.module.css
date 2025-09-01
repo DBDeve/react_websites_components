@@ -89,3 +89,16 @@
   min-height: clamp(2.5rem, 5vw, 3rem);
   margin: 0.5rem;
 }
+
+
+.menuText{
+  font-family: 'Lato', sans-serif; 
+  font-style: normal; 
+  font-weight: 400; 
+  letter-spacing: 0px; 
+  text-transform: uppercase;
+}
+.menuText:hover{
+  color: var(--hover-color, rgb(255, 255, 255));
+  cursor: pointer;
+}
