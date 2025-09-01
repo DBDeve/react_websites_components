@@ -98,7 +98,7 @@
   letter-spacing: 0px; 
   text-transform: uppercase;
 }
-.menuText:hover{
+.hoverEnabled:hover {
   color: var(--hover-color, rgb(255, 255, 255));
   cursor: pointer;
 }
