@@ -1,10 +1,11 @@
 "use client";
 
-import React, { ReactElement,ReactNode,useState } from 'react';
+import React, { ReactElement,ReactNode,useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
 
 // nomi dei componenti dopo const sempre maiuscoli
+
 
 const alignMap = {
   left: `${styles.justifyLeft}`,
@@ -21,15 +22,29 @@ type NavBar ={
   enableBorderRight?:boolean
 };
 export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
+
   const [isVisible, setIsVisible] = useState(false);
+  const [lang, setLang] = useState('');
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsVisible(!isVisible);
   };
+  useEffect(() => {
+    const htmlLang = document.documentElement.getAttribute('lang') || 'it';
+    setLang(htmlLang);
+  }, []);
+
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
+  type descriptionMap={
+    [key:string]:{nav:string, button:string, desktopMenu:string, mobileMenu:string},
+  }
+  const description: descriptionMap ={
+    it:{nav:'navigazione principale', button:'', desktopMenu:'', mobileMenu:''},
+    en:{nav:'main navigation', button:'', desktopMenu:'', mobileMenu:''}
+  };
 
   return(
-    <nav id ="navbar" role="navigation" aria-label="Navigazione principale" style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
+    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav ?? 'Menu'} style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
       <button aria-label="Apri menu mobile" className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
