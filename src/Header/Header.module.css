@@ -3,7 +3,7 @@
 .header {
   display: inline-flex;
   width: 100%;
-  padding: 10px;
+  padding: var(--padding);
   background-color: var(--bg-color, transparent);
 }
 
@@ -14,6 +14,7 @@
 .navbar {
   display: flex;
   flex: var(--componet-Grow, 1 1 0);
+  font-size: var(--font-size, 15px);
 }
 
 .ul{

@@ -15,10 +15,12 @@ const alignMap = {
 type NavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
   align:'left'|'center'|'right',
+  textSize?:string,
   componetGrow?:number,
   enableHover?:boolean,
+  enableBorderRight?:boolean
 };
-export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow,enableHover})=>{
+export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,13 +29,13 @@ export const NavBar:React.FC<NavBar> = ({menuData,align,componetGrow,enableHover
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
   return(
-    <nav id ="navbar" role="navigation" aria-label="Navigazione principale" style={{ '--componet-Grow': componetGrow } as React.CSSProperties} className={styles.navbar}>
+    <nav id ="navbar" role="navigation" aria-label="Navigazione principale" style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
       <button aria-label="Apri menu mobile" className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
       <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow} as React.CSSProperties}>
         {menuData.map((page, index) => (
-          <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderRight : 'no_borderRight'}`} key={index} >
+          <li className={`${styles.il} ${index < menuData.length - 1 && enableBorderRight? styles.borderRight : 'no_borderRight'}`} key={index} >
             {/* creare un variabile per l'inserimeto di colori con contrasti che funzionano universalmente */}
             <a href={`${page.pagePath}`} className={`${enableHoverClass}`}>
               <p className={styles.menuText}>{page.pageTitle}</p>
@@ -320,17 +322,19 @@ export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>
 type AllowedChild = ReactElement<typeof NavBarLogo | typeof NavBar | typeof SocialIcons>;
 
 type HeaderProps = {
-  children: AllowedChild | AllowedChild[];
-  backGroundColor: string;
-  fixed?: boolean;
+  children: AllowedChild | AllowedChild[],
+  backGroundColor: string,
+  padding?: string,
+  fixed?: boolean,
   hoverColor?:string
 };
 
-export const Header: React.FC<HeaderProps> = ({ backGroundColor, fixed, children, hoverColor }) => {
+export const Header: React.FC<HeaderProps> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
+  
   const positionClass = fixed ? styles.fixed : 'no_fixed';
 
   return (
-    <header role="banner" style={{ '--bg-color': backGroundColor,'--hover-color': hoverColor } as React.CSSProperties} className={`${styles.header} ${positionClass}` }>
+    <header role="banner" style={{ '--bg-color': backGroundColor,'--hover-color': hoverColor,'--padding':padding } as React.CSSProperties} className={`${styles.header} ${positionClass}` }>
       {children}
     </header>
   );
