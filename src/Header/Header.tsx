@@ -47,7 +47,7 @@ export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,e
 
   return(
     <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
-      <button aria-label="Apri menu mobile" className={`${styles.menuMobileBottom}`} onClick={handleClick}>
+      <button aria-label={description[lang]?.button?? 'undefined'} className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
       <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow} as React.CSSProperties}>
