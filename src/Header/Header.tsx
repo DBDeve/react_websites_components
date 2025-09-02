@@ -6,6 +6,13 @@ import styles from './Header.module.css';
 
 // nomi dei componenti dopo const sempre maiuscoli
 
+type descriptionMap={
+  [key:string]:{nav:string, button:string, logo:string, alt:string},
+}
+const description: descriptionMap ={
+  it:{nav:'Navigazione principale', button:'Apri menu mobile', logo:'Immagine logo', alt:'Logo azienda'},
+  en:{nav:'Primary navigation', button:'Open menu mobile', logo:'Logo image', alt:'Company logo'}
+};
 
 const alignMap = {
   left: `${styles.justifyLeft}`,
@@ -24,27 +31,22 @@ type NavBar ={
 export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
 
   const [isVisible, setIsVisible] = useState(false);
-  const [lang, setLang] = useState('');
+  
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsVisible(!isVisible);
   };
+
+  const [lang, setLang] = useState('');
   useEffect(() => {
     const htmlLang = document.documentElement.getAttribute('lang') || 'it';
     setLang(htmlLang);
   }, []);
 
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
-  type descriptionMap={
-    [key:string]:{nav:string, button:string, desktopMenu:string, mobileMenu:string},
-  }
-  const description: descriptionMap ={
-    it:{nav:'navigazione principale', button:'', desktopMenu:'', mobileMenu:''},
-    en:{nav:'main navigation', button:'', desktopMenu:'', mobileMenu:''}
-  };
 
   return(
-    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav ?? 'Menu'} style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
+    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
       <button aria-label="Apri menu mobile" className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
@@ -323,10 +325,17 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
 
 type NavBarLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
 export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>{
+
+  const [lang, setLang] = useState('');
+  useEffect(() => {
+    const htmlLang = document.documentElement.getAttribute('lang') || 'it';
+    setLang(htmlLang);
+  }, []);
+
   return (
-    <div id="logo_image" aria-label="immagine logo" className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
+    <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
       <a href="/" aria-label="Homepage">
-        <img src={`${urlImage}`} alt="Logo azienda" width={50} height={25}/>
+        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} width={50} height={25}/>
       </a>
     </div>
   )
