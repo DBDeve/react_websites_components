@@ -4,7 +4,6 @@ import React, { ReactElement,ReactNode,useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
 
-// nomi dei componenti dopo const sempre maiuscoli
 
 type descriptionMap={
   [key:string]:{nav:string, button:string, logo:string, alt:string, social:string},
