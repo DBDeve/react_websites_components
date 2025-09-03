@@ -7,11 +7,11 @@ import styles from './Header.module.css';
 // nomi dei componenti dopo const sempre maiuscoli
 
 type descriptionMap={
-  [key:string]:{nav:string, button:string, logo:string, alt:string},
+  [key:string]:{nav:string, button:string, logo:string, alt:string, social:string},
 }
 const description: descriptionMap ={
-  it:{nav:'Navigazione principale', button:'Apri menu mobile', logo:'Immagine logo', alt:'Logo azienda'},
-  en:{nav:'Primary navigation', button:'Open menu mobile', logo:'Logo image', alt:'Company logo'}
+  it:{nav:'Navigazione principale', button:'Apri menu mobile', logo:'Immagine logo', alt:'Logo azienda', social:'icone social'},
+  en:{nav:'Primary navigation', button:'Open menu mobile', logo:'Logo image', alt:'Company logo', social:'social icons'}
 };
 
 const alignMap = {
@@ -114,10 +114,16 @@ type SocialIcons = {
 };
 export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
 
+  const [lang, setLang] = useState('');
+  useEffect(() => {
+    const htmlLang = document.documentElement.getAttribute('lang') || 'it';
+    setLang(htmlLang);
+  }, []);
+
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
   return (
-    <div id="social_icon" aria-label="icone social" className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow,'--icons-size':sizeIcon } as React.CSSProperties}> 
+    <div id="social_icon" aria-label={description[lang]?.social?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow,'--icons-size':sizeIcon } as React.CSSProperties}> 
       {iconList.facebook &&
         <a
           href={iconList.facebook.link}
