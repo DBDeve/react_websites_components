@@ -108,16 +108,16 @@ type SocialIcons = {
   vk?: { link: string };
   line?: { link: string };},
   align:'left'|'center'|'right', 
-  iconsSize:"small" | "medium" | "large",
+  sizeIcon:string,
   componetGrow?:number,
   enableHover?:boolean,
 };
-export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,componetGrow,enableHover})=>{
+export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
 
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
   return (
-    <div id="social_icon" aria-label="icone social" className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
+    <div id="social_icon" aria-label="icone social" className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow,'--icons-size':sizeIcon } as React.CSSProperties}> 
       {iconList.facebook &&
         <a
           href={iconList.facebook.link}
@@ -126,7 +126,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-facebook ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-facebook fa-lg`}></i>
         </a>
       }
       {iconList.instagram &&
@@ -138,7 +138,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
 
         >
-          <i className={`fab fa-instagram ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-instagram fa-lg`}></i>
         </a>
       }
       {iconList.twitter &&
@@ -150,7 +150,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
 
         >
-          <i className={`fab fa-twitter ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-twitter fa-lg`}></i>
         </a>
       }
       {iconList.linkedin &&
@@ -161,7 +161,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-linkedin ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-linkedin fa-lg`}></i>
         </a>
       }
       {iconList.youtube &&
@@ -172,7 +172,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-youtube ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-youtube fa-lg`}></i>
         </a>
       }
       {iconList.tiktok &&
@@ -183,7 +183,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-tiktok ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-tiktok fa-lg`}></i>
         </a>
       }
       {iconList.snapchat &&
@@ -194,7 +194,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-snapchat-ghost ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-snapchat-ghost fa-lg`}></i>
         </a>
       }
       {iconList.pinterest &&
@@ -205,7 +205,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-pinterest ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-pinterest fa-lg`}></i>
         </a>
       }
       {iconList.reddit &&
@@ -216,7 +216,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-reddit ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-reddit fa-lg`}></i>
         </a>
       }
       {iconList.discord &&
@@ -227,7 +227,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-discord ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-discord fa-lg`}></i>
         </a>
       }
       {iconList.telegram &&
@@ -238,7 +238,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-telegram ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-telegram fa-lg`}></i>
         </a>
       }
       {iconList.whatsapp &&
@@ -249,7 +249,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-whatsapp ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-whatsapp fa-lg`}></i>
         </a>
       }
       {iconList.github &&
@@ -260,7 +260,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-github ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-github fa-lg`}></i>
         </a>
       }
       {iconList.twitch &&
@@ -271,7 +271,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-twitch ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-twitch fa-lg`}></i>
         </a>
       }
       {iconList.behance &&
@@ -282,7 +282,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-behance ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-behance fa-lg`}></i>
         </a>
       }
       {iconList.dribbble &&
@@ -293,7 +293,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-dribbble ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-dribbble fa-lg`}></i>
         </a>
       }
       {iconList.medium &&
@@ -304,7 +304,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-medium ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-medium fa-lg`}></i>
         </a>
       }
       {iconList.vimeo &&
@@ -315,7 +315,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,iconsSize,comp
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
-          <i className={`fab fa-vimeo ${iconSizeMap[iconsSize]}`}></i>
+          <i className={`fab fa-vimeo fa-lg`}></i>
         </a>
       }
 

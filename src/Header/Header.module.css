@@ -83,6 +83,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: var(--icons-size,10px);
 }
 .touchTarget {
   padding: 0.375rem;
