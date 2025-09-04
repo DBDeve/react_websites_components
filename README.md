@@ -19,25 +19,25 @@ If you use older versions, you may encounter errors such as useState is not a fu
 ## 🧪 examples of use
 ### Header component
 ```jsx
-import {Header,NavBar,NavBarIcon,NavBarLogo} from 'react_websites_components/Header'
+import {HeaderNavBar,HeaderSocialIcons,HeaderImageLogo,Header} from 'react_websites_components/Header'
 ```
 ```jsx
 function App() {
   <Header backGroundColor="red" fixed hoverColor="blue">
-    <NavBar 
-    textSize="20px"
-    enableHover
-    menuData={[{pageTitle:'home',pagePath:'/page1'},{pageTitle:'about us',pagePath:'/page2'},{pageTitle:'work',pagePath:'/page3'}]} 
-    align="left"
-    componetGrow={3}
+    <HeaderNavBar
+      text={{size:'20px',family:"Open Sans, sans-serif"}}
+      enableHover
+      menuData={[{pageTitle:'home',pagePath:'/page1'},{pageTitle:'about us',pagePath:'/page2'},{pageTitle:'work',pagePath:'/page3'}]}
+      align="left"
+      componetGrow={3}
     />
-    <SocialIcons 
-    sizeIcon="18px" 
-    enableHover 
-    iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}}  
-    align={'center'} 
+    <HeaderSocialIcons 
+      enableHover
+      sizeIcon="18px"
+      iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}}
+      align={'center'}
     />
-    <NavBarLogo urlImage="/file.svg" align={'right'}/>
+    <HeaderImageLogo urlImage="/file.svg" align={'right'}/>
   </Header>
 }
 ```
@@ -47,7 +47,7 @@ function App() {
   - fixed(boolean): if it is insert the header component is fixed
 
 - NavBar component
-  - textSize(string): set the size of 
+  - text({size:string,family:string}): set the size and the family of the navBar.
   - enableHover(boolean): enable the hover event.
   - menuData(json array): every json in the array contained the title of menu and the corresponding link.
   - align(string): set the horizontal alignment of the NavBar component. accepted values are left, center, right.
@@ -65,17 +65,17 @@ function App() {
 
 ### Footer component
 ```jsx
-import {Footer,FooterNavbar,FooterRow} from 'react_websites_components/Footer'
+import {Footer,FooterNavBar,FooterRow} from 'react_websites_components/Footer'
 ```
 ```jsx
 function App() {
   <Footer backgroundColor="#666666ff">
     <FooterRow align="center">
-      <FooterNavbar title='Company' align='center' linkList={[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}/>
-      <FooterNavbar title='Support' align='right' linkList={[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}/>
+      <FooterNavBar title={{content:'Company'}} align='center' links={{content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}/>
+      <FooterNavBar title={{content:'support'}} align='right' links={{content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
     </FooterRow>
-    <FooterRow align="left"> 
-      <FooterNavbar title='Services' align='left' linkList={[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}/>
+    <FooterRow align="left">
+      <FooterNavBar title={{content:'services'}} align='left' links={{content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}/>
     </FooterRow>
   </Footer>
 }
@@ -87,6 +87,6 @@ function App() {
   - align(string): set the row align
 
 - FooterNavBar component
-  - title(string): set the title ofthe navBar
+  - title({size?:string,family?:string,content:string}): set the title of the navBar. you can set the size and the family font.
   - align(string): align the content of foterNavBar.
-  - linkList({linkText:string, linkPath:string}[]): set the content with relative link.
+  - links({size?:string,family?:string,content:{linkText: string; linkPath: string}[]}): set the content with relative link. you can set the size and the family font.
