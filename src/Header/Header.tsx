@@ -133,6 +133,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-facebook fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Facebook</span>
         </a>
       }
       {iconList.instagram &&
@@ -145,6 +146,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
 
         >
           <i className={`fab fa-instagram fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Instagram</span>
         </a>
       }
       {iconList.twitter &&
@@ -157,17 +159,19 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
 
         >
           <i className={`fab fa-twitter fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Twitter</span>
         </a>
       }
       {iconList.linkedin &&
         <a
           href={iconList.linkedin.link}
-          aria-label="LinkedIn"
+          aria-label="linkedin"
           rel="noopener noreferrer"
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-linkedin fa-lg`}></i>
+          <span className={styles.screen_reader_only}>LinkedIn</span>
         </a>
       }
       {iconList.youtube &&
@@ -179,6 +183,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-youtube fa-lg`}></i>
+          <span className={styles.screen_reader_only}>YouTube</span>
         </a>
       }
       {iconList.tiktok &&
@@ -190,6 +195,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-tiktok fa-lg`}></i>
+          <span className={styles.screen_reader_only}>TikTok</span>
         </a>
       }
       {iconList.snapchat &&
@@ -201,6 +207,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-snapchat-ghost fa-lg`}></i>
+          <span className={styles.screen_reader_only}>snapchat</span>
         </a>
       }
       {iconList.pinterest &&
@@ -212,6 +219,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-pinterest fa-lg`}></i>
+          <span className={styles.screen_reader_only}>pinterest</span>
         </a>
       }
       {iconList.reddit &&
@@ -223,6 +231,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-reddit fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Reddit</span>
         </a>
       }
       {iconList.discord &&
@@ -234,6 +243,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-discord fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Discord</span>
         </a>
       }
       {iconList.telegram &&
@@ -245,6 +255,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-telegram fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Telegram</span>
         </a>
       }
       {iconList.whatsapp &&
@@ -256,6 +267,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-whatsapp fa-lg`}></i>
+          <span className={styles.screen_reader_only}>whatsapp</span>
         </a>
       }
       {iconList.github &&
@@ -267,6 +279,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-github fa-lg`}></i>
+          <span className={styles.screen_reader_only}>GitHub</span>
         </a>
       }
       {iconList.twitch &&
@@ -278,6 +291,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-twitch fa-lg`}></i>
+          <span className={styles.screen_reader_only}>twitch</span>
         </a>
       }
       {iconList.behance &&
@@ -289,6 +303,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-behance fa-lg`}></i>
+          <span className={styles.screen_reader_only}>behance</span>
         </a>
       }
       {iconList.dribbble &&
@@ -300,6 +315,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-dribbble fa-lg`}></i>
+          <span className={styles.screen_reader_only}>dribbble</span>
         </a>
       }
       {iconList.medium &&
@@ -311,6 +327,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-medium fa-lg`}></i>
+          <span className={styles.screen_reader_only}>medium</span>
         </a>
       }
       {iconList.vimeo &&
@@ -322,6 +339,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-vimeo fa-lg`}></i>
+          <span className={styles.screen_reader_only}>vimeo</span>
         </a>
       }
 
@@ -341,7 +359,7 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
   return (
     <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
       <a href="/" aria-label="Homepage">
-        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} width={50} height={25}/>
+        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='lazy' title='logo image' width={50} height={25}/>
       </a>
     </div>
   )

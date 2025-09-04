@@ -104,3 +104,9 @@
   color: var(--hover-color, rgb(255, 255, 255));
   cursor: pointer;
 }
+
+
+.screen_reader_only{
+  position: absolute;
+  left: -9999px;
+}
