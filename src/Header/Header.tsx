@@ -19,7 +19,8 @@ const alignMap = {
   right: `${styles.justifyRight}`,
 };
 
-type NavBar ={
+
+type HeaderNavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
   align:'left'|'center'|'right',
   textSize?:string,
@@ -27,7 +28,7 @@ type NavBar ={
   enableHover?:boolean,
   enableBorderRight?:boolean
 };
-export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
+export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
 
   const [isVisible, setIsVisible] = useState(false);
   
@@ -78,7 +79,7 @@ const iconSizeMap ={
   large: 'fa-2x'
 }
 
-type SocialIcons = {
+type HeaderSocialIcons = {
   iconList:{facebook?: { link: string };
   instagram?: { link: string };
   twitter?: { link: string };
@@ -111,7 +112,7 @@ type SocialIcons = {
   componetGrow?:number,
   enableHover?:boolean,
 };
-export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
+export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
 
   const [lang, setLang] = useState('');
   useEffect(() => {
@@ -328,8 +329,8 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
   )
 }
 
-type NavBarLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
-export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>{
+type HeaderImageLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
+export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,componetGrow})=>{
 
   const [lang, setLang] = useState('');
   useEffect(() => {
@@ -348,7 +349,7 @@ export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>
 
 
 
-type AllowedChild = ReactElement<typeof NavBarLogo | typeof NavBar | typeof SocialIcons>;
+type AllowedChild = ReactElement<typeof HeaderImageLogo | typeof HeaderNavBar | typeof HeaderSocialIcons>;
 
 type HeaderProps = {
   children: AllowedChild | AllowedChild[],

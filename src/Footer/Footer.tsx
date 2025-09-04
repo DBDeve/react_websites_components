@@ -8,7 +8,7 @@ const alignMap = {
   right: `${styles.justifyRight}`,
 };
 
-type Footer={backgroundColor?:string, children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall> | ReactElement<typeof FooterRow>[] | ReactElement<typeof FooterRow>};
+type Footer={backgroundColor?:string, children:ReactElement<typeof FooterNavBar>[] | ReactElement<typeof FooterNavBar> | ReactElement<typeof FooterAddress> | ReactElement<typeof FooterSmall> | ReactElement<typeof FooterRow>[] | ReactElement<typeof FooterRow>};
 export const Footer:React.FC<Footer> = ({backgroundColor,children}) => {
   return (
     <footer id='footer' className={`${styles.footer}`} style={{ '--bg-Color': backgroundColor } as React.CSSProperties}>
@@ -24,8 +24,8 @@ const alignItemsMap = {
   right: `${styles.itemsAlignRight}`,
 };
 /* ce ne può essere più di una */ 
-type FooterNavbar={title:string, linkList:{linkText: string; linkPath: string}[], align: "left" | "center" | "right"};
-export const FooterNavbar:React.FC<FooterNavbar> = ({title, linkList,align}) => {
+type FooterNavBar={title:string, linkList:{linkText: string; linkPath: string}[], align: "left" | "center" | "right"};
+export const FooterNavBar:React.FC<FooterNavBar> = ({title, linkList,align}) => {
   return (
   <nav className={`${styles.nav} ${alignItemsMap[align]}`}>
     <h2>{title}</h2>
@@ -38,8 +38,8 @@ export const FooterNavbar:React.FC<FooterNavbar> = ({title, linkList,align}) => 
   )
 }
 
-type FotterAddress={name:string, street?:string, CAP?:number, city?:string, state?:string, phone?:string, email?:string, website?:string};
-export const FotterAddress:React.FC<FotterAddress> = ({name,CAP,street,city,phone,email,website}) => {
+type FooterAddress={name:string, street?:string, CAP?:number, city?:string, state?:string, phone?:string, email?:string, website?:string};
+export const FooterAddress:React.FC<FooterAddress> = ({name,CAP,street,city,phone,email,website}) => {
   return (
     <address>
       {name && <div>{name}</div>}
@@ -61,7 +61,7 @@ export const FooterSmall:React.FC<FooterSmall> = ({}) => {
 
 
 // aggiungere possibilita di inserire l'align
-type FooterRow={align: "left" | "center" | "right",children:ReactElement<typeof FooterNavbar>[] | ReactElement<typeof FooterNavbar> | ReactElement<typeof FotterAddress> | ReactElement<typeof FooterSmall>};
+type FooterRow={align: "left" | "center" | "right",children:ReactElement<typeof FooterNavBar>[] | ReactElement<typeof FooterNavBar> | ReactElement<typeof FooterAddress> | ReactElement<typeof FooterSmall>};
 export const FooterRow:React.FC<FooterRow> = ({align,children}) => {
   return(
     <div className={`${styles.footerRows} ${styles.footerRowsAlign}`} style={{ '--justify-content': align } as React.CSSProperties}> {children}</div>
