@@ -15,6 +15,7 @@
   display: flex;
   flex: var(--componet-Grow, 1 1 0);
   font-size: var(--font-size, 15px);
+  font-family: var(--font-family,'Open Sans', sans-serif);
 }
 
 .ul{
@@ -94,7 +95,6 @@
 
 
 .menuText{
-  font-family: 'Open Sans', sans-serif; 
   font-style: normal; 
   font-weight: 400; 
   letter-spacing: 0px; 

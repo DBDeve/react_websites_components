@@ -28,10 +28,10 @@ type FooterNavBar={title:string, linkList:{linkText: string; linkPath: string}[]
 export const FooterNavBar:React.FC<FooterNavBar> = ({title, linkList,align}) => {
   return (
   <nav className={`${styles.nav} ${alignItemsMap[align]}`}>
-    <h2>{title}</h2>
-     <ul className={`${styles.ul} ${alignItemsMap[align]}`}>
+    <h2 className={`${styles.footerNavTitle}`}>{title}</h2>
+     <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`}>
       {linkList.map((link,index) => (
-        <li key={index}><a href={`${link.linkPath}`}>{link.linkText}</a></li>
+        <li key={index}><a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a></li>
       ))}
     </ul>
   </nav>

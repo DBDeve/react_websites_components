@@ -23,12 +23,12 @@ const alignMap = {
 type HeaderNavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
   align:'left'|'center'|'right',
-  textSize?:string,
+  text?:{size:string, family:string}
   componetGrow?:number,
   enableHover?:boolean,
   enableBorderRight?:boolean
 };
-export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
+export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,componetGrow,enableHover,enableBorderRight})=>{
 
   const [isVisible, setIsVisible] = useState(false);
   
@@ -46,7 +46,7 @@ export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align, textSize,co
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
   return(
-    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
+    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':text?.size, '--font-family':text?.family} as React.CSSProperties} className={styles.navbar}>
       <button aria-label={description[lang]?.button?? 'undefined'} className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
