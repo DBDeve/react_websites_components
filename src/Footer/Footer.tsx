@@ -24,13 +24,13 @@ const alignItemsMap = {
   right: `${styles.itemsAlignRight}`,
 };
 /* ce ne può essere più di una */ 
-type FooterNavBar={title:string, linkList:{linkText: string; linkPath: string}[], align: "left" | "center" | "right"};
-export const FooterNavBar:React.FC<FooterNavBar> = ({title, linkList,align}) => {
+type FooterNavBar={title:{size?:string,family?:string,content:string}, links:{size?:string,family?:string,content:{linkText: string; linkPath: string}[]}, align: "left" | "center" | "right"};
+export const FooterNavBar:React.FC<FooterNavBar> = ({title, links,align}) => {
   return (
   <nav className={`${styles.nav} ${alignItemsMap[align]}`}>
-    <h2 className={`${styles.footerNavTitle}`}>{title}</h2>
-     <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`}>
-      {linkList.map((link,index) => (
+    <h2 className={`${styles.footerNavTitle}`} style={{ '--fontSize-Title': title.size,'--fontFamily-Title':title.family } as React.CSSProperties}>{title.content}</h2>
+     <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`} style={{ '--fontSize-link': links.size, '--fontFamily-link':links.family } as React.CSSProperties}>
+      {links.content.map((link,index) => (
         <li key={index}><a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a></li>
       ))}
     </ul>
