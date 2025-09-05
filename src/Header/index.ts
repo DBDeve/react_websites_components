@@ -1,1 +1,1 @@
-export {Header,NavBar,SocialIcons,NavBarLogo} from './Header'
+export {Header,HeaderNavBar,HeaderSocialIcons,HeaderImageLogo} from './Header'

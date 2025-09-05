@@ -4,7 +4,6 @@ import React, { ReactElement,ReactNode,useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
 
-// nomi dei componenti dopo const sempre maiuscoli
 
 type descriptionMap={
   [key:string]:{nav:string, button:string, logo:string, alt:string, social:string},
@@ -20,15 +19,16 @@ const alignMap = {
   right: `${styles.justifyRight}`,
 };
 
-type NavBar ={
+
+type HeaderNavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
   align:'left'|'center'|'right',
-  textSize?:string,
+  text?:{size:string, family:string}
   componetGrow?:number,
   enableHover?:boolean,
   enableBorderRight?:boolean
 };
-export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,enableHover,enableBorderRight})=>{
+export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,componetGrow,enableHover,enableBorderRight})=>{
 
   const [isVisible, setIsVisible] = useState(false);
   
@@ -46,7 +46,7 @@ export const NavBar:React.FC<NavBar> = ({menuData,align, textSize,componetGrow,e
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
   return(
-    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':textSize } as React.CSSProperties} className={styles.navbar}>
+    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':text?.size, '--font-family':text?.family} as React.CSSProperties} className={styles.navbar}>
       <button aria-label={description[lang]?.button?? 'undefined'} className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
@@ -79,7 +79,7 @@ const iconSizeMap ={
   large: 'fa-2x'
 }
 
-type SocialIcons = {
+type HeaderSocialIcons = {
   iconList:{facebook?: { link: string };
   instagram?: { link: string };
   twitter?: { link: string };
@@ -112,7 +112,7 @@ type SocialIcons = {
   componetGrow?:number,
   enableHover?:boolean,
 };
-export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
+export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
 
   const [lang, setLang] = useState('');
   useEffect(() => {
@@ -133,6 +133,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-facebook fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Facebook</span>
         </a>
       }
       {iconList.instagram &&
@@ -145,6 +146,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
 
         >
           <i className={`fab fa-instagram fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Instagram</span>
         </a>
       }
       {iconList.twitter &&
@@ -157,17 +159,19 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
 
         >
           <i className={`fab fa-twitter fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Twitter</span>
         </a>
       }
       {iconList.linkedin &&
         <a
           href={iconList.linkedin.link}
-          aria-label="LinkedIn"
+          aria-label="linkedin"
           rel="noopener noreferrer"
           target="_blank"
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-linkedin fa-lg`}></i>
+          <span className={styles.screen_reader_only}>LinkedIn</span>
         </a>
       }
       {iconList.youtube &&
@@ -179,6 +183,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-youtube fa-lg`}></i>
+          <span className={styles.screen_reader_only}>YouTube</span>
         </a>
       }
       {iconList.tiktok &&
@@ -190,6 +195,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-tiktok fa-lg`}></i>
+          <span className={styles.screen_reader_only}>TikTok</span>
         </a>
       }
       {iconList.snapchat &&
@@ -201,6 +207,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-snapchat-ghost fa-lg`}></i>
+          <span className={styles.screen_reader_only}>snapchat</span>
         </a>
       }
       {iconList.pinterest &&
@@ -212,6 +219,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-pinterest fa-lg`}></i>
+          <span className={styles.screen_reader_only}>pinterest</span>
         </a>
       }
       {iconList.reddit &&
@@ -223,6 +231,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-reddit fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Reddit</span>
         </a>
       }
       {iconList.discord &&
@@ -234,6 +243,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-discord fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Discord</span>
         </a>
       }
       {iconList.telegram &&
@@ -245,6 +255,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-telegram fa-lg`}></i>
+          <span className={styles.screen_reader_only}>Telegram</span>
         </a>
       }
       {iconList.whatsapp &&
@@ -256,6 +267,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-whatsapp fa-lg`}></i>
+          <span className={styles.screen_reader_only}>whatsapp</span>
         </a>
       }
       {iconList.github &&
@@ -267,6 +279,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-github fa-lg`}></i>
+          <span className={styles.screen_reader_only}>GitHub</span>
         </a>
       }
       {iconList.twitch &&
@@ -278,6 +291,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-twitch fa-lg`}></i>
+          <span className={styles.screen_reader_only}>twitch</span>
         </a>
       }
       {iconList.behance &&
@@ -289,6 +303,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-behance fa-lg`}></i>
+          <span className={styles.screen_reader_only}>behance</span>
         </a>
       }
       {iconList.dribbble &&
@@ -300,6 +315,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-dribbble fa-lg`}></i>
+          <span className={styles.screen_reader_only}>dribbble</span>
         </a>
       }
       {iconList.medium &&
@@ -311,6 +327,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-medium fa-lg`}></i>
+          <span className={styles.screen_reader_only}>medium</span>
         </a>
       }
       {iconList.vimeo &&
@@ -322,6 +339,7 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
           className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-vimeo fa-lg`}></i>
+          <span className={styles.screen_reader_only}>vimeo</span>
         </a>
       }
 
@@ -329,8 +347,8 @@ export const SocialIcons:React.FC<SocialIcons> = ({iconList,align,componetGrow,e
   )
 }
 
-type NavBarLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
-export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>{
+type HeaderImageLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
+export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,componetGrow})=>{
 
   const [lang, setLang] = useState('');
   useEffect(() => {
@@ -341,7 +359,7 @@ export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>
   return (
     <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
       <a href="/" aria-label="Homepage">
-        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} width={50} height={25}/>
+        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='lazy' title='logo image' width={50} height={25}/>
       </a>
     </div>
   )
@@ -349,7 +367,7 @@ export const NavBarLogo:React.FC<NavBarLogo> = ({urlImage,align,componetGrow})=>
 
 
 
-type AllowedChild = ReactElement<typeof NavBarLogo | typeof NavBar | typeof SocialIcons>;
+type AllowedChild = ReactElement<typeof HeaderImageLogo | typeof HeaderNavBar | typeof HeaderSocialIcons>;
 
 type HeaderProps = {
   children: AllowedChild | AllowedChild[],
