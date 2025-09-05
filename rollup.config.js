@@ -11,9 +11,9 @@ export default components.flatMap(name => {
   const jsConfig = {
     input,
     external: [
-      'react',                                // modulo esatto
-      'react-dom',                            // altro modulo
-      '@fortawesome/fontawesome-free/css/all.min.css',                            // tutti i moduli che iniziano con “lodash”
+      'react',                                
+      'react-dom', 
+      '@fortawesome/fontawesome-free/css/all.min.css',  
     ],
     output: {
       dir: `dist/${name}`,
@@ -26,7 +26,7 @@ import './${name}.css';`,
     plugins: [
       typescript({ declaration: false }),
       postcss({
-        extract: true,  // estrae solo per questo componente
+        extract: true,  
         minimize: true
       })
     ]
@@ -36,9 +36,9 @@ import './${name}.css';`,
   const dtsConfig = {
     input,
     external: [
-      'react',                                // modulo esatto
-      'react-dom',                            // altro modulo
-      '@fortawesome/fontawesome-free/css/all.min.css',                            // tutti i moduli che iniziano con “lodash”
+      'react',                               
+      'react-dom',                            
+      '@fortawesome/fontawesome-free/css/all.min.css',    
     ],
     output: {
       dir: `dist/${name}`,
