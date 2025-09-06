@@ -27,3 +27,23 @@ export const Section:React.FC<Section> = ({h2,children}) => {
         </section>
     )
 }
+
+type image={ type:'image', src:string}
+type video={ type:'video', src:string}
+type HeroSection={
+    mediaType:video | image,
+    h2?:{size?:string,family?:string,content:string}
+    button?:{}
+}
+export const HeroSection:React.FC<HeroSection> = ({mediaType,h2,button}) => {
+    return(
+        <section id='hero_section' className={styles.HeroSection}>
+            {mediaType.type === 'video' && <video></video>}
+            {mediaType.type === 'image' && (<img src="immagine.jpg" alt="immagine hero section" loading="lazy"/>)}
+            <div className={styles.HeroContent}>
+                {h2 && <h2 style={{ '--h2hero-size': h2.size, '--h2hero-family':h2.family } as React.CSSProperties} className={`${styles.h2}`}> {h2.content} </h2>}
+                {button && <button> </button>}
+            </div>
+        </section>
+    )
+}

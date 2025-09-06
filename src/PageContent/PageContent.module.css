@@ -13,3 +13,31 @@
   font-size: var(--h2-size, 15px);
   font-family: var(--h2-family,'Open Sans', sans-serif);
 }
+
+
+/* hero section component */
+.HeroSection{
+  position: relative;
+  width: 100%;
+  height: 80vh;
+}
+.HeroSection img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.HeroContent{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.h2HeroSection{
+  font-size: var(--h2hero-size, 15px);
+  font-family: var(--h2hero-family,'Open Sans', sans-serif);
+}
+.buttomHeroSection{
+  color: blue;
+}
