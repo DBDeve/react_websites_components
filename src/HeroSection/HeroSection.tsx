@@ -1,5 +1,6 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './HeroSection.module.css';
+import {CustomButton} from '../Custom'
 
 // ADD THIS TO CUSTOM BUTTON
 //button?:{color:string, text:{color:string, content:string}, padding:string, border:{borderColor:string, borderRadius:string, style:string}, margin:string}
@@ -41,12 +42,12 @@ type HeroSection={
 }
 export const HeroSection:React.FC<HeroSection> = ({mediaType,h2,button}) => {
     return(
-        <section id='hero_section' className={styles.HeroSection}>
+        <section id='hero_section' className={styles.HeroSection}> 
             {mediaType.type === 'video' && <video></video>}
             {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`}alt="immagine hero section" loading="lazy"/>)}
             <div className={styles.HeroContent}>
                 {h2 && <h2 style={{ '--h2hero-size': h2.size, '--h2hero-family':h2.family } as React.CSSProperties} className={`${styles.h2HeroSection}`}> {h2.content} </h2>}
-                {button && <button style={{ '--buttonHero-padding': button.padding } as React.CSSProperties} className={`${styles.buttonHeroSection}`}> vai al sito </button>}
+                {button &&  <CustomButton> pulsante di prova </CustomButton>}
             </div>
         </section>
     )

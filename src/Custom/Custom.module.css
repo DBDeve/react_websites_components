@@ -12,3 +12,11 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+.customHeading{
+  margin: var(--button-marginTop, 1%) var(--button-marginRight, 1%) var(--button-marginBottom, 1%) var(--button-marginLeft, 1%);
+  font: var(--font-style,normal) var(--font-variant,small-caps) var(--font-weight, 600) var(--font-stretch,condensed) var(--font-size, 1.1rem)/var(--line-height,1.4) var(--font-family,"Helvetica Neue", Arial, sans-serif);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  color:rgba( var(--rgb-color,128, 128, 128), var(--rgb-opacity,1));
+  letter-spacing: 1px;
+}
