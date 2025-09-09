@@ -2,7 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import postcss    from 'rollup-plugin-postcss';
 import dts        from 'rollup-plugin-dts';
 
-const components = ['Footer', 'Header','PageContent'];
+const components = ['Footer', 'Header','HeroSection','Custom'];
 
 export default components.flatMap(name => {
   const input = `src/${name}/index.ts`;
@@ -13,7 +13,7 @@ export default components.flatMap(name => {
     external: [
       'react',                                
       'react-dom', 
-      '@fortawesome/fontawesome-free/css/all.min.css',  
+      '@fortawesome/fontawesome-free/css/all.min.css',
     ],
     output: {
       dir: `dist/${name}`,

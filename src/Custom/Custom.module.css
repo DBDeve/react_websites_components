@@ -1,0 +1,14 @@
+.button{
+  margin: var(--button-marginTop, 1%) var(--button-marginRight, 1%) var(--button-marginBottom, 1%) var(--button-marginLeft, 1%);
+  border: var(--button-borderWidth, 1px) var(--button-borderType, 'solid') var(--button-borderColor,none);
+  padding: var(--button-paddingTop, 10px) var(--button-paddingRight, 10px) var(--button-paddingBottom, 10px) var(--button-paddingLeft, 10px);
+  font: var(--font-style,normal) var(--font-variant,small-caps) var(--font-weight, 600) var(--font-stretch,condensed) var(--font-size, 1.1rem)/var(--line-height,1.4) var(--font-family,"Helvetica Neue", Arial, sans-serif);
+  /*text-decoration: underline dashed crimson 2px;*/
+  /*text-emphasis: dot red;*/
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  color: rgb(255, 255, 255);
+  background-color: rgba( var(--rgb-color,128, 128, 128), var(--rgb-opacity,0.6));
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

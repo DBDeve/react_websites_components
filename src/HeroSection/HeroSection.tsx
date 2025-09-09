@@ -1,5 +1,5 @@
 import React, {ReactNode,ReactElement} from 'react';
-import styles from './PageContent.module.css';
+import styles from './HeroSection.module.css';
 
 // ADD THIS TO CUSTOM BUTTON
 //button?:{color:string, text:{color:string, content:string}, padding:string, border:{borderColor:string, borderRadius:string, style:string}, margin:string}

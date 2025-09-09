@@ -1,1 +1,0 @@
-export {Page,Section,HeroSection} from './PageContent'
