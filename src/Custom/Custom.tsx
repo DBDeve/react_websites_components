@@ -3,15 +3,24 @@ import styles from './Custom.module.css';
 
 
 type CustomHeading = {
-    margin?:string | {top?:string, bottom?:string, right?:string, left?:string},
     type:'h1'|'h2'|'h3'|'h4'|'h5'|'h6',
+    margin?:string | {top?:string, bottom?:string, right?:string, left?:string},
+    font?:{style?:string, variant?:string, weight?:string,stretch?:string, size?:string, height?:string, family?:string},
+    color?:string
     children:ReactNode
 }
-export const CustomHeading:React.FC<CustomHeading> = ({type,children, margin}) => {
-    const style = typeof margin === 'string'? {'--button-marginTop': margin,'--button-marginRight': margin,'--button-marginBottom': margin,'--button-marginLeft': margin,}:{'--button-marginTop': margin?.top,'--button-marginRight': margin?.right,'--button-marginBottom': margin?.bottom,'--button-marginLeft': margin?.left,
-    } as React.CSSProperties;
-    return React.createElement(type, { style, className: styles.customHeading },children);
+export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,children}) => {
     
+    let style = typeof margin === 'string'? {
+        '--heading-marginTop': margin,'--heading-marginRight': margin,'--heading-marginBottom': margin,'--heading-marginLeft': margin,
+        '--heading-fontStyle': font?.style, '--heading-fontVariant':font?.variant, '--heading-fontWeight':font?.weight, '--heading-fontStretch':font?.stretch, '--heading-fontSize':font?.size, '--heading-lineHeight':font?.height, '--heading-fontFamily':font?.family,
+        '--heading-color':color
+    }:{
+        '--heading-marginTop': margin?.top,'--heading-marginRight': margin?.right,'--heading-marginBottom': margin?.bottom,'--heading-marginLeft': margin?.left,
+        '--heading-fontStyle': font?.style, '--heading-fontVariant':font?.variant, '--heading-fontWeight':font?.weight, '--heading-fontStretch':font?.stretch, '--heading-fontSize':font?.size, '--heading-lineHeight':font?.height, '--heading-fontFamily':font?.family,
+        '--heading-color':color
+    } as React.CSSProperties; 
+    return React.createElement(type, { style, className: styles.customHeading },children);
 }
 
 
