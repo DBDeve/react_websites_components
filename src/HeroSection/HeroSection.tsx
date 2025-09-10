@@ -1,6 +1,6 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './HeroSection.module.css';
-import {CustomHeading,CustomButton} from '../Custom'
+import {CustomHeading,CustomParagraph,CustomButton} from '../Custom'
 
 // ADD THIS TO CUSTOM BUTTON
 //button?:{color:string, text:{color:string, content:string}, padding:string, border:{borderColor:string, borderRadius:string, style:string}, margin:string}
@@ -37,16 +37,18 @@ type image={ type:'image', src:string}
 type video={ type:'video', src:string}
 type HeroSection={
     mediaType:video | image,
-    heading?:{size?:string,family?:string,content:string}
+    heading?:{size?:string,family?:string,content:string},
+    paragraph:boolean,
     button?:{padding?:string, text:{color:string, content:string}}
 }
-export const HeroSection:React.FC<HeroSection> = ({mediaType,heading,button}) => {
+export const HeroSection:React.FC<HeroSection> = ({mediaType,heading,paragraph,button}) => {
     return(
         <section id='hero_section' className={styles.HeroSection}> 
             {mediaType.type === 'video' && <video></video>}
             {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`}alt="immagine hero section" loading="lazy"/>)}
             <div className={styles.HeroContent}>
                 {heading && <CustomHeading type='h1'> titolo di prova1</CustomHeading>}
+                {paragraph && <CustomParagraph> paragrafo di prova con <a href="#"> link </a></CustomParagraph>}
                 {button &&  <CustomButton> pulsante di prova </CustomButton>}
             </div>
         </section>

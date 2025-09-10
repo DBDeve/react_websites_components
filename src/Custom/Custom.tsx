@@ -24,6 +24,22 @@ export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,ch
 }
 
 
+type CustomParagraph={
+    children:ReactNode
+}
+export const CustomParagraph:React.FC<CustomParagraph> = ({children}) => {
+    const styledChildren = React.Children.map(children, child => {
+    if (React.isValidElement(child) && child.type === 'a') {
+      return React.cloneElement(child as ReactElement<any>, {
+        className: `${styles.anchor} ` 
+      });
+    }
+    return child;
+  });
+  return <p className={styles.customParagraph}> {styledChildren} </p>;
+}
+
+
 type CustomBottom={
     padding?:{top?:string, bottom?:string, right?:string, left?:string, color?:string},
     border?:{width?:string, type?:'solid', color?:string},

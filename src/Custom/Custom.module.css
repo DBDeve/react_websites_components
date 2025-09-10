@@ -6,6 +6,20 @@
   letter-spacing: 1px;
 }
 
+/* CustomParagraph component */
+.customParagraph{
+  font: var(--font-style,normal) var(--font-variant,normal) var(--font-weight, 400) var(--font-stretch,normal) var(--font-size, 1rem)/var(--line-height,1.5) var(--font-family,"Helvetica Neue", Arial, sans-serif);
+  z-index: 10;
+}
+.anchor{
+  color: var(--anchor-color, black);
+  text-decoration: underline dashed crimson 2px;
+}
+.anchor:hover{
+  color: var(--anchorHover-color, white);
+  text-decoration: underline dashed rgb(43, 119, 43) 2px;
+}
+
 .button{
   margin: var(--button-marginTop, 1%) var(--button-marginRight, 1%) var(--button-marginBottom, 1%) var(--button-marginLeft, 1%);
   border: var(--button-borderWidth, 1px) var(--button-borderType, 'solid') var(--button-borderColor,none);

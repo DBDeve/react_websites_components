@@ -1,1 +1,1 @@
-export {CustomHeading,CustomButton} from './Custom'
+export {CustomHeading,CustomParagraph,CustomButton} from './Custom'
