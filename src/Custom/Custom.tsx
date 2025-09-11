@@ -1,11 +1,12 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './Custom.module.css';
+import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight} from '../types'
 
 
 type CustomHeading = {
     type:'h1'|'h2'|'h3'|'h4'|'h5'|'h6',
-    margin?:string | {top?:string, bottom?:string, right?:string, left?:string},
-    font?:{style?:string, variant?:string, weight?:string,stretch?:string, size?:string, height?:string, family?:string},
+    margin?:Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
+    font?:{style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string},
     color?:string
     children:ReactNode
 }

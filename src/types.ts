@@ -22,7 +22,7 @@ export type CSSFrequency = `${number}Hz` | `${number}kHz`;
 
 export type CSSResolution = `${number}dpi` | `${number}dpcm` | `${number}dppx`;
 
-export type cssGlobalValue = 'inherit' | 'initial' | 'unset' | 'revert';
+export type CSSGlobalValue = 'inherit' | 'initial' | 'unset' | 'revert' | 'revert-layer';
 
 export type CSSkeyworld = 'none' | 'auto';
 
@@ -32,13 +32,37 @@ export type CSSFlex =
   | CSSLength
   | CSSpercentage                             // basis
   | `${number} ${number} ${CSSLength | CSSpercentage}`        // grow shrink basis
-  | 'auto'
-  | 'none'
-  | cssGlobalValue;
+  | CSSkeyworld
+  | CSSGlobalValue;
 
 export type CSSRatio =
   | `${number}/${number}`
-  | cssGlobalValue;
+  | CSSGlobalValue;
+
+export type GenericFamily = 'serif' | 'sans-serif' | 'monospace' | 'cursive' | 'fantasy' | 'system-ui' | 'ui-serif' | 'ui-sans-serif' | 'ui-monospace' | 'ui-rounded' | 'emoji' | 'math' | 'fangsong';
+
+export type FamilyName = ''; //finire
+
+
+/////////////////
+
+export type Margin = CSSLength | CSSGlobalValue | 'auto';
+
+export type Border = CSSLength | CSSGlobalValue | 'auto';
+
+export type Padding = CSSLength | CSSGlobalValue | 'auto';
+
+
+
+export type FontStyle = 'normal' | 'italic' | 'oblique' | `oblique ${CSSangle}`;
+
+export type FontVariant = 'normal' | 'small-caps' | CSSGlobalValue | 'revert-layer';
+
+export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 'lighter' | 'bolder' | 'normal' | 'bold' | CSSGlobalValue;
+
+export type FontStretch = 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'normal' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded' | CSSpercentage | CSSGlobalValue;
+
+export type LineHeight = number | CSSLength | CSSpercentage | CSSGlobalValue;
 
 
 
