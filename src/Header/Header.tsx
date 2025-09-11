@@ -3,6 +3,7 @@
 import React, { ReactElement,ReactNode,useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
+import {CSSLength} from '../types'
 
 
 type descriptionMap={
@@ -23,7 +24,7 @@ const alignMap = {
 type HeaderNavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
   align:'left'|'center'|'right',
-  text?:{size:string, family:string}
+  text?:{size:CSSLength, family:string}
   componetGrow?:number,
   enableHover?:boolean,
   enableBorderRight?:boolean
