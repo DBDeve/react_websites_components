@@ -23,8 +23,28 @@ export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,ch
     return React.createElement(type, { style, className: styles.customHeading },children);
 }
 
-
 type CustomParagraph={
+    font?:{
+        style:'normal'|'italic'|'oblique'
+    }
+    anchor?:{
+        color?:string, 
+        textDecoration?:{
+            line:'none'|'underline'|'overline'|'line-through', 
+            color:string, 
+            style:'solid'|'double'|'dotted'|'dashed'|'wavy',
+            thickness:'auto'|'from-font'|`${number}}%`
+        }
+    },
+    anchorHover?:{
+        color?:string, 
+        textDecoration?:{
+            line:'none'|'underline'|'overline'|'line-through', 
+            color:string, 
+            style:'solid'|'double'|'dotted'|'dashed'|'wavy',
+            thickness:'auto'|'from-font'|`${number}}%`
+        }
+    }, 
     children:ReactNode
 }
 export const CustomParagraph:React.FC<CustomParagraph> = ({children}) => {
@@ -36,7 +56,7 @@ export const CustomParagraph:React.FC<CustomParagraph> = ({children}) => {
     }
     return child;
   });
-  return <p className={styles.customParagraph}> {styledChildren} </p>;
+  return <p style={{ } as React.CSSProperties} className={styles.customParagraph}> {styledChildren} </p>;
 }
 
 

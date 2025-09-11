@@ -12,12 +12,12 @@
   z-index: 10;
 }
 .anchor{
-  color: var(--anchor-color, black);
-  text-decoration: underline dashed crimson 2px;
+  color: var(--anchor-color, black );
+  text-decoration: var(--text-decoration-line-anchor, 'underline') var(--text-decoration-line-anchor,'solid') var(--text-decoration-color-anchor,black) var(--text-decoration-thickness-anchor, 1px);
 }
 .anchor:hover{
-  color: var(--anchorHover-color, white);
-  text-decoration: underline dashed rgb(43, 119, 43) 2px;
+  color: var(--anchor-hover-color, red);
+  text-decoration: var(--text-decoration-line-anchor-hover, 'underline') var(--text-decoration-line-anchor-hover,'solid') var(--text-decoration-color-anchor-hover,red) var(--text-decoration-thickness-anchor-hover, 1px);
 }
 
 .button{

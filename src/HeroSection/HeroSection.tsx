@@ -54,3 +54,5 @@ export const HeroSection:React.FC<HeroSection> = ({mediaType,heading,paragraph,b
         </section>
     )
 }
+
+//fare un componente heading, uno button e uno paragraph. e definire un contentuto in cui mettere tutto
