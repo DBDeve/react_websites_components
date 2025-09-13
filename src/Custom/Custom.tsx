@@ -1,13 +1,13 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './Custom.module.css';
-import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight} from '../types'
+import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, color} from '../types'
 
 
 type CustomHeading = {
     type:'h1'|'h2'|'h3'|'h4'|'h5'|'h6',
     margin?:Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     font?:{style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string},
-    color?:string
+    color?: color
     children:ReactNode
 }
 export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,children}) => {
@@ -25,9 +25,7 @@ export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,ch
 }
 
 type CustomParagraph={
-    font?:{
-        style:'normal'|'italic'|'oblique'
-    }
+    font?: {style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string},
     anchor?:{
         color?:string, 
         textDecoration?:{
@@ -49,10 +47,11 @@ type CustomParagraph={
     children:ReactNode
 }
 export const CustomParagraph:React.FC<CustomParagraph> = ({children}) => {
+    let style = {} as React.CSSProperties;
     const styledChildren = React.Children.map(children, child => {
     if (React.isValidElement(child) && child.type === 'a') {
       return React.cloneElement(child as ReactElement<any>, {
-        className: `${styles.anchor} ` 
+        style, className: `${styles.anchor} ` 
       });
     }
     return child;
