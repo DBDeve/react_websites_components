@@ -2,7 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import postcss    from 'rollup-plugin-postcss';
 import dts        from 'rollup-plugin-dts';
 
-const components = ['Footer', 'Header','HeroSection','Custom'];
+const components = ['Footer', 'Header','HeroSection','Custom','PageContent','PageSection'];
 
 export default components.flatMap(name => {
   const input = `src/${name}/index.ts`;

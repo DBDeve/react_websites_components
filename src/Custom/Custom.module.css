@@ -13,11 +13,11 @@
 }
 .anchor{
   color: var(--anchor-color, black );
-  text-decoration: var(--text-decoration-line-anchor, 'underline') var(--text-decoration-line-anchor,'solid') var(--text-decoration-color-anchor,black) var(--text-decoration-thickness-anchor, 1px);
+  text-decoration: var(--anchor-text-decoration-line,underline) var(--anchor-text-decoration-style,solid) var(--anchor-text-decoration-color,black) var(--anchor-text-decoration-thickness,1px);
 }
 .anchor:hover{
   color: var(--anchor-hover-color, red);
-  text-decoration: var(--text-decoration-line-anchor-hover, 'underline') var(--text-decoration-line-anchor-hover,'solid') var(--text-decoration-color-anchor-hover,red) var(--text-decoration-thickness-anchor-hover, 1px);
+  text-decoration: var(--anchor-hover-text-decoration-line,underline) var(--anchor-hover-text-decoration-style,solid) var(--anchor-hover-text-decoration-color,red) var(--anchor-hover-text-decoration-thickness,1px);
 }
 
 .button{
@@ -35,3 +35,6 @@
   letter-spacing: 1px;
 }
 
+.FlexContainer{
+  display: flex;
+}

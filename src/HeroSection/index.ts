@@ -1,1 +1,1 @@
-export {Page,Section,HeroSection} from './HeroSection'
+export {HeroSection,HeroHeading,HeroParagraph,HeroButton} from './HeroSection'

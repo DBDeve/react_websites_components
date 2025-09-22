@@ -168,6 +168,8 @@ export type GenericFamily = 'serif' | 'sans-serif' | 'monospace' | 'cursive' | '
 
 export type FamilyName = ''; //finire
 
+export type lineStyle = 'solid'|'double'|'dotted'|'dashed'
+
 
 
 /////////////////
@@ -191,6 +193,12 @@ export type FontStretch = 'ultra-condensed' | 'extra-condensed' | 'condensed' | 
 export type LineHeight = number | CSSLength | CSSpercentage | CSSGlobalValue;
 
 export type color = CSSGlobalValue | CSSrgb | CSSrgba | CSShsl | CSShsla | CSShwb | CSShex
+
+export type TextDecorationLine = 'none'|'underline'|'overline'|'line-through'
+
+export type TextDecorationStyle = lineStyle | 'wavy';
+
+export type TextDecorationThickness = 'auto'|'from-font'| CSSpercentage
 
 
 
