@@ -201,7 +201,15 @@ export type TextDecorationStyle = lineStyle | 'wavy';
 export type TextDecorationThickness = 'auto'|'from-font'| CSSpercentage
 
 
+/* FLEX TYPES */
+export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse' | CSSGlobalValue;
 
+export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse' | CSSGlobalValue;
 
+export type AlignContent = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | CSSGlobalValue;
+
+export type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | CSSGlobalValue;
+
+export type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | CSSGlobalValue;
 
 

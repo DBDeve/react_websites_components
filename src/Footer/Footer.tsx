@@ -1,6 +1,7 @@
 import React, { Children, ReactElement,ReactNode } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Footer.module.css';
+import { AlignContent, AlignItems, FlexDirection, FlexWrap,JustifyContent } from '../types';
 
 const alignMap = {
   left: `${styles.justifyLeft}`,
@@ -8,10 +9,10 @@ const alignMap = {
   right: `${styles.justifyRight}`,
 };
 
-type Footer={backgroundColor?:string, children:ReactElement<typeof FooterNavBar>[] | ReactElement<typeof FooterNavBar> | ReactElement<typeof FooterAddress> | ReactElement<typeof FooterSmall> | ReactElement<typeof FooterRow>[] | ReactElement<typeof FooterRow>};
+type Footer={backgroundColor?:string, children:ReactElement<typeof FooterNavBar>[] | ReactElement<typeof FooterNavBar> | ReactElement<typeof FooterAddress> | ReactElement<typeof FooterSmall>};
 export const Footer:React.FC<Footer> = ({backgroundColor,children}) => {
   return (
-    <footer id='footer' className={`${styles.footer}`} style={{ '--bg-Color': backgroundColor } as React.CSSProperties}>
+    <footer id='footer' aria-label='footer' className={`${styles.footer}`} style={{ '--bg-Color': backgroundColor } as React.CSSProperties}>
       {children}
     </footer>
   );
@@ -60,11 +61,19 @@ export const FooterSmall:React.FC<FooterSmall> = ({}) => {
 }
 
 
-// aggiungere possibilita di inserire l'align
-type FooterRow={align: "left" | "center" | "right",children:ReactElement<typeof FooterNavBar>[] | ReactElement<typeof FooterNavBar> | ReactElement<typeof FooterAddress> | ReactElement<typeof FooterSmall>};
-export const FooterRow:React.FC<FooterRow> = ({align,children}) => {
-  return(
-    <div className={`${styles.footerRows} ${styles.footerRowsAlign}`} style={{ '--justify-content': align } as React.CSSProperties}> {children}</div>
+type FooterFlexContent = {
+  direction?: FlexDirection,
+  wrap?: FlexWrap,
+  alignContent?: AlignContent,
+  justifyContent?: JustifyContent,
+  alignItems?: AlignItems,
+  children: ReactNode
+}
+export const FooterFlexContent:React.FC<FooterFlexContent> = ({direction, wrap, alignContent, justifyContent, alignItems,children}) => {
+  return (
+    <div className={styles.footerFlexContent} style={{ '--flex-direction': direction, '--flex-wrap': wrap, '--align-content': alignContent, '--justify-content': justifyContent, '--align-items': alignItems } as React.CSSProperties}>
+      {children}
+    </div>
   )
 }
 

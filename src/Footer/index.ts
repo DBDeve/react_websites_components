@@ -1,1 +1,1 @@
-export {Footer,FooterNavBar,FooterAddress,FooterSmall,FooterRow} from './Footer'
+export {Footer,FooterNavBar,FooterAddress,FooterSmall, FooterFlexContent} from './Footer'

@@ -39,15 +39,6 @@
   align-items: flex-end;
 }
 
-.footerRows{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.footerRowsAlign{
-  justify-content: var(--justify-content, center);
-}
-
 
 .footerNavTitle{
   font-size: var(--fontSize-Title, 16px);
@@ -62,4 +53,16 @@
 }
 .enableHover:hover{
   color: var(--NavBar-HoverColor,white)
+}
+
+
+.footerFlexContent{
+  display: flex;
+  flex-direction: var(--flex-direction, row);
+  flex-wrap: var(--flex-wrap, wrap);
+  align-content: var(--align-content, stretch);
+  justify-content: var(--justify-content, center);
+  align-items: var(--align-items, center);
+  width: 100%;
+  gap: 10px;
 }
