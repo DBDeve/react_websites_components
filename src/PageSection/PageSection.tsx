@@ -6,7 +6,7 @@ type PageSection = {
     h2?:{size?:string,family?:string,content:string},
     children:ReactNode /* | ReactElement<typeof Section>*/
 }
-export const PageSection:React.FC<PageSection> = ({h2,children}) => {
+export const PageSection:React.FC<PageSection> = ({children}) => {
     return(
         <section className={styles.section}>
             {children}

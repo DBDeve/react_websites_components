@@ -8,7 +8,7 @@ type PageContent = {
 }
 export const PageContent:React.FC<PageContent> = ({children}) => {
     return(
-        <main className={styles.main}>
+        <main id="main-content" aria-label="main content" className={styles.main}>
             {children}
         </main>
     )
