@@ -32,7 +32,7 @@ export const FooterNavBar:React.FC<FooterNavBar> = ({title, links,align}) => {
     <h2 className={`${styles.footerNavTitle}`} style={{ '--fontSize-Title': title.size,'--fontFamily-Title':title.family } as React.CSSProperties}>{title.content}</h2>
      <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`} style={{ '--fontSize-link': links.size, '--fontFamily-link':links.family } as React.CSSProperties}>
       {links.content.map((link,index) => (
-        <li key={index}><a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a></li>
+        <li key={index}> <a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a> </li>
       ))}
     </ul>
   </nav>
@@ -76,13 +76,3 @@ export const FooterFlexContent:React.FC<FooterFlexContent> = ({direction, wrap, 
     </div>
   )
 }
-
-
-/*
-type FooterGrid={rows?:number, columns?:number, gap?:string}
-export const FooterGrid:React.FC<FooterGrid> = ({rows, columns}):ReactElement => {
-  return (
-    <div style={{display:'grid', gridTemplateRows:`repeat(${rows}, 1fr)`, gridTemplateColumns:`repeat(${columns}, 1fr)`, gap:'10px'}}>
-    </div>
-  )
-}*/

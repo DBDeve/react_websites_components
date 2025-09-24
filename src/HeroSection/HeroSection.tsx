@@ -38,7 +38,7 @@ export const HeroHeading:React.FC<HeroHeading> = ({children}) =>{
 
 type Herobutton = {
     children:string,
-    padding?:string, text:{color:string, content:string}
+    padding?:string, text?:{color:string}
 }
 export const HeroButton:React.FC<Herobutton> = ({children}) =>{
     return (

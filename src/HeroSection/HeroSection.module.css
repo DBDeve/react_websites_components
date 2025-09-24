@@ -24,14 +24,15 @@
 
 
 .HeroHeading{
-  font-size: var(--h1-size, 15px);
+  font-size: var(--h1-size, 50px);
   font-family: var(--h1-family,'Open Sans', sans-serif);
   color: var(--hero-heading-color, black);
 }
 
 .heroParagraph{
-  font-size: var(--h2hero-size, 45px);
-  font-family: var(--h2hero-family,'Open Sans', sans-serif);
+  font-size: var(--hero-h2-size, 45px);
+  font-family: var(--hero-h2-family,'Open Sans', sans-serif);
+  color: var(--hero-paragraph-color, black);
 }
 
 .HeroButton{
@@ -45,4 +46,5 @@
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-top:10px
 }
