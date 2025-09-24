@@ -12,12 +12,7 @@ type image={ type:'image', src:string}
 type video={ type:'video', src:string}
 type HeroSection={
     mediaType:video | image,
-    children:
-    [ReactElement<typeof HeroHeading>]
-  | [ReactElement<typeof HeroHeading>, ReactNode]
-  | [ReactElement<typeof HeroHeading>, ReactElement<typeof HeroButton>]
-  | [ReactElement<typeof HeroHeading>, ReactElement<typeof HeroParagraph>]
-  | [ReactElement<typeof HeroHeading>, ReactElement<typeof HeroButton>, ReactElement<typeof HeroParagraph>];
+    children: ReactNode
 }
 export const HeroSection:React.FC<HeroSection> = ({mediaType, children}) => {
     return(
