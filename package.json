@@ -41,7 +41,6 @@
     "rollup": "^4.48.1",
     "rollup-plugin-dts": "^6.2.3",
     "rollup-plugin-postcss": "^4.0.2",
-    "type-fest": "^5.0.0",
     "typescript": "^5.9.2"
   },
   "exports": {
