@@ -55,11 +55,41 @@ export const HeroHeading:React.FC<HeroHeading> = ({text,margin,children}) =>{
 }
 
 type HeroParagraph = {
-    children:string
+    text?:{size?:string,family?:string, color?:string},
+    margin?:Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
+    anchor?:{color?:string}
+    children:ReactNode
 }
-export const HeroParagraph:React.FC<HeroParagraph> = ({children}) =>{
+export const HeroParagraph:React.FC<HeroParagraph> = ({text,margin,anchor,children}) => {
+
+    let textStyle = {'--hero-paragraph-size': text?.size,'--hero-paragraph-family':text?.family, '--hero-paragraph-color':text?.color};
+    let marginStyle;
+
+    if(typeof margin === 'string'){
+        marginStyle = {'--hero-paragraph-margin-top': margin,'--hero-paragraph-margin-bottom': margin,'--hero-paragraph-margin-right': margin,'--hero-paragraph-margin-left': margin}
+    } else {
+        marginStyle = {'--hero-paragraph-margin-top': margin?.top,'--hero-paragraph-margin-bottom': margin?.bottom,'--hero-paragraph-margin-right': margin?.right,'--hero-paragraph-margin-left': margin?.left}
+    }
+    
+    const paragraphStyle = {
+        ...textStyle,
+        ...marginStyle
+    } as React.CSSProperties;
+
+    let styleanchor = {
+        '--hero-anchor-paragraph-color':anchor?.color,
+    } as React.CSSProperties;
+    const styledChildren = React.Children.map(children, child => {
+        if (React.isValidElement(child) && child.type === 'a') {
+            return React.cloneElement(child as ReactElement<any>, {
+                style:styleanchor, className: `${styles.HeroAnchorParagraph} ` 
+            });
+        }
+        return child;
+    });
+
     return (
-        <p className={styles.HeroParagraph}> {children} </p>
+        <p style={paragraphStyle} className={styles.HeroParagraph}> {styledChildren} </p>
     )
 }
 

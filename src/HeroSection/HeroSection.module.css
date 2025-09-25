@@ -31,10 +31,13 @@
 }
 
 .HeroParagraph{
-  font-size: var(--hero-h2-size, 15px);
-  font-family: var(--hero-h2-family,'Open Sans', sans-serif);
+  font-size: var(--hero-paragraph-size, 15px);
+  font-family: var(--hero-paragraph-family,'Open Sans', sans-serif);
   color: var(--hero-paragraph-color, black);
-  margin: var(--hero-paragraph-margin, 5px)
+  margin: var(--hero-paragraph-margin-top, 5px) var(--hero-paragraph-margin-right, 5px) var(--hero-paragraph-margin-bottom, 5px) var(--hero-paragraph-margin-left, 5px); 
+}
+.HeroAnchorParagraph{
+  color: var(--hero-anchor-paragraph-color, white);
 }
 
 .HeroButton{

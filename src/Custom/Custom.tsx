@@ -57,13 +57,13 @@ export const CustomParagraph:React.FC<CustomParagraph> = ({font,anchor,anchorHov
         '--anchor-hover-text-decoration-line':anchorHover?.textDecoration?.line,'--anchor-hover-text-decoration-style':anchorHover?.textDecoration?.style,'--anchor-hover-text-decoration-color':anchorHover?.textDecoration?.color,'--anchor-hover-text-decoration-thickness':anchorHover?.textDecoration?.thickness
     } as React.CSSProperties; // anchor e anchor hover var()
     const styledChildren = React.Children.map(children, child => {
-    if (React.isValidElement(child) && child.type === 'a') {
-      return React.cloneElement(child as ReactElement<any>, {
-        style, className: `${styles.anchor} ` 
-      });
-    }
-    return child;
-  });
+        if (React.isValidElement(child) && child.type === 'a') {
+            return React.cloneElement(child as ReactElement<any>, {
+                style, className: `${styles.anchor} ` 
+            });
+        }
+        return child;
+    });
   return <p style={{ '--font-style-paragraph':font?.style,'--font-variant-paragraph':font?.variant,'--font-weight-paragraph':font?.weight,'--font-stretch-paragraph':font?.stretch,'--font-size-paragraph':font?.size,'--line-height-paragraph':font?.height,'--font-family-paragraph':font?.family} as React.CSSProperties} className={styles.customParagraph}> {styledChildren} </p>;
 }
 
