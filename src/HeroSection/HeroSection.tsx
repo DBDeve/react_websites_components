@@ -1,7 +1,7 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './HeroSection.module.css';
 import { rgba, rgb } from '../types';
-import {Margin} from '../types'
+import {Padding,Border,Margin} from '../types'
 
 
 // ADD THIS TO CUSTOM BUTTON
@@ -94,12 +94,33 @@ export const HeroParagraph:React.FC<HeroParagraph> = ({text,margin,anchor,childr
 }
 
 type Herobutton = {
-    children:string,
-    padding?:string, text?:{color:string}
+    padding?:{width?:Padding, color?:string},
+    border?:{width?:Border, type?:'solid', color?:string, radius?:string},
+    margin?:Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
+    text?:{size?:string, family?:string, color?:string},
+    children:ReactNode
 }
-export const HeroButton:React.FC<Herobutton> = ({children}) =>{
+export const HeroButton:React.FC<Herobutton> = ({padding,border,margin,text,children}) =>{
+    let paddingStyle = {'--hero-button-padding':padding?.width, '--hero-button-color':padding?.color};
+    let borderStyle = {'--hero-button-border-width':border?.width,'--hero-button-border-type':border?.type,'--hero-button-border-color':border?.color,'--hero-button-border-radius':border?.radius};
+    let marginStyle;
+    let textStyle = {'--hero-button-text-size': text?.size,'--hero-button-text-family':text?.family, '--hero-button-text-color':text?.color};
+
+    if(typeof margin === 'string') {
+        marginStyle = {'--hero-button-margin-top': margin,'--hero-button-margin-bottom': margin,'--hero-button-margin-right': margin,'--hero-button-margin-left': margin}
+    } else {
+        marginStyle = {'--hero-button-margin-top': margin?.top,'--hero-button-margin-bottom': margin?.bottom,'--hero-button-margin-right': margin?.right,'--hero-button-margin-left': margin?.left}
+    }
+
+    const buttonStyle = {
+        ...paddingStyle,
+        ...borderStyle,
+        ...marginStyle,
+        ...textStyle
+    } as React.CSSProperties;
+    
     return (
-        <button className={styles.HeroButton}> {children} </button>
+        <button style={buttonStyle} className={styles.HeroButton}> {children} </button>
     )
 }
 

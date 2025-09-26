@@ -41,15 +41,18 @@
 }
 
 .HeroButton{
-  padding: var(--buttonHero-padding,10px);
-  font-size: 1.1rem;
+  padding: var(--hero-button-padding, 10px); 
+  border: var(--hero-button-border-width, 0px) var(--hero-button-border-type, solid) var(--hero-button-border-color, black);
+  border-radius: var(--hero-button-border-radius, 0px);
+  margin: var(--hero-button-margin-top, 5px) var(--hero-button-margin-right, 5px) var(--hero-button-margin-bottom, 5px) var(--hero-button-margin-left, 5px); 
+  font-size: var(--hero-button-text-size, 15px);
+  font-family: var(--hero-button-text-family,'Open Sans', sans-serif);
   font-weight: 600;
-  color: var(--Hero-button-text-color, white);
+  color: var(--hero-button-text-color, white);
   background-color: var(--hero-button-color,#80808099);
-  border: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: var(--hero-button-margin, 5px)
+  
 }
