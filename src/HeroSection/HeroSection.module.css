@@ -27,24 +27,24 @@
   font-size: var(--hero-heading-size, 50px);
   font-family: var(--hero-heading-family,'Open Sans', sans-serif);
   color: var(--hero-heading-color, black);
-  margin: var(--hero-heading-margin-top, 5px) var(--hero-heading-margin-right, 5px) var(--hero-heading-margin-bottom, 5px) var(--hero-heading-margin-left, 5px); 
+  margin: var(--hero-heading-margin-top, 5px) var(--hero-heading-margin-right, 5px) var(--hero-heading-margin-bottom, 5px) var(--hero-heading-margin-left, 5px);
 }
 
 .HeroParagraph{
   font-size: var(--hero-paragraph-size, 15px);
   font-family: var(--hero-paragraph-family,'Open Sans', sans-serif);
   color: var(--hero-paragraph-color, black);
-  margin: var(--hero-paragraph-margin-top, 5px) var(--hero-paragraph-margin-right, 5px) var(--hero-paragraph-margin-bottom, 5px) var(--hero-paragraph-margin-left, 5px); 
+  margin: var(--hero-paragraph-margin-top, 5px) var(--hero-paragraph-margin-right, 5px) var(--hero-paragraph-margin-bottom, 5px) var(--hero-paragraph-margin-left, 5px);
 }
 .HeroAnchorParagraph{
   color: var(--hero-anchor-paragraph-color, white);
 }
 
 .HeroButton{
-  padding: var(--hero-button-padding, 10px); 
+  padding: var(--hero-button-padding, 10px);
   border: var(--hero-button-border-width, 0px) var(--hero-button-border-type, solid) var(--hero-button-border-color, black);
   border-radius: var(--hero-button-border-radius, 0px);
-  margin: var(--hero-button-margin-top, 5px) var(--hero-button-margin-right, 5px) var(--hero-button-margin-bottom, 5px) var(--hero-button-margin-left, 5px); 
+  margin: var(--hero-button-margin-top, 5px) var(--hero-button-margin-right, 5px) var(--hero-button-margin-bottom, 5px) var(--hero-button-margin-left, 5px);
   font-size: var(--hero-button-text-size, 15px);
   font-family: var(--hero-button-text-family,'Open Sans', sans-serif);
   font-weight: 600;

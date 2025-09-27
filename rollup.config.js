@@ -4,7 +4,8 @@ import dts        from 'rollup-plugin-dts';
 
 const components = ['Footer', 'Header','HeroSection','Custom','PageContent','PageSection'];
 
-export default components.flatMap(name => {
+const componentConfig = components.flatMap(name => {
+  
   const input = `src/${name}/index.ts`;
 
   // 1) JS + CSS
@@ -50,3 +51,29 @@ import './${name}.css';`,
 
   return [ jsConfig, dtsConfig ];
 });
+
+const functionConfig = () => {
+
+  const functionConfigjs = {
+    input: 'src/Function/index.ts',
+    output: {
+      file: 'dist/Function/function.js',
+      format: 'esm'
+    },
+    plugins: [typescript()]
+  }
+
+  const functionConfigdts = {
+    input: 'src/Function/index.ts',
+    output: {
+      file: 'dist/Function/function.d.ts',
+      format: 'es',
+    },
+    plugins: [dts()]
+  }
+
+  return [ functionConfigjs, functionConfigdts];
+  
+};
+
+export default [...componentConfig, ...functionConfig()];

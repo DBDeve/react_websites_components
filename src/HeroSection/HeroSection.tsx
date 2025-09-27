@@ -1,6 +1,5 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './HeroSection.module.css';
-import { rgba, rgb } from '../types';
 import {Padding,Border,Margin} from '../types'
 
 
@@ -11,15 +10,16 @@ import {Padding,Border,Margin} from '../types'
 
 
 type image={ type:'image', src:string}
-type video={ type:'video', src:string}
+type video={ type:'video', src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials'}
 type HeroSection={
     mediaType:video | image,
     children: ReactNode
 }
 export const HeroSection:React.FC<HeroSection> = ({mediaType, children}) => {
+
     return(
         <div id='hero_section' className={styles.HeroSection}>
-            {mediaType.type === 'video' && <video></video>}
+            {mediaType.type === 'video' && <video src={`${mediaType.src}`} controls={mediaType.controls ? true : false} autoPlay={mediaType.autoPlay ? true : false} muted={mediaType.muted ? true : false} loop={mediaType.loop ? true : undefined} poster={mediaType.poster || undefined} preload={mediaType.preload || 'metadata'}></video>}
             {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`}alt="immagine hero section" loading="lazy"/>)}
             <div className={styles.HeroContent}>
                 {children}
@@ -123,9 +123,5 @@ export const HeroButton:React.FC<Herobutton> = ({padding,border,margin,text,chil
         <button style={buttonStyle} className={styles.HeroButton}> {children} </button>
     )
 }
-
-
-
-
 
 //fare un componente heading, uno button e uno paragraph. e definire un contentuto in cui mettere tutto
