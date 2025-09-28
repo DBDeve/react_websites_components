@@ -1,7 +1,6 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './Custom.module.css';
-import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness} from '../types'
-
+import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
 
 
 type CustomHeading = {
@@ -70,21 +69,53 @@ export const CustomParagraph:React.FC<CustomParagraph> = ({font,anchor,anchorHov
 
 
 type CustomBottom={
-    padding?:{top?:string, bottom?:string, right?:string, left?:string, color?:string},
-    border?:{width?:string, type?:'solid', color?:string},
-    margin?:{top?:string, bottom?:string, right?:string, left?:string},
-    text?:{size?:string, weight?:string, color?:string, family?:string},
+    padding?:{width?:Padding, color?:string} | {top?:string, bottom?:string, right?:string, left?:string, color?:string},
+    border?:{width?:string, type?:'solid', color?:string, radius?:string},
+    margin?:{width?:Margin} | {top?:string, bottom?:string, right?:string, left?:string},
+    fontText?:{style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string, color?:string},
     boxShadow?:{offset:string,radius:string,color:string},
     children:ReactNode
 }
-export const CustomButton:React.FC<CustomBottom> = ({padding,border,margin,children}) => {
+export const CustomButton:React.FC<CustomBottom> = ({padding,border,margin,fontText,children}) => {
+
+    let paddingStyle;
+    let marginStyle;
+    let borderStyle;
+    let fontTextStyle;
+
+    if (padding){
+        if('width' in padding) {
+            paddingStyle = {'--button-padding-top': padding,'--button-padding-bottom': padding,'--button-padding-right': padding,'--button-padding-left': padding}
+        } 
+        else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+            paddingStyle = {'--button-padding-top': padding?.top,'--button-padding-bottom': padding?.bottom,'--button-padding-right': padding?.right,'--button-padding-left': padding?.left}
+        }
+    }
+
+    borderStyle = {'--button-border-width': border?.width, '--button-border-type': border?.type, '--button-border-color': border?.color, '--button-border-radius': border?.radius}
+
+    if(margin){
+        if('width' in margin) {
+            marginStyle = {'--button-margin-top': margin,'--button-margin-bottom': margin,'--button-margin-right': margin,'--button-margin-left': margin}
+        } 
+        else if('top' in margin || 'bottom' in margin || 'right' in margin || 'left' in margin) {
+            marginStyle = {'--button-margin-top': margin?.top,'--button-margin-bottom': margin?.bottom,'--button-margin-right': margin?.right,'--button-margin-left': margin?.left}
+        }
+    }
+
+    //finire di inserire tutte le variabili 
+    fontTextStyle = {'--button-font-text-style': fontText?.style, '--button-font-text-variant':fontText?.variant, '--button-font-text-weight':fontText?.weight, '--button-font-text-stretch':fontText?.stretch, '--button-font-text-size':fontText?.size, '--button-font-text-height':fontText?.height, '--button-font-text-family':fontText?.family, '--button-font-text-color': fontText?.color}
+
+    const buttonStyle = {
+        ...paddingStyle,
+        ...borderStyle,
+        ...marginStyle,
+        ...fontTextStyle
+    } as React.CSSProperties;
+
     return(
         <button
-            style={{
-            '--button-paddingTop': padding?.top, '--button-paddingRight':padding?.right,'--button-paddingBottom':padding?.bottom, '--button-paddingLeft':padding?.left,
-            '--button-borderWidth':border?.width, '--button-borderType': border?.type, '--button-borderColor':border?.color,
-            '--button-marginTop': margin?.top, '--button-marginRight': margin?.right, '--button-marginBottom': margin?.bottom, '--button-marginLeft': margin?.left,
-            } as React.CSSProperties}
+            style={buttonStyle}
             className={styles.button}
         >
             {children}

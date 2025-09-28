@@ -21,15 +21,14 @@
 }
 
 .button{
-  margin: var(--button-marginTop, 1%) var(--button-marginRight, 1%) var(--button-marginBottom, 1%) var(--button-marginLeft, 1%);
-  border: var(--button-borderWidth, 1px) var(--button-borderType, 'solid') var(--button-borderColor,none);
-  padding: var(--button-paddingTop, 10px) var(--button-paddingRight, 10px) var(--button-paddingBottom, 10px) var(--button-paddingLeft, 10px);
-  font: var(--font-style,normal) var(--font-variant,small-caps) var(--font-weight, 600) var(--font-stretch,condensed) var(--font-size, 1.1rem)/var(--line-height,1.4) var(--font-family,"Helvetica Neue", Arial, sans-serif);
-  /*text-decoration: underline dashed crimson 2px;*/
-  /*text-emphasis: dot red;*/
+  margin: var(--button-margin-top, 1px) var(--button-margin-right, 1px) var(--button-margin-bottom, 1px) var(--button-margin-left, 1px);
+  border: var(--button-border-width, 3px) var(--button-border-type, solid) var(--button-border-color,black);
+  border-radius: var(--button-border-radius, 5px);
+  padding: var(--button-padding-top, 10px) var(--button-padding-right, 10px) var(--button-padding-bottom, 10px) var(--button-padding-left, 10px);
+  font: var(--button-font-text-style,normal) var(--button-font-text-variant,small-caps) var(--button-font-text-weight, 600) var(--button-font-text-stretch,condensed) var(--button-font-text-size, 1.1rem)/var(--button-line-text-height,1.4) var(--button-font-text-family,"Helvetica Neue", Arial, sans-serif);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  color: rgb(255, 255, 255);
-  background-color: rgba( var(--rgb-color,128, 128, 128), var(--rgb-opacity,0.6));
+  color: var(--button-text-color,white);
+  background-color: var(--button-background-color, black);
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;

@@ -1,6 +1,6 @@
 import React, {ReactNode,ReactElement} from 'react';
 import styles from './HeroSection.module.css';
-import {Padding,Border,Margin} from '../types'
+import {Padding,Margin} from '../types'
 
 
 // ADD THIS TO CUSTOM BUTTON
@@ -95,7 +95,7 @@ export const HeroParagraph:React.FC<HeroParagraph> = ({text,margin,anchor,childr
 
 type Herobutton = {
     padding?:{width?:Padding, color?:string},
-    border?:{width?:Border, type?:'solid', color?:string, radius?:string},
+    border?:{width?:string, type?:'solid', color?:string, radius?:string},
     margin?:Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     text?:{size?:string, family?:string, color?:string},
     children:ReactNode
