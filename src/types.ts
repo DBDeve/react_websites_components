@@ -46,21 +46,6 @@ export type LowercaseLetter =
   | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0'
 ;
 
-//////////////COLOR///////////////
-
-export type CSShex = string & { __brand: 'CSShex' };
-
-export type CSShwb = string & { __brand: 'CSShwb' };
-
-export type CSShsla = string & { __brand: 'CSShsla' };
-
-export type CSShsl = string & { __brand: 'CSShsl' };
-
-export type CSSrgb = string & { __brand: 'CSSrgb' };
-
-export type CSSrgba = string & { __brand: 'CSSrgba' };
-
-
 /*lenght type*/  
 export type CSSLength = 
   `${number}px` | `${number}em` | `${number}rem` |
@@ -102,22 +87,60 @@ export type CSSRatio =
 
 export type GenericFamily = 'serif' | 'sans-serif' | 'monospace' | 'cursive' | 'fantasy' | 'system-ui' | 'ui-serif' | 'ui-sans-serif' | 'ui-monospace' | 'ui-rounded' | 'emoji' | 'math' | 'fangsong';
 
-export type FamilyName = ''; //finire
+export type FamilyName = 
+  'Arial' | 'Helvetica' | 'Times New Roman' | 'Courier New' | 'Verdana' | 'Georgia' | 
+  'Roboto' | 'Open Sans' | 'Lato' | 'Montserrat' | 'Playfair Display' | 'Tahoma' | 
+  'Trebuchet MS' | 'Calibri' | 'Cambria' | 'Book Antiqua' | 'Palatino' | 'Didot' | 
+  'Inter' | 'Poppins' | 'Raleway' | 'Source Sans Pro' | 'Merriweather' | 'Fira Sans' | 
+  'PT Sans' | 'Nunito' | 'Ubuntu' | 'Consolas' | 'Lucida Console' | 'Monaco' | 
+  'Andale Mono' | 'Comic Sans MS' | 'Brush Script MT' | 'Zapf Chancery' | 'Impact' | 
+  'Chalkduster' | 'Marker Felt';
 
-export type lineStyle = 'solid'|'double'|'dotted'|'dashed'
+
+type lineStyle = 'solid'|'double'|'dotted'|'dashed'
+
+export type CSShex = string & { __brand: 'CSShex' };
+
+export type CSShwb = string & { __brand: 'CSShwb' };
+
+export type CSShsla = string & { __brand: 'CSShsla' };
+
+export type CSShsl = string & { __brand: 'CSShsl' };
+
+export type CSSrgb = string & { __brand: 'CSSrgb' };
+
+export type CSSrgba = string & { __brand: 'CSSrgba' };
+
+type ColorName = 'red' | 'blue' | 'green' | 'black' | 'white' | 'gray' | 'grey' | 'yellow' | 'purple' | 'pink' | 'orange' | 'brown' | 'cyan' | 'magenta' | 'lime' | 'maroon' | 'navy' | 'olive' | 'teal' | 'violet' | 'indigo' | 'gold' | 'silver' | 'beige' | 'coral' | 'crimson' | 'fuchsia' | 'khaki' | 'lavender' | 'salmon' | 'tan' | 'turquoise';
 
 
 
-/////////////////
 
+
+
+
+
+
+
+
+
+/* SPACE TYPES */ 
 export type Margin = CSSLength | CSSGlobalValue | 'auto';
-
-export type Border = CSSLength | CSSGlobalValue | 'auto';
 
 export type Padding = CSSLength | CSSGlobalValue | 'auto';
 
 
+/* BORDER TYPES */ 
+export type BorderWidth = 'thin' | 'medium' | 'thick' | CSSLength | CSSGlobalValue;
 
+export type BorderStyle = 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';
+
+export type BorderColor = color;
+
+export type BorderRadius = CSSLength | CSSpercentage | CSSGlobalValue;
+
+
+/* FONT TYPES */ 
 export type FontStyle = 'normal' | 'italic' | 'oblique' | `oblique ${CSSangle}`;
 
 export type FontVariant = 'normal' | 'small-caps' | CSSGlobalValue | 'revert-layer';
@@ -126,15 +149,23 @@ export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | '
 
 export type FontStretch = 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'normal' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded' | CSSpercentage | CSSGlobalValue;
 
+export type FontSize = CSSLength | CSSpercentage | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'smaller' | 'larger' | CSSGlobalValue;
+
 export type LineHeight = number | CSSLength | CSSpercentage | CSSGlobalValue;
 
-export type color = CSSGlobalValue | CSSrgb | CSSrgba | CSShsl | CSShsla | CSShwb | CSShex
+export type FontFamily = `${GenericFamily},${FamilyName}`
 
+
+/* TEXT DECORATION TYPES */
 export type TextDecorationLine = 'none'|'underline'|'overline'|'line-through'
 
 export type TextDecorationStyle = lineStyle | 'wavy';
 
 export type TextDecorationThickness = 'auto'|'from-font'| CSSpercentage
+
+
+/* COLOR TYPES */
+export type color = CSSGlobalValue | ColorName |CSSrgb | CSSrgba | CSShsl | CSShsla | CSShwb | CSShex;
 
 
 /* FLEX TYPES */
