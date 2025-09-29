@@ -1,6 +1,6 @@
 .customHeading{
-  margin: var(--heading-marginTop, 1%) var(--heading-marginRight, 1%) var(--heading-marginBottom, 1%) var(--heading-marginLeft, 1%);
-  font: var(--heading-fontStyle,normal) var(--heading-fontVariant,small-caps) var(--heading-fontWeight, 600) var(--heading-fontStretch,condensed) var(--heading-fontSize, 4rem)/var(--heading-lineHeight,1.4) var(--heading-fontFamily,"Helvetica Neue", Arial, sans-serif);
+  margin: var(--heading-margin-top, 5px) var(--heading-margin-right, 5px) var(--heading-margin-bottom, 5px) var(--heading-margin-left, 5px);
+  font: var(--heading-font-style,normal) var(--heading-font-variant,small-caps) var(--heading-font-weight, 600) var(--heading-font-stretch,condensed) var(--heading-font-size, 4rem)/var(--heading-line-height,1.4) var(--heading-font-family,"Helvetica Neue", Arial, sans-serif);
   /*text-shadow: 0 4px 12px rgba(0,0,0,0.3)*/
   color:var(--heading-color,black);
   letter-spacing: 1px;
@@ -12,12 +12,12 @@
   z-index: 10;
 }
 .anchor{
-  color: var(--anchor-color, black );
+  color: var(--anchor-color, black);
   text-decoration: var(--anchor-text-decoration-line,underline) var(--anchor-text-decoration-style,solid) var(--anchor-text-decoration-color,black) var(--anchor-text-decoration-thickness,1px);
 }
 .anchor:hover{
-  color: var(--anchor-hover-color, red);
-  text-decoration: var(--anchor-hover-text-decoration-line,underline) var(--anchor-hover-text-decoration-style,solid) var(--anchor-hover-text-decoration-color,red) var(--anchor-hover-text-decoration-thickness,1px);
+  color: var(--anchor-hover-color, white);
+  text-decoration: var(--anchor-hover-text-decoration-line,underline) var(--anchor-hover-text-decoration-style,solid) var(--anchor-hover-text-decoration-color,white) var(--anchor-hover-text-decoration-thickness,1px);
 }
 
 .button{
