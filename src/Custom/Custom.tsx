@@ -1,13 +1,14 @@
-import React, {ReactNode,ReactElement} from 'react';
+import React, {ReactNode,ReactElement,useState} from 'react';
 import styles from './Custom.module.css';
-import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
+import {Display, CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
+import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types'
 
 
 type CustomHeading = {
     type:'h1'|'h2'|'h3'|'h4'|'h5'|'h6',
     margin?:{width:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     font?:{style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string},
-    color?: color
+    color?: Color
     children:ReactNode
 }
 export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,children}) => {
@@ -48,7 +49,7 @@ type CustomParagraph={
         color?:string,
         textDecoration?:{
             line:TextDecorationLine,
-            color:color,
+            color:Color,
             style:TextDecorationStyle,
             thickness:TextDecorationThickness
         }
@@ -57,7 +58,7 @@ type CustomParagraph={
         color?:string, 
         textDecoration?:{
             line:TextDecorationLine,
-            color:color,
+            color:Color,
             style:TextDecorationStyle,
             thickness:TextDecorationThickness
         }
@@ -160,3 +161,71 @@ export const CustomButton:React.FC<CustomBottom> = ({padding,border,margin,fontT
     )
 }
 
+type flex = {type:'flex', direction?: FlexDirection, wrap?: FlexWrap, alignContent?: AlignContent, justifyContent?: JustifyContent,alignItems?: AlignItems}
+type grid = {type:'grid', columns?:string, rows?:string, gap?:string, justifyItems?:string, alignItems?:string}
+type display = flex | grid
+type CustomContainer = {
+    margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
+    border?:{width?:string, type?:'solid', color?:string, radius?:string},
+    padding?:{width?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
+    display?:display,
+    children:ReactNode
+}
+export const CustomContainer:React.FC<CustomContainer> = ({padding,border,margin,display,children}) => {
+
+    let paddingStyle;
+    let borderStyle;
+    let marginStyle;
+    let displayStyle;
+    let displayProps
+    
+
+    if (padding){
+        if('width' in padding) {
+            paddingStyle = {'--container-padding-top': padding.width,'--container-padding-bottom': padding.width,'--container-padding-right': padding.width,'--container-padding-left': padding.width}
+        } 
+        else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+            paddingStyle = {'--container-padding-top': padding.top,'--container-padding-bottom': padding.bottom,'--container-padding-right': padding.right,'--container-padding-left': padding.left}
+        }
+    }
+
+    if(border){
+        borderStyle = {'--container-border-width': border.width, '--container-border-type': border.type, '--container-border-color': border.color, '--container-border-radius': border.radius}
+    }
+
+    if(margin){
+        if('width' in margin) {
+            marginStyle = {'--container-margin-top': margin.width,'--container-margin-bottom': margin.width,'--container-margin-right': margin.width,'--container-margin-left': margin.width}
+        } 
+        else if('top' in margin || 'bottom' in margin || 'right' in margin || 'left' in margin) {
+            marginStyle = {'--container-margin-top': margin.top,'--container-margin-bottom': margin.bottom,'--container-margin-right': margin.right,'--container-margin-left': margin.left}
+        }
+    }
+
+    if(display){
+        if(display.type === 'flex'){
+            displayStyle={'--container-display':'flex', '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
+            displayProps=styles.flex;
+        }
+
+        if(display.type === 'grid'){
+            displayStyle={'--container-display':'grid', '--container-grid-template-columns':display.columns, '--container-grid-template-rows':display.rows, '--container-gap':display.gap, '--container-justify-items':display.justifyItems, '--container-align-items':display.alignItems};
+            displayProps=styles.grid;
+        }
+    }
+    
+
+    const containerStyle = {
+        ...paddingStyle,
+        ...borderStyle,
+        ...marginStyle,
+        ...displayStyle
+    } as React.CSSProperties;
+
+    return (
+        <div style={containerStyle} className={`${styles.customContainer} ${displayProps}`}>
+            {children}
+        </div>
+    )
+
+}

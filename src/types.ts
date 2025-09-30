@@ -124,6 +124,7 @@ type ColorName = 'red' | 'blue' | 'green' | 'black' | 'white' | 'gray' | 'grey' 
 
 
 
+
 /* SPACE TYPES */ 
 export type Margin = CSSLength | CSSGlobalValue | 'auto';
 
@@ -135,7 +136,7 @@ export type BorderWidth = 'thin' | 'medium' | 'thick' | CSSLength | CSSGlobalVal
 
 export type BorderStyle = 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';
 
-export type BorderColor = color;
+export type BorderColor = Color;
 
 export type BorderRadius = CSSLength | CSSpercentage | CSSGlobalValue;
 
@@ -165,8 +166,12 @@ export type TextDecorationThickness = 'auto'|'from-font'| CSSpercentage
 
 
 /* COLOR TYPES */
-export type color = CSSGlobalValue | ColorName |CSSrgb | CSSrgba | CSShsl | CSShsla | CSShwb | CSShex;
+export type Color = CSSGlobalValue | ColorName |CSSrgb | CSSrgba | CSShsl | CSShsla | CSShwb | CSShex;
 
+
+
+/* DISPLAY TYPES*/
+export type Display = 'block' | 'inline' | 'inline-block' | 'flex' | 'inline-flex' | 'grid' | 'inline-grid' | 'none';
 
 /* FLEX TYPES */
 export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse' | CSSGlobalValue;
@@ -178,5 +183,9 @@ export type AlignContent = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 's
 export type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | CSSGlobalValue;
 
 export type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | CSSGlobalValue;
+
+/*GRID TYPES*/ 
+
+
 
 

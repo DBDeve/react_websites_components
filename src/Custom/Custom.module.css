@@ -34,6 +34,25 @@
   letter-spacing: 1px;
 }
 
-.FlexContainer{
-  display: flex;
+/*custom container*/
+.customContainer{
+  margin: var(--container-margin-top, 5px) var(--container-margin-right, 5px) var(--container-margin-bottom, 5px) var(--container-margin-left, 5px);
+  border: var(--container-border-width, 0px) var(--container-border-type, solid) var(--container-border-color,black);
+  border-radius: var(--container-border-radius, 5px);
+  padding: var(--container-padding-top, 5px) var(--container-padding-right, 5px) var(--container-padding-bottom, 5px) var(--container-padding-left, 5px);
+  display: var(--container-display, block);
+}
+.flex{
+  flex-direction: var(--container-flex-direction, row);
+  flex-wrap: nowrap;
+  align-content: var(--container-align-content, stretch);
+  justify-content: var(--container-justify-content, center);
+  align-items: var(--container-align-items, center);
+}
+.grid{
+  grid-template-columns: var(--container-grid-template-columns, 1fr 1fr);
+  grid-template-rows: var(--container-grid-template-rows, auto);
+  gap: var(--container-gap, 10px);
+  justify-items: var(--container-justify-items, center);
+  align-items: var(--container-align-items, center);
 }
