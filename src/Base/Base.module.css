@@ -36,10 +36,10 @@
 
 /*custom container*/
 .customContainer{
-  margin: var(--container-margin-top, 5px) var(--container-margin-right, 5px) var(--container-margin-bottom, 5px) var(--container-margin-left, 5px);
+  margin: var(--container-margin-top, 0px) var(--container-margin-right, 0px) var(--container-margin-bottom, 0px) var(--container-margin-left, 0px);
   border: var(--container-border-width, 0px) var(--container-border-type, solid) var(--container-border-color,black);
   border-radius: var(--container-border-radius, 5px);
-  padding: var(--container-padding-top, 5px) var(--container-padding-right, 5px) var(--container-padding-bottom, 5px) var(--container-padding-left, 5px);
+  padding: var(--container-padding-top, 0px) var(--container-padding-right, 0px) var(--container-padding-bottom, 0px) var(--container-padding-left, 0px);
   display: var(--container-display, block);
 }
 .flex{

@@ -1,17 +1,17 @@
 import React, {ReactNode,ReactElement,useState} from 'react';
-import styles from './Custom.module.css';
-import {Display, CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
+import styles from './Base.module.css';
+import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types'
 
 
-type CustomHeading = {
+type Heading = {
     type:'h1'|'h2'|'h3'|'h4'|'h5'|'h6',
     margin?:{width:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     font?:{style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string},
     color?: Color
     children:ReactNode
 }
-export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,children}) => {
+export const Heading:React.FC<Heading> = ({type,margin,font,color,children}) => {
     
     let marginStyle;
     let fontStyle;
@@ -43,7 +43,7 @@ export const CustomHeading:React.FC<CustomHeading> = ({type,margin,font,color,ch
 
 
 
-type CustomParagraph={
+type Paragraph={
     font?: {style?:FontStyle, variant?:FontVariant, weight?:FontWeight, stretch?:FontStretch, size?:CSSLength, height?:LineHeight, family?:string},
     anchor?:{
         color?:string,
@@ -65,7 +65,7 @@ type CustomParagraph={
     }, 
     children:ReactNode
 }
-export const CustomParagraph:React.FC<CustomParagraph> = ({font,anchor,anchorHover,children}) => {
+export const Paragraph:React.FC<Paragraph> = ({font,anchor,anchorHover,children}) => {
 
     let fontStyle;
     let anchorStyle;
@@ -102,7 +102,7 @@ export const CustomParagraph:React.FC<CustomParagraph> = ({font,anchor,anchorHov
 
 
 
-type CustomBottom={
+type Button={
     padding?:{width?:Padding, color?:string} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding, color?:string},
     border?:{width?:string, type?:'solid', color?:string, radius?:string},
     margin?:{width?:Margin} | {top?:string, bottom?:string, right?:string, left?:string},
@@ -110,7 +110,7 @@ type CustomBottom={
     boxShadow?:{offset:string,radius:string,color:string},
     children:ReactNode
 }
-export const CustomButton:React.FC<CustomBottom> = ({padding,border,margin,fontText,children}) => {
+export const Button:React.FC<Button> = ({padding,border,margin,fontText,children}) => {
 
     let paddingStyle;
     let marginStyle;
@@ -164,14 +164,15 @@ export const CustomButton:React.FC<CustomBottom> = ({padding,border,margin,fontT
 type flex = {type:'flex', direction?: FlexDirection, wrap?: FlexWrap, alignContent?: AlignContent, justifyContent?: JustifyContent,alignItems?: AlignItems}
 type grid = {type:'grid', columns?:string, rows?:string, gap?:string, justifyItems?:string, alignItems?:string}
 type display = flex | grid
-type CustomContainer = {
+type Container = {
+    type: 'main' | 'section' | 'body' | 'div',
     margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     border?:{width?:string, type?:'solid', color?:string, radius?:string},
     padding?:{width?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
     display?:display,
     children:ReactNode
 }
-export const CustomContainer:React.FC<CustomContainer> = ({padding,border,margin,display,children}) => {
+export const Container:React.FC<Container> = ({type,padding,border,margin,display,children}) => {
 
     let paddingStyle;
     let borderStyle;
@@ -222,10 +223,6 @@ export const CustomContainer:React.FC<CustomContainer> = ({padding,border,margin
         ...displayStyle
     } as React.CSSProperties;
 
-    return (
-        <div style={containerStyle} className={`${styles.customContainer} ${displayProps}`}>
-            {children}
-        </div>
-    )
+    return  React.createElement(type, { style:containerStyle , className: `${styles.customContainer} ${displayProps}` },children);
 
 }

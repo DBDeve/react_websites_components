@@ -125,11 +125,8 @@ type ColorName = 'red' | 'blue' | 'green' | 'black' | 'white' | 'gray' | 'grey' 
 
 
 
-/* SPACE TYPES */ 
-export type Margin = CSSLength | CSSGlobalValue | 'auto';
-
+/* PADDING TYPES */ 
 export type Padding = CSSLength | CSSGlobalValue | 'auto';
-
 
 /* BORDER TYPES */ 
 export type BorderWidth = 'thin' | 'medium' | 'thick' | CSSLength | CSSGlobalValue;
@@ -139,6 +136,9 @@ export type BorderStyle = 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'd
 export type BorderColor = Color;
 
 export type BorderRadius = CSSLength | CSSpercentage | CSSGlobalValue;
+
+/* MARGIN TYPES */
+export type Margin = CSSLength | CSSGlobalValue | 'auto';
 
 
 /* FONT TYPES */ 
@@ -154,7 +154,7 @@ export type FontSize = CSSLength | CSSpercentage | 'xx-small' | 'x-small' | 'sma
 
 export type LineHeight = number | CSSLength | CSSpercentage | CSSGlobalValue;
 
-export type FontFamily = `${GenericFamily},${FamilyName}`
+export type FontFamily = `${GenericFamily},${FamilyName}`;
 
 
 /* TEXT DECORATION TYPES */
