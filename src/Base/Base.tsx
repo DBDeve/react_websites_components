@@ -124,7 +124,7 @@ export const Button:React.FC<Button> = ({padding,border,margin,fontText,children
         else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
             paddingStyle = {'--button-padding-top': padding.top,'--button-padding-bottom': padding.bottom,'--button-padding-right': padding.right,'--button-padding-left': padding.left}
         }
-    }
+    } 
 
     if(border){
         borderStyle = {'--button-border-width': border.width, '--button-border-type': border.type, '--button-border-color': border.color, '--button-border-radius': border.radius}

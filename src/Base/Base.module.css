@@ -36,23 +36,37 @@
 
 /*custom container*/
 .customContainer{
-  margin: var(--container-margin-top, 0px) var(--container-margin-right, 0px) var(--container-margin-bottom, 0px) var(--container-margin-left, 0px);
-  border: var(--container-border-width, 0px) var(--container-border-type, solid) var(--container-border-color,black);
-  border-radius: var(--container-border-radius, 5px);
-  padding: var(--container-padding-top, 0px) var(--container-padding-right, 0px) var(--container-padding-bottom, 0px) var(--container-padding-left, 0px);
+  --container-margin-top:0px; --container-margin-right:0px; --container-margin-bottom:0px; --container-margin-left:0px;
+  margin: var(--container-margin-top) var(--container-margin-right) var(--container-margin-bottom) var(--container-margin-left);
+  --container-border-width:0px; --container-border-type:solid; --container-border-color:black;
+  border: var(--container-border-width) var(--container-border-type) var(--container-border-color);
+  --container-border-radius:5px;
+  border-radius: var(--container-border-radius);
+  --container-padding-top:0px; --container-padding-right:0px; --container-padding-bottom:0px; --container-padding-left:0px;
+  padding: var(--container-padding-top) var(--container-padding-right) var(--container-padding-bottom) var(--container-padding-left);
+  --container-display:block;
   display: var(--container-display, block);
 }
 .flex{
-  flex-direction: var(--container-flex-direction, row);
-  flex-wrap: nowrap;
-  align-content: var(--container-align-content, stretch);
-  justify-content: var(--container-justify-content, center);
-  align-items: var(--container-align-items, center);
+  --container-flex-direction: row;
+  flex-direction: var(--container-flex-direction);
+  flex-wrap: nowrap; 
+  --container-align-content:stretch;
+  align-content: var(--container-align-content);
+  --container-justify-content: center;
+  justify-content: var(--container-justify-content);
+  --container-align-items: center;
+  align-items: var(--container-align-items);
 }
 .grid{
-  grid-template-columns: var(--container-grid-template-columns, 1fr 1fr);
-  grid-template-rows: var(--container-grid-template-rows, auto);
-  gap: var(--container-gap, 10px);
-  justify-items: var(--container-justify-items, center);
-  align-items: var(--container-align-items, center);
+  --container-grid-template-columns: 1fr 1fr;
+  grid-template-columns: var(--container-grid-template-columns);
+  --container-grid-template-rows:auto;
+  grid-template-rows: var(--container-grid-template-rows);
+  --container-gap:10px;
+  gap: var(--container-gap);
+  --container-justify-items:center;
+  justify-items: var(--container-justify-items);
+  --container-align-items:center;
+  align-items: var(--container-align-items);
 }
