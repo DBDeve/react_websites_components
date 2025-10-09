@@ -226,3 +226,81 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,displa
     return  React.createElement(type, { style:containerStyle , className: `${styles.customContainer} ${displayProps}` },children);
 
 }
+
+//aggiungere tag immagine
+type image = {
+    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number},
+    margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
+}
+export const Image:React.FC<image>=({attr,margin})=>{
+
+    let srcAttr;
+    let descriptionAttr;
+    let titleAttr;
+    let heightAttr;
+    let widthAttr;
+
+    if(attr){
+
+        if(attr.src){
+            srcAttr=attr.src;
+        } else {
+            srcAttr='default.webp';
+        }
+
+        if(attr.description){
+            descriptionAttr=attr.description;
+        } else {
+            descriptionAttr='default image';
+        }
+
+        if(attr.title){
+            titleAttr=attr.title;
+        } else {
+            titleAttr='default image';
+        }
+
+        if(attr.height){
+            heightAttr=attr.height
+        } else {
+            heightAttr=300
+        }
+
+        if(attr.width){
+            widthAttr=attr.width
+        } else {
+            widthAttr=300
+        }
+
+    } else {
+        srcAttr='default.webp';
+        descriptionAttr='default image';
+        titleAttr='default image';
+        heightAttr=200;
+        widthAttr=200;
+    }
+
+    let marginStyle;
+
+    if(margin){
+        if('width' in margin) {
+            marginStyle = {'--image-margin-top': margin.width,'--image-margin-bottom': margin.width,'--image-margin-right': margin.width,'--image-margin-left': margin.width}
+        } 
+        else if('top' in margin || 'bottom' in margin || 'right' in margin || 'left' in margin) {
+            marginStyle = {'--image-margin-top': margin.top,'--image-margin-bottom': margin.bottom,'--image-margin-right': margin.right,'--image-margin-left': margin.left}
+        }
+    }
+
+    const containerStyle = {
+        ...marginStyle
+    } as React.CSSProperties;
+
+    return (
+        <img src={srcAttr} alt={descriptionAttr} title={titleAttr} loading="lazy" width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
+    )
+
+}
+//aggiungere tag video
+//aggiungere tag separatore
+// aggiungere tag spaziatura
+//aggiungere tag icona

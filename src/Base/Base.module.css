@@ -34,6 +34,7 @@
   letter-spacing: 1px;
 }
 
+
 /*custom container*/
 .customContainer{
   --container-margin-top:0px; --container-margin-right:0px; --container-margin-bottom:0px; --container-margin-left:0px;
@@ -69,4 +70,12 @@
   justify-items: var(--container-justify-items);
   --container-align-items:center;
   align-items: var(--container-align-items);
+}
+
+
+/* custom image*/
+.image{
+  margin: var(--image-margin-top, 0px) var(--image-margin-right, 0px) var(--image-margin-bottom, 0px) var(--image-margin-left, 0px);
+  /*background: rgba(10,120,200,1) url("immagine.jpg") center/cover no-repeat;
+  background-blend-mode: multiply;*/
 }

@@ -1,1 +1,1 @@
-export {Heading,Paragraph,Button,Container} from './Base'
+export {Heading,Paragraph,Button,Container,Image} from './Base'
