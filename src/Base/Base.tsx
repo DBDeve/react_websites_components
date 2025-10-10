@@ -2,6 +2,7 @@ import React, {ReactNode,ReactElement,useState} from 'react';
 import styles from './Base.module.css';
 import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types'
+import {defaultImg} from './index'
 
 
 type Heading = {
@@ -245,7 +246,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
         if(attr.src){
             srcAttr=attr.src;
         } else {
-            srcAttr='default.webp';
+            srcAttr=defaultImg;
         }
 
         if(attr.description){
@@ -273,7 +274,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
         }
 
     } else {
-        srcAttr='default.webp';
+        srcAttr=defaultImg;
         descriptionAttr='default image';
         titleAttr='default image';
         heightAttr=200;
