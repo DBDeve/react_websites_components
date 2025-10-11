@@ -47,6 +47,10 @@
   padding: var(--container-padding-top) var(--container-padding-right) var(--container-padding-bottom) var(--container-padding-left);
   --container-display:block;
   display: var(--container-display, block);
+  --container-background-color:rgb(255, 255, 255); --container-background-image: none; --container-background-position: center; --container-background-size:cover;
+  background: var(--container-background-color) var(--container-background-image) var(--container-background-position)/var(--container-background-size) no-repeat;
+  --container-background-mode: multiply;
+  background-blend-mode: var(--container-background-mode);
 }
 .flex{
   --container-flex-direction: row;
@@ -76,6 +80,4 @@
 /* custom image*/
 .image{
   margin: var(--image-margin-top, 0px) var(--image-margin-right, 0px) var(--image-margin-bottom, 0px) var(--image-margin-left, 0px);
-  /*background: rgba(10,120,200,1) url("immagine.jpg") center/cover no-repeat;
-  background-blend-mode: multiply;*/
 }

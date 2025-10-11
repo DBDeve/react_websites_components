@@ -1,8 +1,8 @@
 import React, {ReactNode,ReactElement,useState} from 'react';
 import styles from './Base.module.css';
-import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding} from '../types'
-import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types'
-import {defaultImg} from './index'
+import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding,BackgroundBlendMode} from '../types';
+import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
+import {defaultImg} from './index';
 
 
 type Heading = {
@@ -170,14 +170,16 @@ type Container = {
     margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     border?:{width?:string, type?:'solid', color?:string, radius?:string},
     padding?:{width?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
+    backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
     display?:display,
     children:ReactNode
 }
-export const Container:React.FC<Container> = ({type,padding,border,margin,display,children}) => {
+export const Container:React.FC<Container> = ({type,padding,border,margin,backGround,display,children}) => {
 
     let paddingStyle;
     let borderStyle;
     let marginStyle;
+    let backgroundStyle;
     let displayStyle;
     let displayProps
     
@@ -204,6 +206,10 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,displa
         }
     }
 
+    if(backGround){
+        backgroundStyle = {'--container-background-color':backGround.color, '--container-background-image':backGround.image, '--container-background-position':backGround.position, '--container-background-size':backGround.size,'--container-background-mode':backGround.mode}
+    }
+
     if(display){
         if(display.type === 'flex'){
             displayStyle={'--container-display':'flex', '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
@@ -221,6 +227,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,displa
         ...paddingStyle,
         ...borderStyle,
         ...marginStyle,
+        ...backgroundStyle,
         ...displayStyle
     } as React.CSSProperties;
 

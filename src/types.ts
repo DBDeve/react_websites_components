@@ -184,8 +184,6 @@ export type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-betwe
 
 export type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | CSSGlobalValue;
 
-/*GRID TYPES*/ 
 
-
-
-
+/* blend mode*/ 
+export type BackgroundBlendMode = 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten' | 'color-dodge' | 'color-burn' | 'hard-light' | 'soft-light' | 'difference' | 'exclusion' | 'hue' | 'saturation' | 'color' | 'luminosity';
