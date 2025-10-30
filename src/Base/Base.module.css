@@ -77,7 +77,25 @@
 }
 
 
-/* custom image*/
-.image{
+/* custom video */
+.video {
+  margin: var(--video-margin-top, 0px) var(--video-margin-right, 0px) var(--video-margin-bottom, 0px) var(--video-margin-left, 0px);
+}
+
+/* custom image */
+.image {
   margin: var(--image-margin-top, 0px) var(--image-margin-right, 0px) var(--image-margin-bottom, 0px) var(--image-margin-left, 0px);
+}
+
+/* custom separator */
+.separator {
+  border: none;
+  height: var(--separator-height, 2px);
+  background-color: var(--separator-color, black);
+  margin: var(--separator-margin, 10px) 0;
+}
+
+/* spacing component */
+.spacing{
+  height: var(--spacing-height, 2px);
 }

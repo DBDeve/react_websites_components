@@ -308,7 +308,67 @@ export const Image:React.FC<image>=({attr,margin})=>{
     )
 
 }
-//aggiungere tag video
+
+
+type Video = {
+    src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials';
+}
+export const Video:React.FC<Video>=({src, controls, autoPlay, loop, muted, poster, width, height, playsinline, preload, crossOrigin})=>{
+    return (
+        <video src={`${src}`} controls={controls ? true : false} autoPlay={autoPlay ? true : false} muted={muted ? true : false} loop={loop ? true : undefined} poster={poster || undefined} preload={preload || 'metadata'}></video>
+    )
+}
+
 //aggiungere tag separatore
-// aggiungere tag spaziatura
-//aggiungere tag icona
+type separator = {
+    color?:Color, margin?:Margin, height?:string
+}
+export const Separator:React.FC<separator>=({color,margin,height})=>{
+
+    let colorStyle;
+    let marginStyle;
+    let heightStyle;
+
+    if(color){
+        colorStyle = {'--separator-color':color}
+    }
+
+    if(margin){
+        marginStyle = {'--separator-margin':margin}
+    }
+
+    if(height){
+        heightStyle = {'--separator-height':height}
+    }
+
+    const headerStyle = {
+        ...colorStyle,
+        ...marginStyle,
+        ...heightStyle
+    } as React.CSSProperties;
+
+    return(
+        <hr style={headerStyle} className={styles.separator}></hr>
+    )
+}
+
+//aggiungere tag spaziatura
+type Spacing = {
+    height:string
+}
+export const Spacing:React.FC<Spacing>=({height})=>{
+    
+    let heightStyle;
+
+    if(height){
+        heightStyle = {'--spacing-height':height}
+    }
+
+    const spacingStyle ={
+        ...heightStyle
+    } as React.CSSProperties;
+
+    return(
+        <div style={spacingStyle} className={styles.spacing}></div>
+    )
+}
