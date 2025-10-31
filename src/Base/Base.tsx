@@ -104,6 +104,7 @@ export const Paragraph:React.FC<Paragraph> = ({font,anchor,anchorHover,children}
 
 
 type Button={
+    href?:string;
     padding?:{width?:Padding, color?:string} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding, color?:string},
     border?:{width?:string, type?:'solid', color?:string, radius?:string},
     margin?:{width?:Margin} | {top?:string, bottom?:string, right?:string, left?:string},
@@ -111,12 +112,19 @@ type Button={
     boxShadow?:{offset:string,radius:string,color:string},
     children:ReactNode
 }
-export const Button:React.FC<Button> = ({padding,border,margin,fontText,children}) => {
+export const Button:React.FC<Button> = ({href,padding,border,margin,fontText,children}) => {
 
     let paddingStyle;
     let marginStyle;
     let borderStyle;
     let fontTextStyle;
+    let hrefValue;
+
+    if(href){
+        hrefValue=href;
+    } else {
+        hrefValue='#';
+    }
 
     if (padding){
         if('width' in padding) {
@@ -153,12 +161,13 @@ export const Button:React.FC<Button> = ({padding,border,margin,fontText,children
     } as React.CSSProperties;
 
     return(
-        <button
+        <a
+            href={hrefValue}
             style={buttonStyle}
             className={styles.button}
         >
             {children}
-        </button>
+        </a>
     )
 }
 
