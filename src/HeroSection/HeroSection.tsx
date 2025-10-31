@@ -12,14 +12,14 @@ import {Padding,Margin} from '../types'
 type image={ type:'image', src:string}
 type video={ type:'video', src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials'}
 type HeroSection={
-    mediaType:video | image,
+    mediaType: image,
     children: ReactNode
 }
 export const HeroSection:React.FC<HeroSection> = ({mediaType, children}) => {
 
     return(
         <div id='hero_section' className={styles.HeroSection}>
-            {mediaType.type === 'video' && <video src={`${mediaType.src}`} controls={mediaType.controls ? true : false} autoPlay={mediaType.autoPlay ? true : false} muted={mediaType.muted ? true : false} loop={mediaType.loop ? true : undefined} poster={mediaType.poster || undefined} preload={mediaType.preload || 'metadata'}></video>}
+            {/*mediaType.type === 'video' && <video src={`${mediaType.src}`} controls={mediaType.controls ? true : false} autoPlay={mediaType.autoPlay ? true : false} muted={mediaType.muted ? true : false} loop={mediaType.loop ? true : undefined} poster={mediaType.poster || undefined} preload={mediaType.preload || 'metadata'}></video>*/}
             {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`}alt="immagine hero section" loading="lazy"/>)}
             <div className={styles.HeroContent}>
                 {children}
