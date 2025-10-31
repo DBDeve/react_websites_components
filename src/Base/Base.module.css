@@ -77,10 +77,10 @@
 }
 
 
-/* custom video */
+/* custom video 
 .video {
   margin: var(--video-margin-top, 0px) var(--video-margin-right, 0px) var(--video-margin-bottom, 0px) var(--video-margin-left, 0px);
-}
+} */
 
 /* custom image */
 .image {

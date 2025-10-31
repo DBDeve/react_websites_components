@@ -319,14 +319,15 @@ export const Image:React.FC<image>=({attr,margin})=>{
 }
 
 
-type Video = {
+/*type Video = {
     src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials';
 }
 export const Video:React.FC<Video>=({src, controls, autoPlay, loop, muted, poster, width, height, playsinline, preload, crossOrigin})=>{
     return (
-        <video src={`${src}`} controls={controls ? true : false} autoPlay={autoPlay ? true : false} muted={muted ? true : false} loop={loop ? true : undefined} poster={poster || undefined} preload={preload || 'metadata'}></video>
+        <video src={`${src}`} controls={controls ? true : false} autoPlay={autoPlay ? true : false} muted={muted ? true : false} loop={loop ? true : undefined} poster={poster || undefined} preload={preload || 'metadata'}>
+        </video>
     )
-}
+}*/
 
 //aggiungere tag separatore
 type separator = {
