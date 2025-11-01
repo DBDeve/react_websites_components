@@ -22,3 +22,30 @@ All significant changes to this project are documented in this file.
   - set size and family font in HeaderNavBar component using text property.
 - The aria-label description now updates automatically based on the language set in the lang tag (curently it supported english end italian languages)
 - add CHANGELOG.md file
+
+
+## [1.1.0] - 2025-11-05
+### changed
+- Footer component
+  - FooterRow component renamed FooterFlexContent
+
+### Added
+- Header component
+  - padding setting.
+  - enableBorderRight option.
+  - componetGrow setting.
+- footer component
+  - direction, wrap, alignContent, justifyContent, alignItems setting
+- HeroSection component
+  - HeroSection component
+  - HeroHeading component
+  - HeroParagraph component
+  - HeroButton component
+- Base component
+  - Container component
+  - Heading component
+  - Paragraph component
+  - Button component 
+  - Image component
+  - Separator component
+  - spacing component
