@@ -43,9 +43,9 @@ import {HeaderNavBar,HeaderSocialIcons,HeaderImageLogo,Header} from 'react_websi
 ```
 - header component attr
   - backGroundColor(string): set the background color of the component header. if it isn't insert the value is transparent.
-  - fixed(boolean): if it is insert the header component is fixed.
+  - fixed?(boolean): if it is insert the header component is fixed.
   - hoverColor(string): set the hover event color.
-  - padding (string): set the top, bottom, right and left padding.
+  - padding? (string): set the top, bottom, right and left padding.
 
 - HeaderNavBar component attr
   - text({size:string,family:string}): set the size and the family of the navBar.
@@ -90,11 +90,11 @@ import {Footer,FooterFlexContent,FooterNavBar} from 'react_websites_components/F
   - backgroundColor(string): set background color component.
 
 - FooterFlexContent component attr
-  - direction? (FlexDirection)
-  - wrap? (FlexWrap),
-  - alignContent? (AlignContent),
-  - justifyContent? (JustifyContent),
-  - alignItems? (AlignItems)
+  - direction? (FlexDirection): set the direction inside fotter component
+  - wrap? (FlexWrap): set the value of wrap
+  - alignContent? (AlignContent):
+  - justifyContent? (JustifyContent):
+  - alignItems? (AlignItems): 
 
 - FooterNavBar component attr
   - title({size?:string,family?:string,content:string}): set the title of the navBar. you can set the size and the family font.
@@ -182,7 +182,6 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
             thickness:TextDecorationThickness
         }
     }, 
-
 
 - Button component attr
   - href? (string): set href valur of the img tag. the default value is '#'.
