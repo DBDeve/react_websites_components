@@ -360,7 +360,7 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
   return (
     <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
       <a href="/" aria-label="Homepage">
-        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='lazy' title='logo image' width={50} height={25}/>
+        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='eager' title='logo image' width={50} height={25}/>
       </a>
     </div>
   )

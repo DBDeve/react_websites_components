@@ -202,3 +202,52 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
 
 - spacing component attr
   - height:string
+
+### example use
+```jsx
+<Container type='body'>
+
+  <Header backGroundColor="red" fixed hoverColor="blue" padding="1px">
+    <HeaderNavBar
+      text={{size:'20px',family:"Open Sans, sans-serif"}}
+      enableHover
+      menuData={[{pageTitle:'home',pagePath:'/page1'},{pageTitle:'about us',pagePath:'/page2'},{pageTitle:'work',pagePath:'/page3'}]} 
+      align="left"
+      componetGrow={3}
+    />
+    <HeaderSocialIcons enableHover sizeIcon="18px" iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}}  align={'center'} />
+    <HeaderImageLogo urlImage="/file.svg" align='center'/>
+  </Header>
+
+  <Container type='main' >
+
+    <HeroSection mediaType={{type:'image', src:'/p1.jpg'}}>
+      <HeroHeading> titolo di prova </HeroHeading>
+      <HeroParagraph text={{color:rgba(28, 85, 1, 0.5)}}> paragrafo di <a href="hh">prova</a> </HeroParagraph>
+      <HeroButton margin={'20px'}> bottone di prova </HeroButton>
+    </HeroSection>
+
+    <Container type='section' backGround={{color:'green'}} display={{type:'flex', direction:'row', wrap:'wrap', alignItems:'center', justifyContent:'center'}}>
+      <Button margin={{width:'20px'}}> bot one di pro </Button>
+      <Heading type='h1' margin={{width:'20px'}}> ciao </Heading>
+      <Paragraph
+        anchor={{color:'red',textDecoration:{line:'underline',color:'red',style:'solid', thickness:'1%'}}} 
+        anchorHover={{color:'green',textDecoration:{line:'underline',color:'green',style:'solid', thickness:'1%'}}}>
+          paragrafo di <a href="f">prova</a>
+      </Paragraph>
+    </Container>
+  </Container>
+
+  <Footer backgroundColor="#666666ff">
+    <FooterFlexContent direction="column">
+      <FooterFlexContent direction="row">
+        <FooterNavBar title={{size:'25px',content:'Company'}} align='center' links={{size:'20px',content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}/>
+        <FooterNavBar title={{size:'25px',content:'support'}} align='right' links={{size:'20px',content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
+      </FooterFlexContent>
+      <FooterFlexContent>
+        <FooterNavBar title={{size:'25px',content:'services'}} align='left' links={{size:'20px',content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}/>
+      </FooterFlexContent>
+    </FooterFlexContent>
+  </Footer>
+</Container>
+```

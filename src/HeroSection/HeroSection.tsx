@@ -1,4 +1,4 @@
-import React, {ReactNode,ReactElement} from 'react';
+import React, {ReactNode,ReactElement,useState,useEffect} from 'react';
 import styles from './HeroSection.module.css';
 import {Padding,Margin} from '../types'
 
@@ -8,8 +8,7 @@ import {Padding,Margin} from '../types'
 
 
 
-
-type image={ type:'image', src:string}
+type image={ type:'image', src:string, alt?:string, title?:string, width?:number, height?:number}
 type video={ type:'video', src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials'}
 type HeroSection={
     mediaType: image,
@@ -17,10 +16,33 @@ type HeroSection={
 }
 export const HeroSection:React.FC<HeroSection> = ({mediaType, children}) => {
 
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+
+    useEffect(() => {
+
+        if(mediaType.type === 'image'){
+
+            if(mediaType.width){
+                setWidth(mediaType.width);
+            } else {
+                setWidth(window.innerWidth);
+            }
+
+            if(mediaType.height){
+                setHeight(mediaType.height);
+            } else {
+                setHeight(window.innerHeight);
+            }
+
+        }
+
+    },[]);
+
     return(
         <div id='hero_section' className={styles.HeroSection}>
             {/*mediaType.type === 'video' && <video src={`${mediaType.src}`} controls={mediaType.controls ? true : false} autoPlay={mediaType.autoPlay ? true : false} muted={mediaType.muted ? true : false} loop={mediaType.loop ? true : undefined} poster={mediaType.poster || undefined} preload={mediaType.preload || 'metadata'}></video>*/}
-            {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`}alt="immagine hero section" loading="lazy"/>)}
+            {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`} height={height} width={width} alt="immagine hero section" loading="eager" title='hero image'/>)}
             <div className={styles.HeroContent}>
                 {children}
             </div>
