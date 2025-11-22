@@ -61,7 +61,7 @@ export const FooterSmall:React.FC<FooterSmall> = ({}) => {
 }
 
 
-type FooterFlexContent = {
+type FooterContainer = {
   direction?: FlexDirection,
   wrap?: FlexWrap,
   alignContent?: AlignContent,
@@ -69,7 +69,7 @@ type FooterFlexContent = {
   alignItems?: AlignItems,
   children: ReactNode
 }
-export const FooterFlexContent:React.FC<FooterFlexContent> = ({direction, wrap, alignContent, justifyContent, alignItems,children}) => {
+export const FooterContainer:React.FC<FooterContainer> = ({direction, wrap, alignContent, justifyContent, alignItems,children}) => {
   return (
     <div className={styles.footerFlexContent} style={{ '--flex-direction': direction, '--flex-wrap': wrap, '--align-content': alignContent, '--justify-content': justifyContent, '--align-items': alignItems } as React.CSSProperties}>
       {children}
