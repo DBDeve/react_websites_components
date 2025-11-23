@@ -59,7 +59,7 @@
 .footerFlexContent{
   display: flex;
   flex-direction: var(--flex-direction, row);
-  flex-wrap: nowrap;
+  flex-wrap: var(--flex-wrap, wrap);
   align-content: var(--align-content, stretch);
   justify-content: var(--justify-content, center);
   align-items: var(--align-items, center);

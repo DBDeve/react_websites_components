@@ -53,15 +53,11 @@
   background-blend-mode: var(--container-background-mode);
 }
 .flex{
-  --container-flex-direction: row;
-  flex-direction: var(--container-flex-direction);
-  flex-wrap: nowrap; 
-  --container-align-content:stretch;
-  align-content: var(--container-align-content);
-  --container-justify-content: center;
-  justify-content: var(--container-justify-content);
-  --container-align-items: center;
-  align-items: var(--container-align-items);
+  flex-direction: var(--container-flex-direction); --container-flex-direction: row;
+  flex-wrap: var(--container-flex-wrap); --container-flex-wrap: wrap;
+  align-content: var(--container-align-content); --container-align-content:stretch;
+  justify-content: var(--container-justify-content); --container-justify-content: center;
+  align-items: var(--container-align-items); --container-align-items: center;
 }
 .grid{
   --container-grid-template-columns: 1fr 1fr;
