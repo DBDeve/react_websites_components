@@ -12,7 +12,7 @@
   align-items: var(--Hero-Container-align-items);--Hero-Container-align-items:center;
   align-content: var(--Hero-Container-align-content);--Hero-Container-align-content:center;
   justify-content: var(--Hero-Container-justify-content);--Hero-Container-justify-content:center;
-  margin:2%;
+  /*margin:2%;*/
 }
 
 

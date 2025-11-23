@@ -381,15 +381,17 @@ type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
   
   const positionClass = fixed ? styles.fixed : 'no_fixed';
-  /*if (fixed){
-    const header = document.querySelector('header');
-    const main = document.querySelector('main')
-    if(header && main){
-      const headerHeight = header.clientHeight;
-      header.style.setProperty('--header-height', `${headerHeight}px`);
-    }
-  }*/
-
+  if(fixed){
+    useEffect(() => {
+      const header = document.querySelector('header');
+      const main = document.querySelector('main')
+      if(header && main){
+        const headerHeight = header.clientHeight;
+        main.style.setProperty('--container-margin-top', `${headerHeight}px`);
+      }
+    }, []);
+  }
+  
   return (
     <header role="banner" style={{ '--bg-color': backGroundColor,'--hover-color': hoverColor,'--padding':padding } as React.CSSProperties} className={`${styles.header} ${positionClass}` }>
       {children}
