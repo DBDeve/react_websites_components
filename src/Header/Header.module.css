@@ -10,7 +10,6 @@
 .fixed {
   position: fixed;
   top: 0;
-  left: 0;
 }
 
 .navbar {
@@ -74,7 +73,7 @@
     display: var(--menu-display);
     background-color: var(--bg-color, 'white');
     position:absolute;
-    top:100%;
+    top:var(--mobile-menu-top,100%);
     right:0;
     width: 100%;
     z-index: 10;
