@@ -1,54 +1,62 @@
 import React, {ReactNode,ReactElement,useState,useEffect} from 'react';
+import {CSSLength, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,BackgroundBlendMode} from '../types';
+import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
 import styles from './HeroSection.module.css';
 import {Padding,Margin} from '../types'
+import {defaultImg} from './index';
 
 
 // ADD THIS TO CUSTOM BUTTON
 // button?:{color:string, text:{color:string, content:string}, padding:string, border:{borderColor:string, borderRadius:string, style:string}, margin:string}
 
 
-
-type image={ type:'image', src:string, alt?:string, title?:string, width?:number, height?:number}
-type video={ type:'video', src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials'}
 type HeroSection={
-    mediaType: image,
+    backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
     children: ReactNode
 }
-export const HeroSection:React.FC<HeroSection> = ({mediaType, children}) => {
+export const HeroSection:React.FC<HeroSection> = ({backGround,children}) => {
 
-    const [width, setWidth] = useState(0);
-    const [height, setHeight] = useState(0);
+    let backgroundStyle;
 
-    useEffect(() => {
+    if(backGround){
+        backgroundStyle = {'--hero-container-background-color':backGround.color, '--hero-container-background-image':backGround.image, '--hero-container-background-position':backGround.position, '--hero-container-background-size':backGround.size,'--hero-container-background-mode':backGround.mode}
+    }
 
-        if(mediaType.type === 'image'){
-
-            if(mediaType.width){
-                setWidth(mediaType.width);
-            } else {
-                setWidth(window.innerWidth);
-            }
-
-            if(mediaType.height){
-                setHeight(mediaType.height);
-            } else {
-                setHeight(window.innerHeight);
-            }
-
-        }
-
-    },[]);
+    const containerStyle = {
+        ...backgroundStyle,
+    } as React.CSSProperties;
 
     return(
-        <div id='hero_section' className={styles.HeroSection}>
-            {/*mediaType.type === 'video' && <video src={`${mediaType.src}`} controls={mediaType.controls ? true : false} autoPlay={mediaType.autoPlay ? true : false} muted={mediaType.muted ? true : false} loop={mediaType.loop ? true : undefined} poster={mediaType.poster || undefined} preload={mediaType.preload || 'metadata'}></video>*/}
-            {mediaType.type === 'image' && (<img src={`${mediaType.src}`} className={`${styles.hero_img}`} height={height} width={width} alt="immagine hero section" loading="eager" title='hero image'/>)}
-            <div className={styles.HeroContent}>
-                {children}
-            </div>
+        <div id='hero_section' className={styles.HeroSection} style={containerStyle}>
+            {children}
         </div>
     )
 }
+
+
+type HeroContainer = {
+    flexSetting?:{direction?: FlexDirection, wrap?: FlexWrap, alignContent?:AlignContent, justifyContent?:JustifyContent, alignItems?:AlignItems}
+    children: ReactNode
+}
+export const HeroContainer:React.FC<HeroContainer> = ({flexSetting,children}) => {
+
+    let flexSettingStyle;
+
+    if(flexSetting){
+        flexSettingStyle={'--Hero-Container-flex-direction':flexSetting.direction, '--Hero-Container-align-content':flexSetting.alignContent, '--Hero-Container-align-items':flexSetting.alignItems, '--Hero-Container-justify-content':flexSetting.justifyContent}
+    }
+
+    const heroContainerStyle = {
+        ...flexSettingStyle,
+    } as React.CSSProperties;
+
+    return(
+        <div className={styles.HeroContainer} style={heroContainerStyle}>
+            {children}
+        </div>
+    )
+}
+
 
 type HeroHeading = {
     text?:{size?:string,family?:string, color?:string},
@@ -75,6 +83,7 @@ export const HeroHeading:React.FC<HeroHeading> = ({text,margin,children}) =>{
         <h1 style={headingStyle} className={styles.HeroHeading}> {children} </h1>
     )
 }
+
 
 type HeroParagraph = {
     text?:{size?:string,family?:string, color?:string},

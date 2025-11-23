@@ -4,12 +4,13 @@
   display: inline-flex;
   width: 100%;
   padding: var(--padding);
-  background-color: var(--bg-color, transparent);
-  z-index: 10;
+  background-color: var(--bg-color, white);
 }
 
 .fixed {
   position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .navbar {

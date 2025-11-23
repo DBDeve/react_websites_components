@@ -44,6 +44,10 @@
     "typescript": "^5.9.2"
   },
   "exports": {
+    "./Base": {
+      "import": "./dist/Base/Base.js",
+      "types": "./dist/Base/Base.d.ts"
+    },
     "./Header": {
       "import": "./dist/Header/Header.js",
       "types": "./dist/Header/Header.d.ts"
@@ -51,6 +55,14 @@
     "./Footer": {
       "import": "./dist/Footer/Footer.js",
       "types": "./dist/Footer/Footer.d.ts"
+    },
+    "./HeroSection": {
+      "import": "./dist/HeroSection/HeroSection.js",
+      "types": "./dist/HeroSection/HeroSection.d.ts"
+    },
+    "./Function": {
+      "import": "./dist/Function/function.js",
+      "types": "./dist/Function/function.d.ts"
     }
   },
   "files": [

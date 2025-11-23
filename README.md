@@ -241,11 +241,11 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
   <Footer backgroundColor="#666666ff">
     <FooterFlexContent direction="column">
       <FooterFlexContent direction="row">
-        <FooterNavBar title={{size:'25px',content:'Company'}} align='center' links={{size:'20px',content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}/>
-        <FooterNavBar title={{size:'25px',content:'support'}} align='right' links={{size:'20px',content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
+        <FooterNavBar title={{content:'Company'}} align='center' links={{content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}/>
+        <FooterNavBar title={{content:'support'}} align='right' links={{content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
       </FooterFlexContent>
       <FooterFlexContent>
-        <FooterNavBar title={{size:'25px',content:'services'}} align='left' links={{size:'20px',content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}/>
+        <FooterNavBar title={{content:'services'}} align='left' links={{size:'20px',content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}/>
       </FooterFlexContent>
     </FooterFlexContent>
   </Footer>
