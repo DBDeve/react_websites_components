@@ -399,7 +399,7 @@ export const Header: React.FC<HeaderProps> = ({ children, backGroundColor, paddi
       const headerHeight = header.clientHeight;
       mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
     }
-  },[]);
+  },[Header]);
   
   return (
     <header role="banner" style={{ '--bg-color': backGroundColor,'--hover-color': hoverColor,'--padding':padding } as React.CSSProperties} className={`${styles.header} ${positionClass}` }>

@@ -1,8 +1,10 @@
 /* hero section component */
 .HeroSection{
+  display: flex;
   width: 100%;
-  height: auto;
-  background: var(--hero-container-background-color,white) var(--hero-container-background-image,none) var(--hero-container-background-position,center)/var(--hero-container-background-size,cover) no-repeat;
+  height: var( --hero-section-height, auto);
+  padding:  var(--hero-section-padding-top,0px) var(--hero-section-padding-right,0px) var(--hero-section-padding-bottom,0px) var(--hero-section-padding-left,0px);
+  background: var(--hero-section-background-color,white) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
 }
 
 /* hero content component*/
@@ -12,7 +14,8 @@
   align-items: var(--Hero-Container-align-items);--Hero-Container-align-items:center;
   align-content: var(--Hero-Container-align-content);--Hero-Container-align-content:center;
   justify-content: var(--Hero-Container-justify-content);--Hero-Container-justify-content:center;
-  /*margin:2%;*/
+  margin: var(--hero-container-margin-top) var(--hero-container-margin-right) var(--hero-container-margin-bottom) var(--hero-container-margin-left);
+  --hero-container-margin-top:0px; --hero-container-margin-right:0px; --hero-container-margin-bottom:0px; --hero-container-margin-left:0px;
 }
 
 

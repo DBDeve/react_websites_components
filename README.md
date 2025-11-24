@@ -221,7 +221,7 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
 
   <Container type='main' >
 
-    <HeroSection mediaType={{type:'image', src:'/p1.jpg'}}>
+    <HeroSection backGround={{image:"url('/image.jpg')"}}>
       <HeroHeading> titolo di prova </HeroHeading>
       <HeroParagraph text={{color:rgba(28, 85, 1, 0.5)}}> paragrafo di <a href="hh">prova</a> </HeroParagraph>
       <HeroButton margin={'20px'}> bottone di prova </HeroButton>

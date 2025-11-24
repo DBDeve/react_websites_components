@@ -12,18 +12,37 @@ import {defaultImg} from './index';
 
 type HeroSection={
     backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
+    padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
+    height?:CSSLength,
     children: ReactNode
 }
-export const HeroSection:React.FC<HeroSection> = ({backGround,children}) => {
+export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,children}) => {
 
     let backgroundStyle;
+    let paddingStyle;
+    let heightStyle;
 
     if(backGround){
-        backgroundStyle = {'--hero-container-background-color':backGround.color, '--hero-container-background-image':backGround.image, '--hero-container-background-position':backGround.position, '--hero-container-background-size':backGround.size,'--hero-container-background-mode':backGround.mode}
+        backgroundStyle = {'--hero-section-background-color':backGround.color, '--hero-section-background-image':backGround.image, '--hero-section-background-position':backGround.position, '--hero-section-background-size':backGround.size,'--hero-container-background-mode':backGround.mode}
+    }
+
+    if (padding){
+        if('all' in padding) {
+            paddingStyle = {'--hero-section-padding-top': padding.all,'--hero-section-padding-bottom': padding.all,'--hero-section-padding-right': padding.all,'--hero-section-padding-left': padding.all}
+        } 
+        else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+            paddingStyle = {'--hero-section-padding-top': padding.top,'--hero-section-padding-bottom': padding.bottom,'--hero-section-padding-right': padding.right,'--hero-section-padding-left': padding.left}
+        }
+    }
+
+    if(height){
+        heightStyle = {'--hero-section-height': height};
     }
 
     const containerStyle = {
         ...backgroundStyle,
+        ...paddingStyle,
+        ...heightStyle,
     } as React.CSSProperties;
 
     return(
@@ -35,12 +54,23 @@ export const HeroSection:React.FC<HeroSection> = ({backGround,children}) => {
 
 
 type HeroContainer = {
+    margin?:{all?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
     flexSetting?:{direction?: FlexDirection, wrap?: FlexWrap, alignContent?:AlignContent, justifyContent?:JustifyContent, alignItems?:AlignItems}
     children: ReactNode
 }
-export const HeroContainer:React.FC<HeroContainer> = ({flexSetting,children}) => {
+export const HeroContainer:React.FC<HeroContainer> = ({margin,flexSetting,children}) => {
 
     let flexSettingStyle;
+    let marginStyle;
+
+    if(margin){
+        if('all' in margin) {
+            marginStyle = {'--container-margin-top': margin.all,'--container-margin-bottom': margin.all,'--container-margin-right': margin.all,'--container-margin-left': margin.all}
+        } 
+        else if('top' in margin || 'bottom' in margin || 'right' in margin || 'left' in margin) {
+            marginStyle = {'--container-margin-top': margin.top,'--container-margin-bottom': margin.bottom,'--container-margin-right': margin.right,'--container-margin-left': margin.left}
+        }
+    }
 
     if(flexSetting){
         flexSettingStyle={'--Hero-Container-flex-direction':flexSetting.direction, '--Hero-Container-align-content':flexSetting.alignContent, '--Hero-Container-align-items':flexSetting.alignItems, '--Hero-Container-justify-content':flexSetting.justifyContent}
@@ -48,6 +78,7 @@ export const HeroContainer:React.FC<HeroContainer> = ({flexSetting,children}) =>
 
     const heroContainerStyle = {
         ...flexSettingStyle,
+        ...marginStyle
     } as React.CSSProperties;
 
     return(
