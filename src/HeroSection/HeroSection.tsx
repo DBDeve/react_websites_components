@@ -3,7 +3,7 @@ import {CSSLength, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, 
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
 import styles from './HeroSection.module.css';
 import {Padding,Margin} from '../types'
-import {defaultImg} from './index';
+import {defaultImgHeroSection} from './index';
 
 
 // ADD THIS TO CUSTOM BUTTON
@@ -22,8 +22,12 @@ export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,chi
     let paddingStyle;
     let heightStyle;
 
+
+    // la gestione dell'immagine dello sfonfo non funziona ancora. risolvere
     if(backGround){
-        backgroundStyle = {'--hero-section-background-color':backGround.color, '--hero-section-background-image':backGround.image, '--hero-section-background-position':backGround.position, '--hero-section-background-size':backGround.size,'--hero-container-background-mode':backGround.mode}
+        backgroundStyle = {'--hero-section-background-color':backGround.color, '--hero-section-background-image':`url(${backGround.image})` , '--hero-section-background-position':backGround.position, '--hero-section-background-size':backGround.size,'--hero-container-background-mode':backGround.mode}
+    } else {
+        backgroundStyle = {'--hero-section-background-image': `url(${defaultImgHeroSection})`};
     }
 
     if (padding){

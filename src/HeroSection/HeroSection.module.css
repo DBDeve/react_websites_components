@@ -2,14 +2,16 @@
 .HeroSection{
   display: flex;
   width: 100%;
-  height: var( --hero-section-height, auto);
-  padding:  var(--hero-section-padding-top,0px) var(--hero-section-padding-right,0px) var(--hero-section-padding-bottom,0px) var(--hero-section-padding-left,0px);
-  background: var(--hero-section-background-color,white) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
+  height: var( --hero-section-height, '50vh');
+  padding:  var(--hero-section-padding-top,30px) var(--hero-section-padding-right,30px) var(--hero-section-padding-bottom,30px) var(--hero-section-padding-left,30px);
+  background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
+  background-blend-mode: var(--container-background-mode,multiply);
 }
 
 /* hero content component*/
 .HeroContainer{
   display: flex;
+  flex-wrap: var(--Hero-Container-flex-wrap); --Hero-Container-flex-wrap:wrap;
   flex-direction: var(--Hero-Container-flex-direction);--Hero-Container-flex-direction:column;
   align-items: var(--Hero-Container-align-items);--Hero-Container-align-items:center;
   align-content: var(--Hero-Container-align-content);--Hero-Container-align-content:center;
