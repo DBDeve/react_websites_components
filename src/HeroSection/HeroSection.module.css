@@ -7,15 +7,9 @@
   background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
   background-blend-mode: var(--container-background-mode,multiply);
 }
-
 @media (max-width: 768px) {  
   .HeroSection{
-    display: flex;
-    width: 100%;
     height: auto;
-    padding:  var(--hero-section-padding-top,30px) var(--hero-section-padding-right,30px) var(--hero-section-padding-bottom,30px) var(--hero-section-padding-left,30px);
-    background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
-    background-blend-mode: var(--container-background-mode,multiply);
   }
 }
 
@@ -36,14 +30,14 @@
 .HeroHeading{
   font-size: var(--hero-heading-size, 50px);
   font-family: var(--hero-heading-family,'Open Sans', sans-serif);
-  color: var(--hero-heading-color, black);
+  color: var(--hero-heading-color, rgb(255, 255, 255));
   margin: var(--hero-heading-margin-top, 5px) var(--hero-heading-margin-right, 5px) var(--hero-heading-margin-bottom, 5px) var(--hero-heading-margin-left, 5px);
 }
 
 .HeroParagraph{
   font-size: var(--hero-paragraph-size, 15px);
   font-family: var(--hero-paragraph-family,'Open Sans', sans-serif);
-  color: var(--hero-paragraph-color, black);
+  color: var(--hero-paragraph-color, rgb(255, 255, 255));
   margin: var(--hero-paragraph-margin-top, 5px) var(--hero-paragraph-margin-right, 5px) var(--hero-paragraph-margin-bottom, 5px) var(--hero-paragraph-margin-left, 5px);
 }
 .HeroAnchorParagraph{
@@ -58,8 +52,8 @@
   font-size: var(--hero-button-text-size, 15px);
   font-family: var(--hero-button-text-family,'Open Sans', sans-serif);
   font-weight: 600;
-  color: var(--hero-button-text-color, white);
-  background-color: var(--hero-button-color,#80808099);
+  color: var(--hero-button-text-color, rgb(0, 0, 0));
+  background-color: var(--hero-button-color,#ffffff);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   cursor: pointer;
   text-transform: uppercase;

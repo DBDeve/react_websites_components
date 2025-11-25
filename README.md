@@ -104,13 +104,18 @@ import {Footer,FooterFlexContent,FooterNavBar} from 'react_websites_components/F
 
 ### HeroSection component
 ```jsx
-import {HeroSection,HeroHeading,HeroButton,HeroParagraph} from 'react_websites_components/HeroSection'
+import {HeroSection,HeroHeading,HeroButton,HeroParagraph,HeroContainer} from 'react_websites_components/HeroSection'
 ```
 ```jsx
-<HeroSection mediaType={{type:'image', src:'/p1.jpg'}}>
-  <HeroHeading> titolo di prova </HeroHeading>
-  <HeroParagraph text={{color:rgba(28, 85, 1, 0.5)}}> paragrafo di <a href="hh">prova</a> </HeroParagraph>
-  <HeroButton margin={'20px'}> bottone di prova </HeroButton>
+<HeroSection backGround={{image:"/p1.jpg"}}>
+  <HeroContainer flexSetting={{direction:"column",alignItems: "flex-start"}}>
+    <HeroHeading> titolo di prova </HeroHeading>
+    <HeroParagraph> paragrafo di prova lupus </HeroParagraph>
+    <HeroContainer flexSetting={{direction:"row", justifyContent: "flex-start"}}>
+      <HeroButton> bottone di prova </HeroButton>
+      <HeroButton> bottone di prova </HeroButton>
+    </HeroContainer>
+  </HeroContainer>
 </HeroSection>
 ```
 
