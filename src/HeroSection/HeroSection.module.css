@@ -1,11 +1,22 @@
 /* hero section component */
 .HeroSection{
   display: flex;
-  width: 100%;
-  height: var( --hero-section-height, '50vh');
+  width:100%;
+  height: var( --hero-section-height, 500px);
   padding:  var(--hero-section-padding-top,30px) var(--hero-section-padding-right,30px) var(--hero-section-padding-bottom,30px) var(--hero-section-padding-left,30px);
   background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
   background-blend-mode: var(--container-background-mode,multiply);
+}
+
+@media (max-width: 768px) {  
+  .HeroSection{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding:  var(--hero-section-padding-top,30px) var(--hero-section-padding-right,30px) var(--hero-section-padding-bottom,30px) var(--hero-section-padding-left,30px);
+    background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
+    background-blend-mode: var(--container-background-mode,multiply);
+  }
 }
 
 /* hero content component*/
