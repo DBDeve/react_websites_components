@@ -7,36 +7,31 @@
   background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
   background-blend-mode: var(--container-background-mode,multiply);
 }
-@media (max-width: 768px) {  
-  .HeroSection{
-    height: auto;
-  }
-}
 
 /* hero content component*/
 .HeroContainer{
   display: flex;
-  flex-wrap: var(--Hero-Container-flex-wrap); --Hero-Container-flex-wrap:wrap;
-  flex-direction: var(--Hero-Container-flex-direction);--Hero-Container-flex-direction:column;
-  align-items: var(--Hero-Container-align-items);--Hero-Container-align-items:center;
-  align-content: var(--Hero-Container-align-content);--Hero-Container-align-content:center;
-  justify-content: var(--Hero-Container-justify-content);--Hero-Container-justify-content:center;
+  flex-wrap: var(--hero-container-flex-wrap); --hero-container-flex-wrap:wrap;
+  flex-direction: var(--hero-container-flex-direction);--hero-container-flex-direction:column;
+  align-items: var(--hero-container-align-items);--hero-container-align-items:center;
+  align-content: var(--hero-container-align-content);--hero-container-align-content:center;
+  justify-content: var(--hero-container-justify-content);--hero-container-justify-content:center;
+  gap: var(--hero-container-gap);--hero-container-gap: 5px;
   margin: var(--hero-container-margin-top) var(--hero-container-margin-right) var(--hero-container-margin-bottom) var(--hero-container-margin-left);
   --hero-container-margin-top:0px; --hero-container-margin-right:0px; --hero-container-margin-bottom:0px; --hero-container-margin-left:0px;
 }
 
 
-
 .HeroHeading{
-  font-size: var(--hero-heading-size, 50px);
-  font-family: var(--hero-heading-family,'Open Sans', sans-serif);
+  font-size: var(--hero-heading-size, 100px);
+  font-family: var(--hero-heading-family, 'Poppins'), 'Roboto', 'Lato', sans-serif;
   color: var(--hero-heading-color, rgb(255, 255, 255));
   margin: var(--hero-heading-margin-top, 5px) var(--hero-heading-margin-right, 5px) var(--hero-heading-margin-bottom, 5px) var(--hero-heading-margin-left, 5px);
 }
 
 .HeroParagraph{
-  font-size: var(--hero-paragraph-size, 15px);
-  font-family: var(--hero-paragraph-family,'Open Sans', sans-serif);
+  font-size: var(--hero-paragraph-size, 20px);
+  font-family: var(--hero-paragraph-family, 'Open Sans'), 'Roboto', 'Source Sans Pro', sans-serif;
   color: var(--hero-paragraph-color, rgb(255, 255, 255));
   margin: var(--hero-paragraph-margin-top, 5px) var(--hero-paragraph-margin-right, 5px) var(--hero-paragraph-margin-bottom, 5px) var(--hero-paragraph-margin-left, 5px);
 }
@@ -47,10 +42,10 @@
 .HeroButton{
   padding: var(--hero-button-padding, 10px);
   border: var(--hero-button-border-width, 0px) var(--hero-button-border-type, solid) var(--hero-button-border-color, black);
-  border-radius: var(--hero-button-border-radius, 0px);
+  border-radius: var(--hero-button-border-radius, 10px);
   margin: var(--hero-button-margin-top, 5px) var(--hero-button-margin-right, 5px) var(--hero-button-margin-bottom, 5px) var(--hero-button-margin-left, 5px);
   font-size: var(--hero-button-text-size, 15px);
-  font-family: var(--hero-button-text-family,'Open Sans', sans-serif);
+  font-family: var(--hero-button-text-family, Arial), Helvetica, sans-serif;
   font-weight: 600;
   color: var(--hero-button-text-color, rgb(0, 0, 0));
   background-color: var(--hero-button-color,#ffffff);
@@ -58,5 +53,23 @@
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
+}
+.HeroButton:hover{
+  background-color: var(--hero-button-hover-color-hover, rgb(0, 0, 0));
+  color: var(--hero-button-text-color-hover, rgb(255, 255, 255));
+}
+
+/* MOBILE CSS */
+@media (max-width: 768px) {  
+  .HeroSection{
+    height: auto;
+  }
+
+  .HeroHeading{
+    font-size: 50px;
+  }
+
+  .HeroParagraph{
+    font-size: 15px;
+  }
 }

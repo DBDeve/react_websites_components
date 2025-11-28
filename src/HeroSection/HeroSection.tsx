@@ -61,7 +61,7 @@ export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,chi
 
 type HeroContainer = {
     margin?:{all?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
-    flexSetting?:{direction?: FlexDirection, wrap?: FlexWrap, alignContent?:AlignContent, justifyContent?:JustifyContent, alignItems?:AlignItems}
+    flexSetting?:{direction?: FlexDirection, gap?:string, wrap?: FlexWrap, alignContent?:AlignContent, justifyContent?:JustifyContent, alignItems?:AlignItems}
     children: ReactNode
 }
 export const HeroContainer:React.FC<HeroContainer> = ({margin,flexSetting,children}) => {
@@ -71,15 +71,15 @@ export const HeroContainer:React.FC<HeroContainer> = ({margin,flexSetting,childr
 
     if(margin){
         if('all' in margin) {
-            marginStyle = {'--container-margin-top': margin.all,'--container-margin-bottom': margin.all,'--container-margin-right': margin.all,'--container-margin-left': margin.all}
+            marginStyle = {'--hero-container-margin-top': margin.all,'--hero-container-margin-bottom': margin.all,'--hero-container-margin-right': margin.all,'--hero-container-margin-left': margin.all}
         } 
         else if('top' in margin || 'bottom' in margin || 'right' in margin || 'left' in margin) {
-            marginStyle = {'--container-margin-top': margin.top,'--container-margin-bottom': margin.bottom,'--container-margin-right': margin.right,'--container-margin-left': margin.left}
+            marginStyle = {'--hero-container-margin-top': margin.top,'--hero-container-margin-bottom': margin.bottom,'--hero-container-margin-right': margin.right,'--hero-container-margin-left': margin.left}
         }
     }
 
     if(flexSetting){
-        flexSettingStyle={'--Hero-Container-flex-direction':flexSetting.direction, '--Hero-Container-align-content':flexSetting.alignContent, '--Hero-Container-align-items':flexSetting.alignItems, '--Hero-Container-justify-content':flexSetting.justifyContent}
+        flexSettingStyle={'--hero-container-flex-direction':flexSetting.direction, '--hero-container-gap':flexSetting.gap, '--hero-container-align-content':flexSetting.alignContent, '--hero-container-align-items':flexSetting.alignItems, '--hero-container-justify-content':flexSetting.justifyContent}
     }
 
     const heroContainerStyle = {
