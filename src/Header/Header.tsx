@@ -4,6 +4,7 @@ import React, { ReactElement,ReactNode,useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
 import {CSSLength} from '../types'
+import {Padding,Margin} from '../types'
 
 
 type descriptionMap={
@@ -348,7 +349,11 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
   )
 }
 
-type HeaderImageLogo = {urlImage:string,align:'left'|'center'|'right',componetGrow?:number} // GUARDARE IL TAG IMG E CAPIRE PERCHè NON FUNZIONA
+type HeaderImageLogo = {
+  urlImage:string,
+  align:'left'|'center'|'right', 
+  componetGrow?:number
+}
 export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,componetGrow})=>{
 
   const [lang, setLang] = useState('');
@@ -407,3 +412,27 @@ export const Header: React.FC<HeaderProps> = ({ children, backGroundColor, paddi
     </header>
   );
 };
+
+
+
+type HeaderHeading = {
+  text?:{size?:string,family?:string, color?:string},
+  children:ReactNode
+};
+export const HeaderHeading: React.FC<HeaderHeading> = ({ text, children}) => {
+
+  let textStyle;
+
+  if(text){
+    textStyle = {'--header-heading-size': text.size,'--header-heading-family':text.family, '--header-heading-color':text.color};
+  }
+  
+  const headingStyle = {
+    ...textStyle,
+  } as React.CSSProperties;
+
+  return(
+    <h1 style={headingStyle} className={`${styles.HeaderHeading}`}> {children} </h1>
+  )
+
+}

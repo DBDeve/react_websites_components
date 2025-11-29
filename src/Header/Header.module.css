@@ -111,3 +111,13 @@
   position: absolute;
   left: -9999px;
 }
+
+
+/* header heading*/
+.HeaderHeading{
+  display: flex;
+  align-items: center;
+  font-size: var(--header-heading-size, 30px);
+  font-family: var(--header-heading-family, 'Poppins'), 'Roboto', 'Lato', sans-serif;
+  color: var(--header-heading-color, rgb(0, 0, 0));
+}
