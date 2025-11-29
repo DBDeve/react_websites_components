@@ -22,6 +22,75 @@ const alignMap = {
 };
 
 
+type Header = {
+  children: ReactNode,
+  backGroundColor?: string,
+  padding?: {all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
+  fixed?: boolean,
+  hoverColor?:string
+};
+export const Header: React.FC<Header> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
+
+  let positionStyle;
+  let paddingStyle;
+  let backGroundStyle;
+  let hoverColorStyle;
+  
+  if(fixed){
+
+    positionStyle = {'--header-fixed':'fixed'};
+
+    useEffect(() => {
+      const header = document.querySelector('header');
+      const main = document.querySelector('main')
+      if(header && main){
+        const headerHeight = header.clientHeight;
+        main.style.setProperty('--container-margin-top', `${headerHeight}px`);
+      }
+    }, []);
+  }
+
+  useEffect(() => {
+    const header = document.querySelector('header');
+    const mobileMenu = document.getElementById('mobile_menu');
+    if(mobileMenu && header){
+      const headerHeight = header.clientHeight;
+      mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
+    }
+  },[Header]);
+
+  if(padding){
+    if('all' in padding) {
+      paddingStyle = {'--hero-section-padding-top': padding.all,'--hero-section-padding-bottom': padding.all,'--hero-section-padding-right': padding.all,'--hero-section-padding-left': padding.all}
+    } 
+    else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+      paddingStyle = {'--hero-section-padding-top': padding.top,'--hero-section-padding-bottom': padding.bottom,'--hero-section-padding-right': padding.right,'--hero-section-padding-left': padding.left}
+    }
+  }
+
+  if(backGroundColor){
+    backGroundStyle={'--header-background-color':backGroundColor}
+  }
+
+  if(hoverColor){
+    hoverColorStyle = {'--hover-color':hoverColor}
+  }
+
+  let headerStyle={
+    ...positionStyle,
+    ...paddingStyle,
+    ...backGroundStyle,
+    ...hoverColorStyle
+  } as React.CSSProperties
+  
+  return (
+    <header role="banner" style={headerStyle} className={`${styles.header}`}>
+      {children}
+    </header>
+  );
+};
+
+
 type HeaderNavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
   align:'left'|'center'|'right',
@@ -45,6 +114,10 @@ export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,compone
     setLang(htmlLang);
   }, []);
 
+  let navStyle;
+  let menuDesktopStyle;
+  let menuMobileStyle;
+
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
   return(
@@ -52,7 +125,7 @@ export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,compone
       <button aria-label={description[lang]?.button?? 'undefined'} className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
-      <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} style={{ '--componet-Grow': componetGrow} as React.CSSProperties}>
+      <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} >
         {menuData.map((page, index) => (
           <li className={`${styles.il} ${index < menuData.length - 1 && enableBorderRight? styles.borderRight : 'no_borderRight'}`} key={index} >
             {/* creare un variabile per l'inserimeto di colori con contrasti che funzionano universalmente */}
@@ -62,7 +135,7 @@ export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,compone
           </li>
         ))}
       </ul>
-      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--componet-Grow': componetGrow, '--menu-display': isVisible ? 'inherit' : 'none'} as React.CSSProperties}>
+      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--menu-display': isVisible ? 'inherit' : 'none'} as React.CSSProperties}>
         {menuData.map((page, index) => (
           <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`} key={index} >
             <a href={`${page.pagePath} `} className={`${enableHoverClass}`}>
@@ -370,77 +443,6 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
     </div>
   )
 }
-
-
-
-
-type Header = {
-  children: ReactNode,
-  backGroundColor?: string,
-  padding?: {all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
-  fixed?: boolean,
-  hoverColor?:string
-};
-export const Header: React.FC<Header> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
-
-  let positionStyle;
-  let paddingStyle;
-  let backGroundStyle;
-  let hoverColorStyle;
-  
-  if(fixed){
-
-    positionStyle = {'--header-fixed':'fixed'};
-
-    useEffect(() => {
-      const header = document.querySelector('header');
-      const main = document.querySelector('main')
-      if(header && main){
-        const headerHeight = header.clientHeight;
-        main.style.setProperty('--container-margin-top', `${headerHeight}px`);
-      }
-    }, []);
-  }
-
-  useEffect(() => {
-    const header = document.querySelector('header');
-    const mobileMenu = document.getElementById('mobile_menu');
-    if(mobileMenu && header){
-      const headerHeight = header.clientHeight;
-      mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
-    }
-  },[Header]);
-
-  if(padding){
-    if('all' in padding) {
-      paddingStyle = {'--hero-section-padding-top': padding.all,'--hero-section-padding-bottom': padding.all,'--hero-section-padding-right': padding.all,'--hero-section-padding-left': padding.all}
-    } 
-    else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
-      paddingStyle = {'--hero-section-padding-top': padding.top,'--hero-section-padding-bottom': padding.bottom,'--hero-section-padding-right': padding.right,'--hero-section-padding-left': padding.left}
-    }
-  }
-
-  if(backGroundColor){
-    backGroundStyle={'--header-background-color':backGroundColor}
-  }
-
-  if(hoverColor){
-    hoverColorStyle = {'--hover-color':hoverColor}
-  }
-
-  let headerStyle={
-    ...positionStyle,
-    ...paddingStyle,
-    ...backGroundStyle,
-    ...hoverColorStyle
-  } as React.CSSProperties
-  
-  return (
-    <header role="banner" style={headerStyle} className={`${styles.header}`}>
-      {children}
-    </header>
-  );
-};
 
 
 

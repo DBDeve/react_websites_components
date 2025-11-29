@@ -11,7 +11,7 @@
 
 .navbar {
   display: flex;
-  flex: var(--componet-Grow, 1 1 0);
+  flex: var(--componet-Grow, 3);
   font-size: var(--font-size, 15px);
   font-family: var(--font-family,'Open Sans', sans-serif);
 }
@@ -68,7 +68,7 @@
   }
   .mobileMenu {
     display: var(--menu-display);
-    background-color: var(--bg-color, 'white');
+    background-color: var(--header-background-color, white);
     position:absolute;
     top:var(--mobile-menu-top,100%);
     right:0;
