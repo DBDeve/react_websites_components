@@ -373,20 +373,25 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
 
 
 
-type AllowedChild = ReactElement<typeof HeaderImageLogo | typeof HeaderNavBar | typeof HeaderSocialIcons>;
 
-type HeaderProps = {
-  children: AllowedChild | AllowedChild[],
-  backGroundColor: string,
-  padding?: string,
+type Header = {
+  children: ReactNode,
+  backGroundColor?: string,
+  padding?: {all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
   fixed?: boolean,
   hoverColor?:string
 };
+export const Header: React.FC<Header> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
 
-export const Header: React.FC<HeaderProps> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
+  let positionStyle;
+  let paddingStyle;
+  let backGroundStyle;
+  let hoverColorStyle;
   
-  const positionClass = fixed ? styles.fixed : 'no_fixed';
   if(fixed){
+
+    positionStyle = {'--header-fixed':'fixed'};
+
     useEffect(() => {
       const header = document.querySelector('header');
       const main = document.querySelector('main')
@@ -405,9 +410,33 @@ export const Header: React.FC<HeaderProps> = ({ children, backGroundColor, paddi
       mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
     }
   },[Header]);
+
+  if(padding){
+    if('all' in padding) {
+      paddingStyle = {'--hero-section-padding-top': padding.all,'--hero-section-padding-bottom': padding.all,'--hero-section-padding-right': padding.all,'--hero-section-padding-left': padding.all}
+    } 
+    else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+      paddingStyle = {'--hero-section-padding-top': padding.top,'--hero-section-padding-bottom': padding.bottom,'--hero-section-padding-right': padding.right,'--hero-section-padding-left': padding.left}
+    }
+  }
+
+  if(backGroundColor){
+    backGroundStyle={'--header-background-color':backGroundColor}
+  }
+
+  if(hoverColor){
+    hoverColorStyle = {'--hover-color':hoverColor}
+  }
+
+  let headerStyle={
+    ...positionStyle,
+    ...paddingStyle,
+    ...backGroundStyle,
+    ...hoverColorStyle
+  } as React.CSSProperties
   
   return (
-    <header role="banner" style={{ '--bg-color': backGroundColor,'--hover-color': hoverColor,'--padding':padding } as React.CSSProperties} className={`${styles.header} ${positionClass}` }>
+    <header role="banner" style={headerStyle} className={`${styles.header}`}>
       {children}
     </header>
   );

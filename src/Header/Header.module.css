@@ -3,12 +3,9 @@
 .header {
   display: inline-flex;
   width: 100%;
-  padding: var(--padding);
-  background-color: var(--bg-color, white);
-}
-
-.fixed {
-  position: fixed;
+  padding: var(--header-padding-top,5px),var(--header-padding-right,5px),var(--header-padding-bottom,5px),var(--header-padding-left,5px);
+  background-color: var(--header-background-color, white);
+  position: var(--header-fixed);
   top: 0;
 }
 
@@ -102,7 +99,7 @@
   text-transform: uppercase;
 }
 .hoverEnabled:hover {
-  color: var(--hover-color, rgb(255, 255, 255));
+  color: var(--hover-color, rgb(56, 56, 56));
   cursor: pointer;
 }
 
