@@ -446,7 +446,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({enableHover,compo
 
 type HeaderImageLogo = {
   urlImage:string,
-  align:'left'|'center'|'right', 
+  align?:JustifyContent, 
   componetGrow?:number
 }
 export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,componetGrow})=>{
@@ -457,8 +457,24 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
     setLang(htmlLang);
   }, []);
 
+  let headerImageLogoGrow;
+  let headerImageLogoAlign;
+
+  if(align){
+    headerImageLogoAlign = {'--header-image-logo-align':align}
+  }
+
+  if(componetGrow){
+    headerImageLogoGrow={'--header-image-logo-grow': componetGrow}
+  }
+
+  let headerImageLogoStyle ={
+    ...headerImageLogoAlign,
+    ...headerImageLogoGrow
+  } as React.CSSProperties;
+
   return (
-    <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow } as React.CSSProperties}> 
+    <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.headerImageLogo}`} style={headerImageLogoStyle}> 
       <a href="/" aria-label="Homepage">
         <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='eager' title='logo image' width={50} height={25}/>
       </a>

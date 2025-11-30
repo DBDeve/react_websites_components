@@ -126,6 +126,15 @@
   left: -9999px;
 }
 
+/* header image logo*/
+.headerImageLogo{
+  display: inline-flex;
+  flex: var(--header-image-logo-grow, 1);
+  justify-content: var(--header-image-logo-align,center);
+  align-items: center;
+  list-style: none;
+}
+
 /* HOVER EVENT CLASS*/
 .hoverEnabled:hover {
   color: var(--header-hover-color, rgb(56, 56, 56));
