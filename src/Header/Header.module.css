@@ -86,11 +86,6 @@
   letter-spacing: 0px; 
   text-transform: uppercase;
 }
-.hoverEnabled:hover {
-  color: var(--hover-color, rgb(56, 56, 56));
-  cursor: pointer;
-}
-
 
 
 
@@ -109,7 +104,7 @@
 /* icons proprierty*/
 .socialIconsContainer{
   display: inline-flex;
-  justify-content: var(--social-icons-container-justify,center);
+  justify-content: var(--header-social-icons-align,center);
   align-items: center;
   list-style: none;
   flex: var(--header-social-icons-grow, 1);
@@ -129,4 +124,10 @@
 .screen_reader_only{
   position: absolute;
   left: -9999px;
+}
+
+/* HOVER EVENT CLASS*/
+.hoverEnabled:hover {
+  color: var(--header-hover-color, rgb(56, 56, 56));
+  cursor: pointer;
 }

@@ -1,10 +1,10 @@
-"use client";
-
 import React, { ReactElement,ReactNode,useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import styles from './Header.module.css';
 import {CSSLength} from '../types'
 import {Padding,Margin} from '../types'
+import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
+
 
 
 type descriptionMap={
@@ -73,7 +73,7 @@ export const Header: React.FC<Header> = ({ children, backGroundColor, padding, f
   }
 
   if(hoverColor){
-    hoverColorStyle = {'--hover-color':hoverColor}
+    hoverColorStyle = {'--header-hover-color':hoverColor}
   }
 
   let headerStyle={
@@ -182,12 +182,12 @@ type HeaderSocialIcons = {
   qq?: { link: string };
   vk?: { link: string };
   line?: { link: string };},
-  align:'left'|'center'|'right', 
+  align?:JustifyContent,
   sizeIcon?:string,
   componetGrow?:number,
   enableHover?:boolean,
 };
-export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,componetGrow,enableHover,sizeIcon})=>{
+export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({enableHover,componetGrow,sizeIcon,align,iconList})=>{
 
   const [lang, setLang] = useState('');
   useEffect(() => {
@@ -196,20 +196,27 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
   }, []);
 
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
+
   let headersocalsIconsGrow;
   let headersocalsIconsSize;
+  let headerSocialIconsAlign;
 
-  if(headersocalsIconsGrow){
+  if(componetGrow){
     headersocalsIconsGrow={'--header-social-icons-grow': componetGrow}
   }
 
-  if(headersocalsIconsSize){
+  if(sizeIcon){
     headersocalsIconsSize={'--header-social-icons-size':sizeIcon}
+  }
+
+  if(align){
+    headerSocialIconsAlign = {'--header-social-icons-align':align}
   }
 
   let headerSocialsIconsStyle={
     ...headersocalsIconsGrow,
-    ...headersocalsIconsSize
+    ...headersocalsIconsSize,
+    ...headerSocialIconsAlign
   } as React.CSSProperties;
 
   return (
