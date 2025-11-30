@@ -183,7 +183,7 @@ type HeaderSocialIcons = {
   vk?: { link: string };
   line?: { link: string };},
   align:'left'|'center'|'right', 
-  sizeIcon:string,
+  sizeIcon?:string,
   componetGrow?:number,
   enableHover?:boolean,
 };
@@ -196,16 +196,31 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
   }, []);
 
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
+  let headersocalsIconsGrow;
+  let headersocalsIconsSize;
+
+  if(headersocalsIconsGrow){
+    headersocalsIconsGrow={'--header-social-icons-grow': componetGrow}
+  }
+
+  if(headersocalsIconsSize){
+    headersocalsIconsSize={'--header-social-icons-size':sizeIcon}
+  }
+
+  let headerSocialsIconsStyle={
+    ...headersocalsIconsGrow,
+    ...headersocalsIconsSize
+  } as React.CSSProperties;
 
   return (
-    <div id="social_icon" aria-label={description[lang]?.social?? 'undefined'} className={`${styles.alignComponent} ${alignMap[align]}`} style={{ '--componet-Grow': componetGrow,'--icons-size':sizeIcon } as React.CSSProperties}> 
+    <div id="social_icon" aria-label={description[lang]?.social?? 'undefined'} className={styles.socialIconsContainer} style={headerSocialsIconsStyle}> 
       {iconList.facebook &&
         <a
           href={iconList.facebook.link}
           aria-label="Facebook"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-facebook fa-lg`}></i>
           <span className={styles.screen_reader_only}>Facebook</span>
@@ -217,7 +232,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Instagram"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
 
         >
           <i className={`fab fa-instagram fa-lg`}></i>
@@ -230,7 +245,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Twitter"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
 
         >
           <i className={`fab fa-twitter fa-lg`}></i>
@@ -243,7 +258,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="linkedin"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-linkedin fa-lg`}></i>
           <span className={styles.screen_reader_only}>LinkedIn</span>
@@ -255,7 +270,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="YouTube"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-youtube fa-lg`}></i>
           <span className={styles.screen_reader_only}>YouTube</span>
@@ -267,7 +282,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="TikTok"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-tiktok fa-lg`}></i>
           <span className={styles.screen_reader_only}>TikTok</span>
@@ -279,7 +294,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Snapchat"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-snapchat-ghost fa-lg`}></i>
           <span className={styles.screen_reader_only}>snapchat</span>
@@ -291,7 +306,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Pinterest"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-pinterest fa-lg`}></i>
           <span className={styles.screen_reader_only}>pinterest</span>
@@ -303,7 +318,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Reddit"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-reddit fa-lg`}></i>
           <span className={styles.screen_reader_only}>Reddit</span>
@@ -315,7 +330,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Discord"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-discord fa-lg`}></i>
           <span className={styles.screen_reader_only}>Discord</span>
@@ -327,7 +342,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Telegram"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-telegram fa-lg`}></i>
           <span className={styles.screen_reader_only}>Telegram</span>
@@ -339,7 +354,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="WhatsApp"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-whatsapp fa-lg`}></i>
           <span className={styles.screen_reader_only}>whatsapp</span>
@@ -351,7 +366,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="GitHub"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-github fa-lg`}></i>
           <span className={styles.screen_reader_only}>GitHub</span>
@@ -363,7 +378,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Twitch"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-twitch fa-lg`}></i>
           <span className={styles.screen_reader_only}>twitch</span>
@@ -375,7 +390,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Behance"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-behance fa-lg`}></i>
           <span className={styles.screen_reader_only}>behance</span>
@@ -387,7 +402,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Dribbble"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={` ${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-dribbble fa-lg`}></i>
           <span className={styles.screen_reader_only}>dribbble</span>
@@ -399,7 +414,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Medium"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-medium fa-lg`}></i>
           <span className={styles.screen_reader_only}>medium</span>
@@ -411,7 +426,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({iconList,align,co
           aria-label="Vimeo"
           rel="noopener noreferrer"
           target="_blank"
-          className={`${styles.touchTarget} ${styles.alignSocialIcon} ${enableHoverClass}`}
+          className={`${styles.socialIcon} ${enableHoverClass}`}
         >
           <i className={`fab fa-vimeo fa-lg`}></i>
           <span className={styles.screen_reader_only}>vimeo</span>
