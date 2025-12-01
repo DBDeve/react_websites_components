@@ -23,11 +23,11 @@ const alignMap = {
 
 
 type Header = {
-  children: ReactNode,
   backGroundColor?: string,
   padding?: {all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
   fixed?: boolean,
-  hoverColor?:string
+  hoverColor?:string,
+  children: ReactNode
 };
 export const Header: React.FC<Header> = ({ children, backGroundColor, padding, fixed, hoverColor }) => {
 
