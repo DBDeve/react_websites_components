@@ -486,18 +486,32 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
 
 type HeaderHeading = {
   text?:{size?:string,family?:string, color?:string},
+  align?:JustifyContent, 
+  componetGrow?:number,
   children:ReactNode
 };
-export const HeaderHeading: React.FC<HeaderHeading> = ({ text, children}) => {
+export const HeaderHeading: React.FC<HeaderHeading> = ({ text, align, componetGrow, children}) => {
 
   let textStyle;
+  let alignStyle;
+  let componetGrowStyle;
 
   if(text){
     textStyle = {'--header-heading-size': text.size,'--header-heading-family':text.family, '--header-heading-color':text.color};
   }
+
+  if(align){
+    alignStyle = {'--header-heading-align':align};
+  }
+
+  if(componetGrow){
+    componetGrowStyle = {'--header-heading-grow':componetGrow};
+  }
   
   const headingStyle = {
     ...textStyle,
+    ...alignStyle,
+    ...componetGrowStyle
   } as React.CSSProperties;
 
   return(

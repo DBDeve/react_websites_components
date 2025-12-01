@@ -93,7 +93,9 @@
 /* header heading*/
 .HeaderHeading{
   display: flex;
+  justify-content: var(--header-heading-align,center);
   align-items: center;
+  flex: var(--header-heading-grow, 1);
   font-size: var(--header-heading-size, 30px);
   font-family: var(--header-heading-family, 'Poppins'), 'Roboto', 'Lato', sans-serif;
   color: var(--header-heading-color, rgb(0, 0, 0));
