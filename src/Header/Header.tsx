@@ -93,13 +93,12 @@ export const Header: React.FC<Header> = ({ children, backGroundColor, padding, f
 
 type HeaderNavBar ={
   menuData:{pageTitle: string; pagePath: string}[],
-  align:'left'|'center'|'right',
-  text?:{size:CSSLength, family:string}
-  componetGrow?:number,
   enableHover?:boolean,
-  enableBorderRight?:boolean
+  nav?:{componetGrow?:number, text?:{size:CSSLength, family:string}},
+  desktopMenu?:{align?:JustifyContent}
+  mobileMenu?:{align?:JustifyContent}
 };
-export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,componetGrow,enableHover,enableBorderRight})=>{
+export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,nav,enableHover,desktopMenu,mobileMenu})=>{
 
   const [isVisible, setIsVisible] = useState(false);
   
@@ -117,29 +116,80 @@ export const HeaderNavBar:React.FC<HeaderNavBar> = ({menuData,align,text,compone
   let navStyle;
   let menuDesktopStyle;
   let menuMobileStyle;
-
   const enableHoverClass = enableHover ? styles.hoverEnabled: 'no_hover';
 
+
+  if(nav){
+    let grow;
+    let text;
+
+    if(nav.componetGrow){
+      grow={'--navbar-component-Grow': nav.componetGrow}
+    }
+
+    if(nav.text){
+      text={'--navbar-font-size':nav.text.size, '--navbar-font-family':nav.text.family}
+    }
+
+    navStyle={
+      ...grow,
+      ...text
+    } as React.CSSProperties;
+  }
+
+  if(desktopMenu){
+
+    let align;
+
+    if(desktopMenu.align){
+      align={'--navbar-desktop-menu-align': desktopMenu.align}
+    }
+
+    menuDesktopStyle={
+      ...align
+    } as React.CSSProperties;
+  }
+
+
+  let align;
+  let view
+
+  if(mobileMenu){
+
+    if(mobileMenu.align){
+      align={'--navbar-mobile-menu-align': mobileMenu.align }
+    }
+    
+  }
+
+  view ={'--menu-display': isVisible ? 'flex' : 'none'}
+
+  menuMobileStyle={
+    ...align,
+    ...view
+  } as React.CSSProperties;
+  
   return(
-    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={{ '--componet-Grow': componetGrow,'--font-size':text?.size, '--font-family':text?.family} as React.CSSProperties} className={styles.navbar}>
+    <nav id ="navbar" role="navigation" aria-label={description[lang]?.nav?? 'undefined'} style={navStyle} className={styles.navbar}>
       <button aria-label={description[lang]?.button?? 'undefined'} className={`${styles.menuMobileBottom}`} onClick={handleClick}>
         {isVisible ? <i className="fas fa-times fa-2x"></i> : <i className="fas fa-bars fa-2x"></i>}
       </button>
-      <ul id="desktop_menu" className={`${styles.alignComponent} ${alignMap[align]} ${styles.ul}`} >
+      <ul id="desktop_menu" className={`${styles.desktopMenu}`} style={menuDesktopStyle}>
         {menuData.map((page, index) => (
-          <li className={`${styles.il} ${index < menuData.length - 1 && enableBorderRight? styles.borderRight : 'no_borderRight'}`} key={index} >
+          <li key={index} >
             {/* creare un variabile per l'inserimeto di colori con contrasti che funzionano universalmente */}
             <a href={`${page.pagePath}`} className={`${enableHoverClass}`}>
-              <p className={styles.menuText}>{page.pageTitle}</p>
+              <p >{page.pageTitle}</p>
             </a>
           </li>
         ))}
       </ul>
-      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={{ '--menu-display': isVisible ? 'inherit' : 'none'} as React.CSSProperties}>
+      {/* trovare un modo per inserire la classe "menuMobileStyle" nel tag style*/ }
+      <ul id="mobile_menu" className={`${styles.mobileMenu}`} style={menuMobileStyle}>
         {menuData.map((page, index) => (
-          <li className={`${styles.il} ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`} key={index} >
+          <li className={` ${index < menuData.length - 1 ? styles.borderBottom : 'no_borderRight'}`} key={index} >
             <a href={`${page.pagePath} `} className={`${enableHoverClass}`}>
-              <p className={styles.menuText}>{page.pageTitle}</p>
+              <p >{page.pageTitle}</p>
             </a>
           </li>
         ))}
