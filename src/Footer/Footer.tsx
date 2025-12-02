@@ -30,7 +30,7 @@ export const FooterNavBar:React.FC<FooterNavBar> = ({title, links,align}) => {
   return (
   <nav className={`${styles.nav} ${alignItemsMap[align]}`}>
     <h2 className={`${styles.footerNavTitle}`} style={{ '--fontSize-Title': title.size,'--fontFamily-Title':title.family } as React.CSSProperties}>{title.content}</h2>
-     <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`} style={{ '--fontSize-link': links.size, '--fontFamily-link':links.family } as React.CSSProperties}>
+    <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`} style={{ '--fontSize-link': links.size, '--fontFamily-link':links.family } as React.CSSProperties}>
       {links.content.map((link,index) => (
         <li key={index}> <a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a> </li>
       ))}
@@ -69,9 +69,9 @@ type FooterContainer = {
   alignItems?: AlignItems,
   children: ReactNode
 }
-export const FooterContainer:React.FC<FooterContainer> = ({direction, wrap, alignContent, justifyContent, alignItems,children}) => {
+export const FooterContainer:React.FC<FooterContainer> = ({direction, wrap, alignContent, justifyContent, alignItems, children}) => {
   return (
-    <div className={styles.footerFlexContent} style={{ '--flex-direction': direction, '--flex-wrap': wrap, '--align-content': alignContent, '--justify-content': justifyContent, '--align-items': alignItems } as React.CSSProperties}>
+    <div className={styles.footerFlexContainer} style={{ '--footer-flex-direction': direction, '--footer-flex-wrap': wrap, '--footer-align-content': alignContent, '--footer-justify-content': justifyContent, '--footer-align-items': alignItems } as React.CSSProperties}>
       {children}
     </div>
   )

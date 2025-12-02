@@ -1,9 +1,5 @@
 .footer{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
   width: 100%;
-  gap: 10px;
   padding: 10px;
   background-color: var(--bg-Color, white);
 }
@@ -56,13 +52,13 @@
 }
 
 
-.footerFlexContent{
+.footerFlexContainer{
   display: flex;
-  flex-direction: var(--flex-direction, row);
-  flex-wrap: var(--flex-wrap, wrap);
-  align-content: var(--align-content, stretch);
-  justify-content: var(--justify-content, center);
-  align-items: var(--align-items, center);
-  width: 100%;
+  flex-direction: var(--footer-flex-direction); --footer-flex-direction:row;
+  flex-wrap: var(--footer-flex-wrap); --footer-flex-wrap:wrap;
+  align-content: var(--footer-align-content); --footer-align-content:stretch;
+  justify-content: var(--footer-justify-content); --footer-justify-content:center;
+  align-items: var(--footer-align-items); --footer-align-items:center;
+  width: auto;
   gap: 10px;
 }
