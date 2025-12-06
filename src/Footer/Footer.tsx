@@ -19,23 +19,45 @@ export const Footer:React.FC<Footer> = ({backgroundColor,children}) => {
 }
 
 
-const alignItemsMap = {
-  left: `${styles.itemsAlignLeft}`,
-  center: `${styles.itemAlignCenter}`,
-  right: `${styles.itemsAlignRight}`,
-};
+
 /* ce ne può essere più di una */ 
-type FooterNavBar={title:{size?:string,family?:string,content:string}, links:{size?:string,family?:string,content:{linkText: string; linkPath: string}[]}, align: "left" | "center" | "right"};
-export const FooterNavBar:React.FC<FooterNavBar> = ({title, links,align}) => {
+type FooterNavBar={
+  title?:{size?:string,family?:string,content:string}, 
+  list:{
+    size?:string,
+    family?:string,
+    content:{linkText: string; linkPath: string}[], 
+  },
+  flexStyle?:{direction?: FlexDirection, justifyContent?: JustifyContent, alignItems?: AlignItems}
+};
+export const FooterNavBar:React.FC<FooterNavBar> = ({title, list, flexStyle}) => {
+
+  let navStyle;
+  let titleStyle;
+  let listStyle;
+
+  if(title){
+    titleStyle= {'--footer-navbar-title-fontSize': title.size,'--footer-navbar-title-family':title.family} as React.CSSProperties;
+  }
+
+  if(list){
+    listStyle = {'--fontSize-link':list.size, '--fontFamily-link':list.family} as React.CSSProperties;
+  }
+
+  if(flexStyle){
+    navStyle ={'--footer-navBar-container-justifyContent': flexStyle.alignItems} as React.CSSProperties;
+    listStyle = {...listStyle, '--footer-navbar-list-direction':flexStyle.direction, '--footer-navbar-list-justifyContent':flexStyle.justifyContent, '--footer-navbar-list-itemsAlign':flexStyle.alignItems} as React.CSSProperties
+  }
+
   return (
-  <nav className={`${styles.nav} ${alignItemsMap[align]}`}>
-    <h2 className={`${styles.footerNavTitle}`} style={{ '--fontSize-Title': title.size,'--fontFamily-Title':title.family } as React.CSSProperties}>{title.content}</h2>
-    <ul className={`${styles.ul} ${alignItemsMap[align]} ${styles.footerNavBarLInk}`} style={{ '--fontSize-link': links.size, '--fontFamily-link':links.family } as React.CSSProperties}>
-      {links.content.map((link,index) => (
-        <li key={index}> <a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a> </li>
-      ))}
-    </ul>
-  </nav>
+    <nav className={`${styles.footerNav}`} style={navStyle}>
+      { title && <h2 className={`${styles.footerNavTitle}`} style={titleStyle}> {title.content} </h2>}
+      <ul className={`${styles.footerNavList}`} style={listStyle}>
+        {list.content.map((link,index) => (
+          <li key={index}> <a className={styles.enableHover} href={`${link.linkPath}`}>{link.linkText}</a> </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 
