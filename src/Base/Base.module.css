@@ -55,9 +55,9 @@
 .flex{
   flex-direction: var(--container-flex-direction); --container-flex-direction: row;
   flex-wrap: var(--container-flex-wrap); --container-flex-wrap: wrap;
-  align-content: var(--container-align-content); --container-align-content:stretch;
-  justify-content: var(--container-justify-content); --container-justify-content: center;
-  align-items: var(--container-align-items); --container-align-items: center;
+  align-content: var(--container-align-content); 
+  justify-content: var(--container-justify-content); 
+  align-items: var(--container-align-items); 
 }
 .grid{
   --container-grid-template-columns: 1fr 1fr;

@@ -74,15 +74,29 @@ import {Footer,FooterFlexContent,FooterNavBar} from 'react_websites_components/F
 ```jsx
 
   <Footer backgroundColor="#666666ff">
-    <FooterFlexContent direction="column">
-      <FooterFlexContent direction="row">
-        <FooterNavBar title={{size:'25px',content:'Company'}} align='center' links={{size:'20px',content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}/>
-        <FooterNavBar title={{size:'25px',content:'support'}} align='right' links={{size:'20px',content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
-      </FooterFlexContent>
-      <FooterFlexContent>
-        <FooterNavBar title={{size:'25px',content:'services'}} align='left' links={{size:'20px',content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}/>
-      </FooterFlexContent>
-    </FooterFlexContent>
+    <FooterContainer direction="column">
+      <FooterContainer justifyContent="center">
+        <FooterNavBar 
+          title={{content:'Company'}} 
+          list={{ content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}
+          flexStyle={{alignItems:'flex-start'}}
+        />
+        <FooterNavBar 
+          title={{content:'support'}} 
+          list={{content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
+        <FooterNavBar 
+          title={{content:'seeeeeeeee'}} 
+          list={{ content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}
+          flexStyle={{alignItems:'flex-end'}}
+        />
+      </FooterContainer>
+      <FooterContainer justifyContent="flex-end">
+        <FooterNavBar 
+          list={{ content:[{linkText:'Consul', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}
+          flexStyle={{direction:'row'}}
+        />
+      </FooterContainer>
+    </FooterContainer>
   </Footer>
 
 ```
@@ -212,27 +226,29 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
 ```jsx
 <Container type='body'>
 
-  <Header backGroundColor="red" fixed hoverColor="blue" padding="1px">
+  <Header hoverColor="red">
     <HeaderNavBar
-      text={{size:'20px',family:"Open Sans, sans-serif"}}
       enableHover
       menuData={[{pageTitle:'home',pagePath:'/page1'},{pageTitle:'about us',pagePath:'/page2'},{pageTitle:'work',pagePath:'/page3'}]} 
-      align="left"
-      componetGrow={3}
     />
-    <HeaderSocialIcons enableHover sizeIcon="18px" iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}}  align={'center'} />
-    <HeaderImageLogo urlImage="/file.svg" align='center'/>
+    <HeaderSocialIcons iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}} />
+    <HeaderHeading> titolo </HeaderHeading>
   </Header>
 
-  <Container type='main' >
+  <Container type='main'>
 
-    <HeroSection backGround={{image:"url('/image.jpg')"}}>
-      <HeroHeading> titolo di prova </HeroHeading>
-      <HeroParagraph text={{color:rgba(28, 85, 1, 0.5)}}> paragrafo di <a href="hh">prova</a> </HeroParagraph>
-      <HeroButton margin={'20px'}> bottone di prova </HeroButton>
+    <HeroSection>
+      <HeroContainer flexSetting={{direction:"column",alignItems: "flex-start"}}>
+        <HeroHeading> Hello World </HeroHeading>
+        <HeroParagraph> Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet </HeroParagraph>
+        <HeroContainer margin={{top:'15px'}} flexSetting={{direction:"row", justifyContent: "flex-start"}}>
+          <HeroButton> first button </HeroButton>
+          <HeroButton> second button </HeroButton>
+        </HeroContainer>
+      </HeroContainer>
     </HeroSection>
 
-    <Container type='section' backGround={{color:'green'}} display={{type:'flex', direction:'row', wrap:'wrap', alignItems:'center', justifyContent:'center'}}>
+    <Container type='section' backGround={{color:'green'}} display={{type:'flex', direction:'row', wrap:'wrap', alignItems:'flex-start', justifyContent:'flex-start'}}>
       <Button margin={{width:'20px'}}> bot one di pro </Button>
       <Heading type='h1' margin={{width:'20px'}}> ciao </Heading>
       <Paragraph
@@ -241,18 +257,34 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
           paragrafo di <a href="f">prova</a>
       </Paragraph>
     </Container>
+
   </Container>
 
   <Footer backgroundColor="#666666ff">
-    <FooterFlexContent direction="column">
-      <FooterFlexContent direction="row">
-        <FooterNavBar title={{content:'Company'}} align='center' links={{content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}/>
-        <FooterNavBar title={{content:'support'}} align='right' links={{content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
-      </FooterFlexContent>
-      <FooterFlexContent>
-        <FooterNavBar title={{content:'services'}} align='left' links={{size:'20px',content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}/>
-      </FooterFlexContent>
-    </FooterFlexContent>
+    <FooterContainer direction="column">
+      <FooterContainer justifyContent="center">
+        <FooterNavBar 
+          title={{content:'Company'}} 
+          list={{ content:[{linkText:'About Us', linkPath:'/about'},{linkText:'Careers', linkPath:'/careers'},{linkText:'Press', linkPath:'/press'}]}}
+          flexStyle={{alignItems:'flex-start'}}
+        />
+        <FooterNavBar 
+          title={{content:'support'}} 
+          list={{content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
+        <FooterNavBar 
+          title={{content:'seeeeeeeee'}} 
+          list={{ content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}
+          flexStyle={{alignItems:'flex-end'}}
+        />
+      </FooterContainer>
+      <FooterContainer justifyContent="flex-end">
+        <FooterNavBar 
+          list={{ content:[{linkText:'Consul', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}
+          flexStyle={{direction:'row'}}
+        />
+      </FooterContainer>
+    </FooterContainer>
   </Footer>
+  
 </Container>
 ```

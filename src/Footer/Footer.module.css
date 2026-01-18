@@ -32,21 +32,19 @@
   font-weight: 400;
 }
 
-
-
-
 .enableHover:hover{
   color: var(--NavBar-HoverColor,white)
 }
 
 
-.footerFlexContainer{
+
+.footerContainer{
   display: flex;
   flex-direction: var(--footer-flex-direction); --footer-flex-direction:row;
   flex-wrap: var(--footer-flex-wrap); --footer-flex-wrap:wrap;
-  align-content: var(--footer-align-content); --footer-align-content:stretch;
-  justify-content: var(--footer-justify-content); --footer-justify-content:center;
-  align-items: var(--footer-align-items); --footer-align-items:center;
+  align-content: var(--footer-align-content); 
+  justify-content: var(--footer-justify-content); 
+  align-items: var(--footer-align-items ); 
   width: auto;
   gap: 10px;
 }

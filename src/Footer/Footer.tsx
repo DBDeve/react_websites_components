@@ -26,7 +26,7 @@ type FooterNavBar={
   list:{
     size?:string,
     family?:string,
-    content:{linkText: string; linkPath: string}[], 
+    content:{linkText: string; linkPath: string}[],
   },
   flexStyle?:{direction?: FlexDirection, justifyContent?: JustifyContent, alignItems?: AlignItems}
 };
@@ -93,7 +93,7 @@ type FooterContainer = {
 }
 export const FooterContainer:React.FC<FooterContainer> = ({direction, wrap, alignContent, justifyContent, alignItems, children}) => {
   return (
-    <div className={styles.footerFlexContainer} style={{ '--footer-flex-direction': direction, '--footer-flex-wrap': wrap, '--footer-align-content': alignContent, '--footer-justify-content': justifyContent, '--footer-align-items': alignItems } as React.CSSProperties}>
+    <div className={styles.footerContainer} style={{ '--footer-flex-direction': direction, '--footer-flex-wrap': wrap, '--footer-align-content': alignContent, '--footer-justify-content': justifyContent, '--footer-align-items': alignItems } as React.CSSProperties}>
       {children}
     </div>
   )
