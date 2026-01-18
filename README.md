@@ -233,6 +233,7 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
     />
     <HeaderSocialIcons iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}} />
     <HeaderHeading> titolo </HeaderHeading>
+    <HeaderImageLogo/>
   </Header>
 
   <Container type='main'>
