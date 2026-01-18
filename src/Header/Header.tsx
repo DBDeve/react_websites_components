@@ -4,6 +4,7 @@ import styles from './Header.module.css';
 import {CSSLength} from '../types'
 import {Padding,Margin} from '../types'
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
+import {defaultImg} from './index';
 
 
 
@@ -495,7 +496,7 @@ export const HeaderSocialIcons:React.FC<HeaderSocialIcons> = ({enableHover,compo
 }
 
 type HeaderImageLogo = {
-  urlImage:string,
+  urlImage?:string,
   align?:JustifyContent, 
   componetGrow?:number
 }
@@ -509,6 +510,13 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
 
   let headerImageLogoGrow;
   let headerImageLogoAlign;
+  let headerUrlImage;
+
+  if(urlImage){
+    headerUrlImage = urlImage;
+  } else {
+    headerUrlImage = defaultImg;
+  }
 
   if(align){
     headerImageLogoAlign = {'--header-image-logo-align':align}
@@ -526,7 +534,7 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
   return (
     <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.headerImageLogo}`} style={headerImageLogoStyle}> 
       <a href="/" aria-label="Homepage">
-        <img src={`${urlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='eager' title='logo image' width={50} height={25}/>
+        <img src={`${headerUrlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='eager' title='logo image' width={50} height={25}/>
       </a>
     </div>
   )
