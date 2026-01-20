@@ -171,7 +171,7 @@ export const Button:React.FC<Button> = ({href,padding,border,margin,fontText,chi
     )
 }
 
-type flex = {type:'flex', direction?: FlexDirection, wrap?: FlexWrap, alignContent?: AlignContent, justifyContent?: JustifyContent,alignItems?: AlignItems}
+type flex = {type:'flex', gap?:string, size?:number, direction?: FlexDirection, wrap?: FlexWrap, alignContent?: AlignContent, justifyContent?: JustifyContent,alignItems?: AlignItems}
 type grid = {type:'grid', columns?:string, rows?:string, gap?:string, justifyItems?:string, alignItems?:string}
 type display = flex | grid
 type Container = {
@@ -221,7 +221,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
 
     if(display){
         if(display.type === 'flex'){
-            displayStyle={'--container-display':'flex', '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
+            displayStyle={'--container-display':'flex', '--container-flex-gap':display.gap, '--flex':display.size, '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
             displayProps=styles.flex;
         }
 

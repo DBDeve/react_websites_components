@@ -41,7 +41,7 @@
   margin: var(--container-margin-top) var(--container-margin-right) var(--container-margin-bottom) var(--container-margin-left);
   --container-border-width:0px; --container-border-type:solid; --container-border-color:black;
   border: var(--container-border-width) var(--container-border-type) var(--container-border-color);
-  --container-border-radius:5px;
+  --container-border-radius:0px;
   border-radius: var(--container-border-radius);
   --container-padding-top:0px; --container-padding-right:0px; --container-padding-bottom:0px; --container-padding-left:0px;
   padding: var(--container-padding-top) var(--container-padding-right) var(--container-padding-bottom) var(--container-padding-left);
@@ -53,11 +53,13 @@
   background-blend-mode: var(--container-background-mode);
 }
 .flex{
+  flex: var(--flex); --flex:1;
+  gap: var(--container-flex-gap); --container-flex-gap:10px;
   flex-direction: var(--container-flex-direction); --container-flex-direction: row;
   flex-wrap: var(--container-flex-wrap); --container-flex-wrap: wrap;
-  align-content: var(--container-align-content); 
-  justify-content: var(--container-justify-content); 
-  align-items: var(--container-align-items); 
+  align-content: var(--container-align-content);
+  justify-content: var(--container-justify-content);
+  align-items: var(--container-align-items);
 }
 .grid{
   --container-grid-template-columns: 1fr 1fr;
