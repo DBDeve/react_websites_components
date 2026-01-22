@@ -1,4 +1,4 @@
-import React, {ReactNode,ReactElement,useState} from 'react';
+import React, {ReactNode,ReactElement,useState,useEffect} from 'react';
 import styles from './Base.module.css';
 import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding,BackgroundBlendMode} from '../types';
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
@@ -181,15 +181,16 @@ type Container = {
     padding?:{width?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
     backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
     display?:display,
+    mobileReverse?:boolean,
     children:ReactNode
 }
-export const Container:React.FC<Container> = ({type,padding,border,margin,backGround,display,children}) => {
+export const Container:React.FC<Container> = ({type,padding,border,margin,backGround,display,mobileReverse,children}) => {
 
     let paddingStyle;
     let borderStyle;
     let marginStyle;
     let backgroundStyle;
-    let displayStyle;
+    let displayStyle: Record<string, string | number | undefined> = {}
     let displayProps
     
 
@@ -222,6 +223,10 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
     if(display){
         if(display.type === 'flex'){
             displayStyle={'--container-display':'flex', '--container-flex-gap':display.gap, '--flex':display.size, '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
+            if(mobileReverse && window.innerWidth <= 800){
+                displayStyle['--container-flex-direction']='column-reverse';
+                displayStyle['--container-align-items']='center';
+            }
             displayProps=styles.flex;
         }
 
@@ -230,8 +235,35 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
             displayProps=styles.grid;
         }
     }
-    
 
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const onResize = () => setWidth(window.innerWidth);
+
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+
+    }, []);
+
+    useEffect(() => {
+
+        if(mobileReverse){
+            console.log("La pagina è stata ridimensionata:", width);
+        
+            console.log('resize detected');
+            let height = window.innerWidth;
+            console.log('height:', height);
+            let FlexDirection = displayStyle['--container-flex-direction']; //get the name of the class
+            console.log('FlexDirection:', FlexDirection);
+            if ( height <= 800) {
+                displayStyle['--container-flex-direction']='column-reverse';
+            }
+        }
+
+    }, [width]);
+
+    
     const containerStyle = {
         ...paddingStyle,
         ...borderStyle,
@@ -239,6 +271,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
         ...backgroundStyle,
         ...displayStyle
     } as React.CSSProperties;
+
 
     return  React.createElement(type, { style:containerStyle , className: `${styles.customContainer} ${displayProps}` },children);
 

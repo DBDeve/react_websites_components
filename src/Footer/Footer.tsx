@@ -23,11 +23,7 @@ export const Footer:React.FC<Footer> = ({backgroundColor,children}) => {
 /* ce ne può essere più di una */ 
 type FooterNavBar={
   title?:{size?:string,family?:string,content:string}, 
-  list:{
-    size?:string,
-    family?:string,
-    content:{linkText: string; linkPath: string}[],
-  },
+  list:{size?:string, family?:string, content:{linkText: string; linkPath: string}[]},
   flexStyle?:{direction?: FlexDirection, justifyContent?: JustifyContent, alignItems?: AlignItems}
 };
 export const FooterNavBar:React.FC<FooterNavBar> = ({title, list, flexStyle}) => {

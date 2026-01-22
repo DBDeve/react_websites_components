@@ -19,7 +19,7 @@ If you use older versions, you may encounter errors such as useState is not a fu
 ## 🧪 examples of use
 ### Header component
 ```jsx
-import {HeaderNavBar,HeaderSocialIcons,HeaderImageLogo,Header} from 'react_websites_components/Header'
+import {HeaderNavBar,HeaderSocialIcons,HeaderImageLogo,HeaderHeading,Header} from 'react_websites_components/Header'
 ```
 ```jsx
 
@@ -38,6 +38,7 @@ import {HeaderNavBar,HeaderSocialIcons,HeaderImageLogo,Header} from 'react_websi
     align={'center'}
   />
   <HeaderImageLogo urlImage="/file.svg" align={'right'}/>
+  <HeaderHeading> titolo </HeaderHeading>
 </Header>
 
 ```
@@ -45,26 +46,30 @@ import {HeaderNavBar,HeaderSocialIcons,HeaderImageLogo,Header} from 'react_websi
   - backGroundColor(string): set the background color of the component header. if it isn't insert the value is transparent.
   - fixed?(boolean): if it is insert the header component is fixed.
   - hoverColor(string): set the hover event color.
-  - padding? (string): set the top, bottom, right and left padding.
+  - padding? ({all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding}): set the top, bottom, right and left padding.
 
 - HeaderNavBar component attr
-  - text({size:string,family:string}): set the size and the family of the navBar.
+  - nav?:{componetGrow?:number, text?:{size:CSSLength, family:string}},
+  - desktopMenu?:{align?:JustifyContent}
+  - mobileMenu?:{align?:JustifyContent}
   - enableHover(boolean): enable the hover event.
   - menuData({pageTitle:string,pagePath:string}[]): every json in the array contained the title of menu and the corresponding link.
-  - align(string): set the horizontal alignment of the NavBar component. accepted values are left, center, right.
-  - componentGrow(number): sets the space occupied by the component in relation to the others.
-  - enableBorderRight(boolean): enables an effect that splits the various components of the menu.
 
 - HeaderSocialIcons component attr
   - sizeIcon(string): set the icons size.
-  - enableHover: enable the hover event.
+  - enableHover(boolean): enable the hover event.
   - iconList(json array): every json in the array contained the type of social icon and the link.
-  - align(string): set the alignment of the icon group. accepted values are left, center, right.
+  - align?(JustifyContent): set the alignment of the icon group. accepted values are left, center, right.
   - componetGrow(number): sets the space occupied by the component in relation to the others.
+
+- HeaderHeading component attr
+  text?({size?:string,family?:string, color?:string}).
+  align?(JustifyContent). 
+  componetGrow?(number).
 
 - HeaderImageLogo component attr
   - urlImage(string): this path is inserted in the src of the image.
-  - align(string): set the alignment of the logo. accepted values are left, center, right.
+  - align(JustifyContent): set the alignment of the logo. accepted values are left, center, right.
   - componetGrow(number): sets the space occupied by the component in relation to the others.
 
 ### Footer component
@@ -103,7 +108,7 @@ import {Footer,FooterFlexContent,FooterNavBar} from 'react_websites_components/F
 - Footer component attr
   - backgroundColor(string): set background color component.
 
-- FooterFlexContent component attr
+- FooterContainer component attr
   - direction? (FlexDirection): set the direction inside fotter component
   - wrap? (FlexWrap): set the value of wrap
   - alignContent? (AlignContent):
@@ -111,9 +116,9 @@ import {Footer,FooterFlexContent,FooterNavBar} from 'react_websites_components/F
   - alignItems? (AlignItems): 
 
 - FooterNavBar component attr
-  - title({size?:string,family?:string,content:string}): set the title of the navBar. you can set the size and the family font.
-  - align(string): align the content of foterNavBar.
-  - links({size?:string,family?:string,content:{linkText: string; linkPath: string}[]}): set the content with relative link. you can set the size and the family font.
+  - title? ({size?:string,family?:string,content:string}): set the title of the navBar. you can set the size and the family font.
+  - list ({size?:string, family?:string, content:{linkText: string; linkPath: string}[]}): set the content with relative link. you can set the size and the family font.
+  - flexStyle? ({direction?: FlexDirection, justifyContent?: JustifyContent, alignItems?: AlignItems}): set the flexstyle of footer.
 
 
 ### HeroSection component
@@ -134,11 +139,13 @@ import {HeroSection,HeroHeading,HeroButton,HeroParagraph,HeroContainer} from 're
 ```
 
 - HeroSection component attr
-  - mediaType({type:string, src:string}): 
+  - backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
+  - padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
+  - height?:{mobile?:CSSLength, desktop?:CSSLength},
 
 - HeroHeading component attr
   - text? ({size?:string, family?:string, color?:string}):
-  - margin? (Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin}):
+  - margin? (margin?:Margin | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin}):
 
 - HeroParagraph component attr
   - text? ({size?:string,family?:string, color?:string}):
@@ -156,14 +163,20 @@ import {HeroSection,HeroHeading,HeroButton,HeroParagraph,HeroContainer} from 're
 import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_websites_components/Base'
 ```
 ```jsx
-<Container type='section' backGround={{color:'green'}} display={{type:'flex', direction:'row', wrap:'wrap', alignItems:'center',justifyContent:'center'}}>
-  <Button margin={{width:'20px'}}> bot one di pro </Button>
-  <Heading type='h1' margin={{width:'20px'}}> ciao </Heading>
-  <Paragraph
-    anchor={{color:'red',textDecoration:{line:'underline',color:'red',style:'solid', thickness:'1%'}}} 
-    anchorHover={{color:'green',textDecoration:{line:'underline',color:'green',style:'solid', thickness:'1%'}}}>
-      paragrafo di <a href="f">prova</a>
-  </Paragraph>
+<Container type='section' display={{type:'flex', direction:'row'}} margin={{width:'20px'}}>
+  <Image attr={{description:"prova", width:600, height:600}}/>
+  <Container type='section' display={{type:'flex', gap:'0px', direction:'column', alignItems:'center'}}>
+    <Heading type='h2' font={{size:'40px'}}> titolo di prova </Heading>
+    <Paragraph
+      anchor={{color:'red',textDecoration:{line:'underline',color:'red',style:'solid', thickness:'1%'}}} 
+      anchorHover={{color:'green',textDecoration:{line:'underline',color:'green',style:'solid', thickness:'1%'}}}>
+        Lorem <a href="link_prova"> ipsum </a>dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+        Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+        Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+        Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+    </Paragraph>
+    <Button href="/provaaaa" margin={{width:'20px'}}> bottone di prova </Button>
+  </Container>
 </Container>
 ```
 
@@ -229,7 +242,7 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
   <Header hoverColor="red">
     <HeaderNavBar
       enableHover
-      menuData={[{pageTitle:'home',pagePath:'/page1'},{pageTitle:'about us',pagePath:'/page2'},{pageTitle:'work',pagePath:'/page3'}]} 
+      menuData={[{pageTitle:'home',pagePath:'/page1'},{pageTitle:'about us',pagePath:'/page2'},{pageTitle:'work',pagePath:'/page3'}]}
     />
     <HeaderSocialIcons iconList={{facebook:{link:'https://facebbok'},twitch:{link:'https://twitch'},instagram:{link:'https://twitch'}}} />
     <HeaderHeading> titolo </HeaderHeading>
@@ -238,7 +251,7 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
 
   <Container type='main'>
 
-    <HeroSection>
+    <HeroSection backGround={{image:"/p1.jpg"}}>
       <HeroContainer flexSetting={{direction:"column",alignItems: "flex-start"}}>
         <HeroHeading> Hello World </HeroHeading>
         <HeroParagraph> Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet </HeroParagraph>
@@ -249,16 +262,21 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
       </HeroContainer>
     </HeroSection>
 
-    <Container type='section' backGround={{color:'green'}} display={{type:'flex', direction:'row', wrap:'wrap', alignItems:'flex-start', justifyContent:'flex-start'}}>
-      <Button margin={{width:'20px'}}> bot one di pro </Button>
-      <Heading type='h1' margin={{width:'20px'}}> ciao </Heading>
-      <Paragraph
-        anchor={{color:'red',textDecoration:{line:'underline',color:'red',style:'solid', thickness:'1%'}}} 
-        anchorHover={{color:'green',textDecoration:{line:'underline',color:'green',style:'solid', thickness:'1%'}}}>
-          paragrafo di <a href="f">prova</a>
-      </Paragraph>
+    <Container type='section' display={{type:'flex', direction:'row', wrap:'wrap', justifyContent:'center'}} margin={{width:'20px'}}>
+      <Image attr={{description:"prova", width:600, height:600}}/>
+      <Container type='section' display={{type:'flex', gap:'0px', direction:'column', wrap:'wrap', alignItems:'center'}}>
+        <Heading type='h2' font={{size:'40px'}}> titolo di prova </Heading>
+        <Paragraph
+          anchor={{color:'red',textDecoration:{line:'underline',color:'red',style:'solid', thickness:'1%'}}}
+          anchorHover={{color:'green',textDecoration:{line:'underline',color:'green',style:'solid', thickness:'1%'}}}>
+            Lorem <a href="link_prova"> ipsum </a> dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet
+        </Paragraph>
+        <Button href="/provaaaa" margin={{width:'20px'}}> bottone di prova </Button>
+      </Container>
     </Container>
-
   </Container>
 
   <Footer backgroundColor="#666666ff">
@@ -273,19 +291,18 @@ import {Button,Paragraph,Heading,Container,Image,Separator,Spacing} from 'react_
           title={{content:'support'}} 
           list={{content:[{linkText:'Help Center', linkPath:'/help'},{linkText:'Contact Us', linkPath:'/contact'},{linkText:'Privacy Policy', linkPath:'/privacy'}]}}/>
         <FooterNavBar 
-          title={{content:'seeeeeeeee'}} 
+          title={{content:'about us'}} 
           list={{ content:[{linkText:'Consulting', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}
           flexStyle={{alignItems:'flex-end'}}
         />
       </FooterContainer>
-      <FooterContainer justifyContent="flex-end">
+      <FooterContainer justifyContent="center">
         <FooterNavBar 
-          list={{ content:[{linkText:'Consul', linkPath:'/consulting'},{linkText:'Sales', linkPath:'/sales'},{linkText:'Training', linkPath:'/training'}]}}
+          list={{ content:[{linkText:'Our story', linkPath:'/Our story'},{linkText:'Partners', linkPath:'/Partners'},{linkText:'Team', linkPath:'/Team'}]}}
           flexStyle={{direction:'row'}}
         />
       </FooterContainer>
     </FooterContainer>
   </Footer>
-  
 </Container>
 ```
