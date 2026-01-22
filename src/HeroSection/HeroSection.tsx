@@ -13,7 +13,7 @@ import {defaultImgHeroSection} from './index';
 type HeroSection={
     backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
     padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
-    height?:{mobile?:CSSLength, desktop?:CSSLength},
+    height?:{mobile?:CSSLength, tablet?:CSSLength, desktop?:CSSLength},
     children: ReactNode
 }
 export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,children}) => {
@@ -41,7 +41,7 @@ export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,chi
 
     if(height){
         
-        heightStyle = {'--hero-section-height': height.mobile};
+        heightStyle = {'--hero-section-desktop-height': height.desktop, '--hero-section-tablet-height': height.tablet, '--hero-section-mobile-height': height.mobile};
         
     }
 

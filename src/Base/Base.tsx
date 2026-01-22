@@ -223,7 +223,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
     if(display){
         if(display.type === 'flex'){
             displayStyle={'--container-display':'flex', '--container-flex-gap':display.gap, '--flex':display.size, '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
-            if(mobileReverse && window.innerWidth <= 800){
+            if(mobileReverse && window.innerWidth <= 850){
                 displayStyle['--container-flex-direction']='column-reverse';
                 displayStyle['--container-align-items']='center';
             }
@@ -239,9 +239,11 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
+
         const onResize = () => setWidth(window.innerWidth);
 
         window.addEventListener("resize", onResize);
+        
         return () => window.removeEventListener("resize", onResize);
 
     }, []);
@@ -252,12 +254,11 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
             console.log("La pagina è stata ridimensionata:", width);
         
             console.log('resize detected');
-            let height = window.innerWidth;
-            console.log('height:', height);
-            let FlexDirection = displayStyle['--container-flex-direction']; //get the name of the class
-            console.log('FlexDirection:', FlexDirection);
-            if ( height <= 800) {
+            let width1 = window.innerWidth;
+            
+            if ( width1 <= 850) {
                 displayStyle['--container-flex-direction']='column-reverse';
+                displayStyle['--container-align-items']='center';
             }
         }
 

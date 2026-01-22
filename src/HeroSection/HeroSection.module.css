@@ -2,7 +2,7 @@
 .HeroSection{
   display: flex;
   width:100%;
-  height: var( --hero-section-height, 500px);
+  height: var( --hero-section-desktop-height, 70vh);
   padding:  var(--hero-section-padding-top,30px) var(--hero-section-padding-right,30px) var(--hero-section-padding-bottom,30px) var(--hero-section-padding-left,30px);
   background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
   background-blend-mode: var(--container-background-mode,multiply);
@@ -59,10 +59,22 @@
   color: var(--hero-button-text-color-hover, rgb(255, 255, 255));
 }
 
-/* MOBILE CSS */
-@media (max-width: 768px) {  
+
+/* TABLET CSS */
+@media (min-width: 769px) and (max-width: 1024px) {
+
   .HeroSection{
-    height: auto;
+    height: var( --hero-section-tablet-height, 70vh);
+  }
+
+}
+
+
+/* MOBILE CSS */
+@media (max-width: 768px) {
+
+  .HeroSection{
+    height: var( --hero-section-mobile-height, 70vh);
   }
 
   .HeroHeading{
