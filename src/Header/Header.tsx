@@ -39,6 +39,8 @@ export const Header: React.FC<Header> = ({ children, backGroundColor, padding, f
   
   if(fixed){
 
+    positionStyle = {'--header-fixed':'fixed'};
+
     useEffect(() => {
 
       const onResize = () => {
@@ -64,9 +66,24 @@ export const Header: React.FC<Header> = ({ children, backGroundColor, padding, f
 
     }, []);
 
-    positionStyle = {'--header-fixed':'fixed'};
-
   }
+
+  useEffect(() => {
+
+    const onResize = () => {
+      const header = document.querySelector('header');
+      const mobileMenu = document.getElementById('mobile_menu');
+      if(mobileMenu && header){
+        const headerHeight = header.clientHeight;
+        mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
+      }
+    }
+
+    window.addEventListener("resize", onResize);
+    window.addEventListener("load", onResize);
+      
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   if(padding){
     if('all' in padding) {
