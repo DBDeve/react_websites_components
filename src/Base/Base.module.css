@@ -9,7 +9,6 @@
 /* CustomParagraph component */
 .customParagraph{
   font: var(--font-style-paragraph,normal) var(--font-variant-paragraph,normal) var(--font-weight-paragraph, 400) var(--font-stretch-paragraph,normal) var(--font-size-paragraph, 1rem)/var(--line-height-paragraph,1.5) var(--font-family-paragraph,"Helvetica Neue", Arial, sans-serif);
-  z-index: 10;
 }
 .anchor{
   color: var(--anchor-color, black);
