@@ -39,26 +39,34 @@ export const Header: React.FC<Header> = ({ children, backGroundColor, padding, f
   
   if(fixed){
 
+    useEffect(() => {
+
+      const onResize = () => {
+
+        const header = document.querySelector('header');
+
+        const main = document.querySelector('main')
+        if(header && main){ 
+          const headerHeight = header.clientHeight;
+          main.style.setProperty('--container-margin-top', `${headerHeight}px`);
+        }
+
+        const mobileMenu = document.getElementById('mobile_menu');
+        if(mobileMenu && header){
+          const headerHeight = header.clientHeight;
+          mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
+        }
+      };
+
+      window.addEventListener("resize", onResize);
+      
+      return () => window.removeEventListener("resize", onResize);
+
+    }, []);
+
     positionStyle = {'--header-fixed':'fixed'};
 
-    useEffect(() => {
-      const header = document.querySelector('header');
-      const main = document.querySelector('main')
-      if(header && main){
-        const headerHeight = header.clientHeight;
-        main.style.setProperty('--container-margin-top', `${headerHeight}px`);
-      }
-    }, []);
   }
-
-  useEffect(() => {
-    const header = document.querySelector('header');
-    const mobileMenu = document.getElementById('mobile_menu');
-    if(mobileMenu && header){
-      const headerHeight = header.clientHeight;
-      mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
-    }
-  },[Header]);
 
   if(padding){
     if('all' in padding) {
