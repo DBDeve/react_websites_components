@@ -61,7 +61,7 @@ export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,chi
 
 type HeroContainer = {
     margin?:{all?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
-    flexSetting?:{direction?: FlexDirection, gap?:string, wrap?: FlexWrap, alignContent?:AlignContent, justifyContent?:JustifyContent, alignItems?:AlignItems}
+    flexSetting?:{direction?: FlexDirection, size?:string, gap?:string, wrap?: FlexWrap, alignContent?:AlignContent, justifyContent?:JustifyContent, alignItems?:AlignItems}
     children: ReactNode
 }
 export const HeroContainer:React.FC<HeroContainer> = ({margin,flexSetting,children}) => {
@@ -79,7 +79,7 @@ export const HeroContainer:React.FC<HeroContainer> = ({margin,flexSetting,childr
     }
 
     if(flexSetting){
-        flexSettingStyle={'--hero-container-flex-direction':flexSetting.direction, '--hero-container-gap':flexSetting.gap, '--hero-container-align-content':flexSetting.alignContent, '--hero-container-align-items':flexSetting.alignItems, '--hero-container-justify-content':flexSetting.justifyContent}
+        flexSettingStyle={'--hero-container-flex-direction':flexSetting.direction, '--hero-container-flex':flexSetting.size, '--hero-container-gap':flexSetting.gap, '--hero-container-align-content':flexSetting.alignContent, '--hero-container-align-items':flexSetting.alignItems, '--hero-container-justify-content':flexSetting.justifyContent}
     }
 
     const heroContainerStyle = {

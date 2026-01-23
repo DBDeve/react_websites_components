@@ -11,11 +11,12 @@
 /* hero content component*/
 .HeroContainer{
   display: flex;
+  flex: var(--hero-container-flex);
   flex-wrap: var(--hero-container-flex-wrap); --hero-container-flex-wrap:wrap;
   flex-direction: var(--hero-container-flex-direction);--hero-container-flex-direction:column;
-  align-items: var(--hero-container-align-items);--hero-container-align-items:center;
-  align-content: var(--hero-container-align-content);--hero-container-align-content:center;
-  justify-content: var(--hero-container-justify-content);--hero-container-justify-content:center;
+  align-items: var(--hero-container-align-items);
+  align-content: var(--hero-container-align-content);
+  justify-content: var(--hero-container-justify-content);
   gap: var(--hero-container-gap);--hero-container-gap: 5px;
   margin: var(--hero-container-margin-top) var(--hero-container-margin-right) var(--hero-container-margin-bottom) var(--hero-container-margin-left);
   --hero-container-margin-top:0px; --hero-container-margin-right:0px; --hero-container-margin-bottom:0px; --hero-container-margin-left:0px;
