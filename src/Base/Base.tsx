@@ -1,4 +1,4 @@
-import React, {ReactNode,ReactElement,useState,useEffect} from 'react';
+import React, {ReactNode,ReactElement,useState,useEffect,useRef} from 'react';
 import styles from './Base.module.css';
 import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding,BackgroundBlendMode} from '../types';
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
@@ -223,10 +223,6 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
     if(display){
         if(display.type === 'flex'){
             displayStyle={'--container-display':'flex', '--container-flex-gap':display.gap, '--flex':display.size, '--container-flex-direction':display.direction, '--container-flex-wrap':display.wrap, '--container-align-content':display.alignContent, '--container-justify-content':display.justifyContent, '--container-align-items':display.alignItems};
-            if(mobileReverse && window.innerWidth <= 850){
-                displayStyle['--container-flex-direction']='column-reverse';
-                displayStyle['--container-align-items']='center';
-            }
             displayProps=styles.flex;
         }
 
@@ -236,33 +232,64 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
         }
     }
 
-    const [width, setWidth] = useState(window.innerWidth);
+    const componentRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    if(mobileReverse){
 
-        const onResize = () => setWidth(window.innerWidth);
+        useEffect(() => {
 
-        window.addEventListener("resize", onResize);
-        
-        return () => window.removeEventListener("resize", onResize);
+            let width = window.innerWidth;
 
-    }, []);
+            console.log("width",width)
 
-    useEffect(() => {
+            if(componentRef.current && width <= 850){
+                componentRef.current.style.setProperty('--container-flex-direction','column-reverse');
+                componentRef.current.style.setProperty('--container-align-items','center');
+            } else if(componentRef.current && width > 850){
 
-        if(mobileReverse){
-            console.log("La pagina è stata ridimensionata:", width);
-        
-            console.log('resize detected');
-            let width1 = window.innerWidth;
-            
-            if ( width1 <= 850) {
-                displayStyle['--container-flex-direction']='column-reverse';
-                displayStyle['--container-align-items']='center';
+                if(display && display.type === 'flex'){
+                    if(display.direction){
+                        componentRef.current.style.setProperty('--container-flex-direction', display.direction);
+                    }
+                    if(display.alignItems){
+                        componentRef.current.style.setProperty('--container-align-items', display.alignItems);
+                    }
+                }
+
             }
-        }
+                
+            const onResize = () => {
 
-    }, [width]);
+                let width = window.innerWidth;
+
+                console.log("width",width)
+
+                if(componentRef.current && width <= 850){
+                    componentRef.current.style.setProperty('--container-flex-direction','column-reverse');
+                    componentRef.current.style.setProperty('--container-align-items','center');
+                } else if(componentRef.current && width > 850){
+
+                    if(display && display.type === 'flex'){
+                        if(display.direction){
+                            componentRef.current.style.setProperty('--container-flex-direction', display.direction);
+                        }
+                        if(display.alignItems){
+                            componentRef.current.style.setProperty('--container-align-items', display.alignItems);
+                        }
+                    }
+                    
+                }
+
+            };
+
+            window.addEventListener("resize", onResize);
+            
+            return () => window.removeEventListener("resize", onResize);
+
+        }, []);
+    }
+
+    
 
     
     const containerStyle = {
@@ -274,7 +301,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
     } as React.CSSProperties;
 
 
-    return  React.createElement(type, { style:containerStyle , className: `${styles.customContainer} ${displayProps}` },children);
+    return  React.createElement(type, { style:containerStyle , className: `${styles.customContainer} ${displayProps}`, ref:componentRef },children);
 
 }
 

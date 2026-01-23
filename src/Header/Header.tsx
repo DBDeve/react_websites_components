@@ -58,6 +58,7 @@ export const Header: React.FC<Header> = ({ children, backGroundColor, padding, f
           const headerHeight = header.clientHeight;
           mobileMenu.style.setProperty('--mobile-menu-top', `${headerHeight}px`);
         }
+
       };
 
       window.addEventListener("resize", onResize);
