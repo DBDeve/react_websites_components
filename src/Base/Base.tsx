@@ -2,7 +2,7 @@ import React, {ReactNode,ReactElement,useState,useEffect,useRef} from 'react';
 import styles from './Base.module.css';
 import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding,BackgroundBlendMode} from '../types';
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
-import {defaultImg} from './index';
+import {defaultImg,defaultVideo} from './index';
 
 
 type Heading = {
@@ -380,17 +380,69 @@ export const Image:React.FC<image>=({attr,margin})=>{
 }
 
 
-/*type Video = {
-    src:string, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, width?:string, height?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials';
+type Video = {
+    video?:{ 
+        source?:{src?:string}[] | {src?:string},
+        track?:{src?:string, kind?:string, srcLang?:string, label?:string, default?:boolean},
+        width?:number, height?:number, controls?:boolean, autoPlay?:boolean, loop?:boolean, muted?:boolean, poster?:string, playsinline?:boolean, preload?:'auto' | 'metadata' | 'none', crossOrigin?:'anonymous' | 'use-credentials'
+    },
+    description?:string,
+    padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
 }
-export const Video:React.FC<Video>=({src, controls, autoPlay, loop, muted, poster, width, height, playsinline, preload, crossOrigin})=>{
-    return (
-        <video src={`${src}`} controls={controls ? true : false} autoPlay={autoPlay ? true : false} muted={muted ? true : false} loop={loop ? true : undefined} poster={poster || undefined} preload={preload || 'metadata'}>
-        </video>
-    )
-}*/
+export const Video:React.FC<Video>=({video, description, padding})=>{
 
-//aggiungere tag separatore
+    let paddingStyle;
+
+    if (padding){
+        if('all' in padding) {
+            paddingStyle = {'--video-padding-top': padding.all,'--video-padding-bottom': padding.all,'--video-padding-right': padding.all,'--video-padding-left': padding.all}
+        } 
+        else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+            paddingStyle = {'--video-padding-top': padding.top,'--video-padding-bottom': padding.bottom,'--video-padding-right': padding.right,'--video-padding-left': padding.left}
+        }
+    }
+
+    const videoStyle = {
+        ...paddingStyle,
+    } as React.CSSProperties;
+
+    // DA FINIRE IL TRACK
+    return (
+        <figure>
+
+            {video? 
+                <video style={videoStyle} width={video.width? video.width : undefined} height={video.height? video.height : undefined} controls={video.controls ? true : false} autoPlay={video.autoPlay ? true : false} loop={video.loop ? true : false} muted={video.muted ? true : false} poster={video.poster || undefined} playsInline={video.playsinline ? true : false} preload={video.preload || 'metadata'}>
+                    {video.source && !Array.isArray(video.source)? <source src={video.source.src} type={`video/${video.source.src?.split('.').pop()}`}/> : null}
+                    {video.source && Array.isArray(video.source)? video.source.map((src, index) => <source src={src.src} type={`video/${src.src?.split('.').pop()}`}/>) : null} 
+                    {video.track? <track src={video.track.src? video.track.src : undefined} label={video.track.label? video.track.label : undefined} kind={video.track.kind? video.track.kind : undefined} srcLang={video.track.srcLang? video.track.srcLang : undefined} default={video.track.default ? true : false}/> : null} 
+                </video> 
+                : 
+                <video style={videoStyle} src={defaultVideo} controls autoPlay/>
+            }
+
+            {description? 
+                <figcaption className={styles.visuallyHidden}>{description}</figcaption> 
+                : 
+                <figcaption className={styles.visuallyHidden}> Default video </figcaption>
+            }
+
+        </figure>
+    )
+}
+
+//goggle maps
+
+//single icon
+
+// stelle
+
+//contatore. barra avanzamento
+
+//ancora menu
+
+//carosello immagini
+
+
 type separator = {
     color?:Color, margin?:Margin, height?:string
 }
@@ -423,7 +475,7 @@ export const Separator:React.FC<separator>=({color,margin,height})=>{
     )
 }
 
-//aggiungere tag spaziatura
+
 type Spacing = {
     height:string
 }
