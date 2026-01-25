@@ -1,4 +1,4 @@
-export {Heading,Paragraph,Button,Container,Image,Separator,Spacing,Video} from './Base'
+export {Heading,Paragraph,Button,Container,Image,Separator,Spacing,Video,Maps} from './Base'
 // dist/index.js (ESM)
 export const defaultImg = new URL('../immages/deafult_Image.webp', import.meta.url).href;
 

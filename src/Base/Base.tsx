@@ -431,6 +431,44 @@ export const Video:React.FC<Video>=({video, description, padding})=>{
 }
 
 //goggle maps
+type Maps={
+    src?:string,
+    padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
+    width?:number,
+    height?:number,
+}
+export const Maps:React.FC<Maps>=({src, width, height, padding}) => {
+
+    let paddingStyle;
+
+    if (padding){
+        if('all' in padding) {
+            paddingStyle = {'--maps-padding-top': padding.all,'--maps-padding-bottom': padding.all,'--maps-padding-right': padding.all,'--maps-padding-left': padding.all}
+        } 
+        else if ('top' in padding || 'bottom' in padding || 'right' in padding || 'left' in padding) {
+            paddingStyle = {'--maps-padding-top': padding.top,'--maps-padding-bottom': padding.bottom,'--maps-padding-right': padding.right,'--maps-padding-left': padding.left}
+        }
+    }
+
+    const mapsStyle = {
+        ...paddingStyle,
+    } as React.CSSProperties;
+
+    return(
+        <iframe 
+            style={mapsStyle}
+            className={styles.maps}
+            src={src? src : 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11595.555303859883!2d10.4284185!3d43.40025304999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit!4v1769296633177!5m2!1sit!2sit'}
+            width={width? width : '100%'}
+            height={height? height : '100%'}
+            loading="lazy"
+            /*
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+            */
+        />
+    )
+}
 
 //single icon
 

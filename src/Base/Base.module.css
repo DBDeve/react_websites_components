@@ -73,6 +73,10 @@
   align-items: var(--container-align-items);
 }
 
+/* goggle maps CSS */
+.maps{
+  padding: var(--maps-padding-top, 5px) var(--maps-padding-right, 5px) var(--maps-padding-bottom, 5px) var(--maps-padding-left, 5px);
+}
 
 /* custom video 
 .video {
