@@ -560,7 +560,7 @@ export const HeaderImageLogo:React.FC<HeaderImageLogo> = ({urlImage,align,compon
   return (
     <div id="logo_image" aria-label={description[lang]?.logo?? 'undefined'} className={`${styles.headerImageLogo}`} style={headerImageLogoStyle}> 
       <a href="/" aria-label="Homepage">
-        <img src={`${headerUrlImage}`} alt={description[lang]?.alt?? 'undefined'} loading='eager' title='logo image' width={50} height={25}/>
+        <img src={`${headerUrlImage}`} alt={description[lang]?.alt?? 'undefined'} fetchPriority="high" loading='eager' title='logo image' width={50} height={25}/>
       </a>
     </div>
   )

@@ -2,7 +2,7 @@ import React, {ReactNode,ReactElement,useState,useEffect,useRef} from 'react';
 import styles from './Base.module.css';
 import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding,BackgroundBlendMode} from '../types';
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
-import {defaultImg,defaultVideo} from './index';
+import {defaultImg,defaultVideo,defaultImgDesktop,defaultImgMobile,defaultImgTablet} from './index';
 
 
 type Heading = {
@@ -307,7 +307,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
 
 //aggiungere tag immagine
 type image = {
-    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined},
+    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined, srcset?:{desktop:string, tablet:string, mobile:string} },
     margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
 }
 export const Image:React.FC<image>=({attr,margin})=>{
@@ -318,6 +318,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
     let heightAttr;
     let widthAttr;
     let loadingAttr;
+    let srcsetAttr;
 
     if(attr){
 
@@ -355,12 +356,20 @@ export const Image:React.FC<image>=({attr,margin})=>{
             loadingAttr=attr.load;
         } 
 
+        if(attr.srcset){
+            srcsetAttr=`${attr.srcset.desktop} 1200w, ${attr.srcset.tablet} 800w, ${attr.srcset.mobile} 480w`;
+        } else {
+            srcsetAttr=`${defaultImgDesktop} 1200w, ${defaultImgTablet} 800w, ${defaultImgMobile} 480w`;
+        }
+
     } else {
         srcAttr=defaultImg;
         descriptionAttr='default image';
         titleAttr='default image';
         heightAttr=200;
         widthAttr=200;
+        srcsetAttr=`${defaultImgDesktop} 1200w, ${defaultImgTablet} 800w, ${defaultImgMobile} 480w`;
+        console.log("srcsetAttr",srcsetAttr)
     }
 
     let marginStyle;
@@ -379,7 +388,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
     } as React.CSSProperties;
 
     return (
-        <img src={srcAttr} loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
+        <img src={srcAttr} srcSet={srcsetAttr} sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 600px" loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
     )
 
 }
