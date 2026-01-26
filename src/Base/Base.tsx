@@ -325,7 +325,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
         if(attr.src){
             srcAttr=attr.src;
         } else {
-            srcAttr=defaultImg;
+            srcAttr=defaultImgDesktop;
         }
 
         if(attr.description){
@@ -359,7 +359,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
         if(attr.srcset){
             srcsetAttr=`${attr.srcset.desktop} 1200w, ${attr.srcset.tablet} 800w, ${attr.srcset.mobile} 480w`;
         } else {
-            srcsetAttr=`${defaultImgDesktop} 1200w, ${defaultImgTablet} 800w, ${defaultImgMobile} 480w`;
+            srcsetAttr=`${defaultImgDesktop} 1600w, ${defaultImgTablet} 1000w, ${defaultImgMobile} 600w`;
         }
 
     } else {
@@ -368,7 +368,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
         titleAttr='default image';
         heightAttr=200;
         widthAttr=200;
-        srcsetAttr=`${defaultImgDesktop} 1200w, ${defaultImgTablet} 800w, ${defaultImgMobile} 480w`;
+        srcsetAttr=`${defaultImgDesktop} 1600w, ${defaultImgTablet} 1000w, ${defaultImgMobile} 600w`;
         console.log("srcsetAttr",srcsetAttr)
     }
 
@@ -388,7 +388,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
     } as React.CSSProperties;
 
     return (
-        <img src={srcAttr} srcSet={srcsetAttr} sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 600px" loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
+        <img src={srcAttr} srcSet={srcsetAttr} sizes="(max-width: 480px) 70vw, (max-width: 1024px) 50vw, 465px" loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
     )
 
 }
