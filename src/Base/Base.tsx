@@ -307,7 +307,7 @@ export const Container:React.FC<Container> = ({type,padding,border,margin,backGr
 
 //aggiungere tag immagine
 type image = {
-    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number},
+    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined},
     margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
 }
 export const Image:React.FC<image>=({attr,margin})=>{
@@ -317,6 +317,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
     let titleAttr;
     let heightAttr;
     let widthAttr;
+    let loadingAttr;
 
     if(attr){
 
@@ -350,6 +351,10 @@ export const Image:React.FC<image>=({attr,margin})=>{
             widthAttr=300
         }
 
+        if(attr.load){
+            loadingAttr=attr.load;
+        } 
+
     } else {
         srcAttr=defaultImg;
         descriptionAttr='default image';
@@ -374,7 +379,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
     } as React.CSSProperties;
 
     return (
-        <img src={srcAttr} alt={descriptionAttr} title={titleAttr} loading="lazy" width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
+        <img src={srcAttr} loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
     )
 
 }
@@ -411,13 +416,13 @@ export const Video:React.FC<Video>=({video, description, padding})=>{
         <figure>
 
             {video? 
-                <video style={videoStyle} width={video.width? video.width : undefined} height={video.height? video.height : undefined} controls={video.controls ? true : false} autoPlay={video.autoPlay ? true : false} loop={video.loop ? true : false} muted={video.muted ? true : false} poster={video.poster || undefined} playsInline={video.playsinline ? true : false} preload={video.preload || 'metadata'}>
+                <video className={styles.video} style={videoStyle} width={video.width? video.width : undefined} height={video.height? video.height : undefined} controls={video.controls ? true : false} autoPlay={video.autoPlay ? true : false} loop={video.loop ? true : false} muted={video.muted ? true : false} poster={video.poster || undefined} playsInline={video.playsinline ? true : false} preload={video.preload || 'metadata'}>
                     {video.source && !Array.isArray(video.source)? <source src={video.source.src} type={`video/${video.source.src?.split('.').pop()}`}/> : null}
                     {video.source && Array.isArray(video.source)? video.source.map((src, index) => <source src={src.src} type={`video/${src.src?.split('.').pop()}`}/>) : null} 
                     {video.track? <track src={video.track.src? video.track.src : undefined} label={video.track.label? video.track.label : undefined} kind={video.track.kind? video.track.kind : undefined} srcLang={video.track.srcLang? video.track.srcLang : undefined} default={video.track.default ? true : false}/> : null} 
                 </video> 
                 : 
-                <video style={videoStyle} src={defaultVideo} controls autoPlay/>
+                <video className={styles.video} style={videoStyle} src={defaultVideo} controls autoPlay/>
             }
 
             {description? 
@@ -479,6 +484,43 @@ export const Maps:React.FC<Maps>=({src, width, height, padding}) => {
 //ancora menu
 
 //carosello immagini
+type Slides = {
+    images:{src:string, alt?:string}[]
+}
+export const Slides:React.FC<Slides>=({images})=>{
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const maxIndex = images.length;
+    const componentRef = useRef<HTMLDivElement>(null);
+
+    const avanti = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if(currentIndex < maxIndex-1){
+            setCurrentIndex(currentIndex + 1);
+        }
+    };
+
+    const indietro = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if(currentIndex > 0){
+            setCurrentIndex(currentIndex - 1);
+        }
+        
+    };
+
+    return(
+        <div className={styles.slider} ref={componentRef}>
+
+            {images.map((image, index) => (
+                <div key={index} className={`${styles.slide} ${index === currentIndex ? styles.slideActive : ''}`}>
+                    <img src={image.src} height={componentRef.current? componentRef.current.clientHeight : 200} width={componentRef.current? componentRef.current.clientWidth : 200} loading='lazy' alt={image.alt || `Immagine ${index + 1}`} title={image.alt || `Immagine ${index + 1}`} />
+                </div>
+            ))}
+
+            <button className={styles.prev} onClick={indietro}>‹</button>
+            <button className={styles.next} onClick={avanti}>›</button>
+        </div>
+
+    )
+}
 
 
 type separator = {
