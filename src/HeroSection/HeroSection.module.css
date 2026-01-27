@@ -1,16 +1,29 @@
 /* hero section component */
 .HeroSection{
-  background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-image,none) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;
-  display: flex;
+  /*background: var(--hero-section-background-color,rgba(0, 0, 0, 0.5)) var(--hero-section-background-position,center)/var(--hero-section-background-size,cover) no-repeat;*/
+  /*background-blend-mode: var(--container-background-mode,multiply);*/
+  position: relative;
   width:100%;
-  height: var( --hero-section-desktop-height, 70vh);
+  height: var( --hero-section-desktop-height, 70%);
   padding:  var(--hero-section-padding-top,30px) var(--hero-section-padding-right,30px) var(--hero-section-padding-bottom,30px) var(--hero-section-padding-left,30px);
-  background-blend-mode: var(--container-background-mode,multiply);
+  
+}
+
+.heroBackgroundImage { 
+  position: absolute;
+  filter: brightness(var(--hero-background-image-brightness,0.7)); /* oscura immagine*/
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  height: 100%; 
+  object-fit: var(--hero-background-image-object-fit,cover); 
+  /* manda l'immagine dietro */ 
 }
 
 /* hero content component*/
 .HeroContainer{
   display: flex;
+  position: relative;
   flex: var(--hero-container-flex);
   flex-wrap: var(--hero-container-flex-wrap); --hero-container-flex-wrap:wrap;
   flex-direction: var(--hero-container-flex-direction);--hero-container-flex-direction:column;

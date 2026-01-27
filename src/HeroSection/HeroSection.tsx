@@ -3,7 +3,7 @@ import {CSSLength, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, 
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
 import styles from './HeroSection.module.css';
 import {Padding,Margin} from '../types'
-import {defaultImgHeroSection} from './index';
+import {defaultImgHeroSectionDesktop,defaultImgHeroSectionMobile,defaultImgHeroSectionTablet} from './index';
 
 
 // ADD THIS TO CUSTOM BUTTON
@@ -11,23 +11,19 @@ import {defaultImgHeroSection} from './index';
 
 
 type HeroSection={
-    backGround?:{color?:Color, image?:string, position?:string, size?:string, mode?:BackgroundBlendMode},
+    backGroundImage?:{src:{desktop?:string, tablet?:string, mobile?:string}, brightness?:Color, objectFit?:string},
     padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
     height?:{mobile?:CSSLength, tablet?:CSSLength, desktop?:CSSLength},
     children: ReactNode
 }
-export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,children}) => {
+export const HeroSection:React.FC<HeroSection> = ({backGroundImage,padding,height,children}) => {
 
-    let backgroundStyle;
     let paddingStyle;
     let heightStyle;
+    let backgroundImageStyle;
 
-
-    // la gestione dell'immagine dello sfonfo non funziona ancora. risolvere
-    if(backGround){
-        backgroundStyle = {'--hero-section-background-color':backGround.color, '--hero-section-background-image':`url(${backGround.image})` , '--hero-section-background-position':backGround.position, '--hero-section-background-size':backGround.size,'--hero-container-background-mode':backGround.mode}
-    } else {
-        backgroundStyle = {'--hero-section-background-image': `url(${defaultImgHeroSection})`};
+    if(backGroundImage){
+        backgroundImageStyle = {'--hero-background-image-brightness': backGroundImage.brightness, '--hero-background-image-object-fit': backGroundImage.objectFit}
     }
 
     if (padding){
@@ -46,13 +42,23 @@ export const HeroSection:React.FC<HeroSection> = ({backGround,padding,height,chi
     }
 
     const containerStyle = {
-        ...backgroundStyle,
         ...paddingStyle,
         ...heightStyle,
     } as React.CSSProperties;
 
+    const backGroundImage1 ={
+        ...backgroundImageStyle
+    } as React.CSSProperties;
+
     return(
         <div id='hero_section' className={styles.HeroSection} style={containerStyle}>
+            <img 
+                className={styles.heroBackgroundImage}
+                style={backGroundImage1}
+                src={backGroundImage? backGroundImage.src?.desktop : defaultImgHeroSectionDesktop}
+                srcSet={`${backGroundImage? backGroundImage.src?.desktop :defaultImgHeroSectionDesktop} 1600w, ${backGroundImage? backGroundImage.src?.tablet :defaultImgHeroSectionTablet} 1000w, ${backGroundImage? backGroundImage.src?.mobile :defaultImgHeroSectionMobile} 600w`}
+                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 100vw, 100vw"
+                alt="Background image" title="Background image" fetchPriority="high" loading="eager"  />
             {children}
         </div>
     )
