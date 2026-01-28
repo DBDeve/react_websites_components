@@ -68,7 +68,7 @@ export const BlockContainer:React.FC<BlockContainer> = ({type,padding,border,mar
     
     return  React.createElement(
         type, 
-        { style:containerStyle , className: `${styles.BlockContainer}`},
+        { style:containerStyle , className: `${styles.BlockContainer} ${styles.layoutContainer}`},
         typeof backGroundImage?.src==='string' && (
             <img 
                 className={styles.BackgroundImage}
@@ -94,6 +94,7 @@ export const BlockContainer:React.FC<BlockContainer> = ({type,padding,border,mar
         children
     );
 }
+
 
 type FlexContainer = {
     type: 'main' | 'section' | 'body' | 'div',
@@ -228,14 +229,14 @@ export const FlexContainer:React.FC<FlexContainer> = ({type,padding,border,margi
 
     return  React.createElement(
         type, 
-        { style:containerStyle , className: `${styles.FlexContainer}`, ref:componentRef },
+        { style:containerStyle , className: `${styles.FlexContainer} ${styles.layoutContainer}`, ref:componentRef },
         typeof backGroundImage?.src==='string' && (
             <img 
                 className={styles.BackgroundImage}
                 style={imageStyle}
                 src={backGroundImage.src}
-                alt="Background image" 
-                title="Background image" 
+                alt="Background image"
+                title="Background image"
                 loading='lazy'
             />
         ),
