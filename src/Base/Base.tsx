@@ -173,26 +173,37 @@ export const Button:React.FC<Button> = ({href,padding,border,margin,fontText,chi
 
 //aggiungere tag immagine
 type image = {
-    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined, srcset?:{desktop:string, tablet:string, mobile:string} },
+    attr?:{src?:string | {desktop?:string, tablet?:string, mobile?:string}, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined, srcset?:{desktop:string, tablet:string, mobile:string} },
     margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
 }
 export const Image:React.FC<image>=({attr,margin})=>{
 
-    let srcAttr;
+    let srcAttr: string | undefined;
+    let srcsetAttr;
     let descriptionAttr;
     let titleAttr;
     let heightAttr;
     let widthAttr;
     let loadingAttr;
-    let srcsetAttr;
 
     if(attr){
 
         if(attr.src){
-            srcAttr=attr.src;
+
+            if(typeof attr.src === 'string'){
+                srcAttr=attr.src;
+            }
+            else if (typeof attr.src === 'object'){
+                srcAttr=attr.src.desktop;
+                srcsetAttr=`${attr.src.desktop} 1600w, ${attr.src.tablet} 1000w, ${attr.src.mobile} 600w`;
+            }
+
         } else {
             srcAttr=defaultImgDesktop;
+            srcsetAttr=`${defaultImgDesktop} 1600w, ${defaultImgTablet} 1000w, ${defaultImgMobile} 600w`;
         }
+
+        
 
         if(attr.description){
             descriptionAttr=attr.description;
@@ -221,12 +232,6 @@ export const Image:React.FC<image>=({attr,margin})=>{
         if(attr.load){
             loadingAttr=attr.load;
         } 
-
-        if(attr.srcset){
-            srcsetAttr=`${attr.srcset.desktop} 1200w, ${attr.srcset.tablet} 800w, ${attr.srcset.mobile} 480w`;
-        } else {
-            srcsetAttr=`${defaultImgDesktop} 1600w, ${defaultImgTablet} 1000w, ${defaultImgMobile} 600w`;
-        }
 
     } else {
         srcAttr=defaultImg;
@@ -350,12 +355,6 @@ export const Maps:React.FC<Maps>=({src, width, height, padding}) => {
     )
 }
 
-//single icon
-
-// stelle
-
-//contatore. barra avanzamento
-
 //ancora menu
 
 //carosello immagini
@@ -381,6 +380,7 @@ export const Slides:React.FC<Slides>=({images})=>{
         
     };
 
+    // aggiungere srcset e sizes alle immagini
     return(
         <div className={styles.slider} ref={componentRef}>
 
