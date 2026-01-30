@@ -76,3 +76,37 @@ export function rgba(
 export function rgba(r: number, g: number, b: number, a:number): CSSrgba {
   return `rgba(${r},${g},${b},${a})` as CSSrgba;
 }
+
+
+export function optimizeImage(
+  path: string,
+  newWidth: number,
+  quality: number,
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = path;
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = newWidth * 1.5;
+      canvas.height = newWidth;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject("Impossibile ottenere il contesto 2D");
+
+      ctx.drawImage(img, 0, 0, newWidth * 1.5, newWidth);
+
+      canvas.toBlob( 
+        blob => { if (!blob) return reject("Errore nella creazione del blob"); 
+          // 🔥 Questo è il “path” che puoi usare in <img src=""> 
+          const url = URL.createObjectURL(blob);
+          resolve(url); 
+        }, 
+        "image/webp", quality 
+      );
+    };
+
+    img.onerror = reject;
+  });
+}

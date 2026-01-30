@@ -49,7 +49,7 @@ export const HeroSection:React.FC<HeroSection> = ({backGroundImage,padding,heigh
     const backGroundImage1 ={
         ...backgroundImageStyle
     } as React.CSSProperties;
-
+    
     return(
         <div id='hero_section' className={styles.HeroSection} style={containerStyle}>
             <img 
@@ -58,7 +58,7 @@ export const HeroSection:React.FC<HeroSection> = ({backGroundImage,padding,heigh
                 src={backGroundImage? backGroundImage.src?.desktop : defaultImgHeroSectionDesktop}
                 srcSet={`${backGroundImage? backGroundImage.src?.desktop :defaultImgHeroSectionDesktop} 1600w, ${backGroundImage? backGroundImage.src?.tablet :defaultImgHeroSectionTablet} 1000w, ${backGroundImage? backGroundImage.src?.mobile :defaultImgHeroSectionMobile} 600w`}
                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 100vw, 100vw"
-                alt="Background image" title="Background image" fetchPriority="high" loading="eager"  />
+                alt="Background image" title="Background image" fetchPriority="high" loading="eager" height={'auto'} width={'auto'} />
             {children}
         </div>
     )

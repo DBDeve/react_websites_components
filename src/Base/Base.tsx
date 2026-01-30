@@ -3,6 +3,7 @@ import styles from './Base.module.css';
 import {CSSLength, Margin, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, Color,TextDecorationStyle,TextDecorationLine,TextDecorationThickness,Padding,BackgroundBlendMode} from '../types';
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
 import {defaultImg,defaultVideo,defaultImgDesktop,defaultImgMobile,defaultImgTablet} from './index';
+import { optimizeImage } from '../Function/function';
 
 
 type Heading = {
@@ -173,12 +174,12 @@ export const Button:React.FC<Button> = ({href,padding,border,margin,fontText,chi
 
 //aggiungere tag immagine
 type image = {
-    attr?:{src?:string | {desktop?:string, tablet?:string, mobile?:string}, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined, srcset?:{desktop:string, tablet:string, mobile:string} },
+    attr?:{src?:string, description?:string, title?:string, height?:number, width?:number, load?:"lazy" | "eager" | undefined, srcset?:{desktop:string, tablet:string, mobile:string} },
     margin?:{width?:Margin} | {top?:Margin, bottom?:Margin, right?:Margin, left?:Margin},
 }
 export const Image:React.FC<image>=({attr,margin})=>{
 
-    let srcAttr: string | undefined;
+    let srcAttr;
     let srcsetAttr;
     let descriptionAttr;
     let titleAttr;
@@ -186,24 +187,18 @@ export const Image:React.FC<image>=({attr,margin})=>{
     let widthAttr;
     let loadingAttr;
 
+    const [imageUrl, setImageUrl] = useState("");
+    const [srcsetUrl, setSrcsetUrl] = useState(attr?.src? attr.src : defaultImg);
+
+    useEffect(() => { 
+        async function load() { 
+            const url = await optimizeImage(srcsetUrl, window.innerWidth, 0.8);
+            setImageUrl(url); 
+        } load(); }, []
+    );
+
     if(attr){
 
-        if(attr.src){
-
-            if(typeof attr.src === 'string'){
-                srcAttr=attr.src;
-            }
-            else if (typeof attr.src === 'object'){
-                srcAttr=attr.src.desktop;
-                srcsetAttr=`${attr.src.desktop} 1600w, ${attr.src.tablet} 1000w, ${attr.src.mobile} 600w`;
-            }
-
-        } else {
-            srcAttr=defaultImgDesktop;
-            srcsetAttr=`${defaultImgDesktop} 1600w, ${defaultImgTablet} 1000w, ${defaultImgMobile} 600w`;
-        }
-
-        
 
         if(attr.description){
             descriptionAttr=attr.description;
@@ -239,8 +234,6 @@ export const Image:React.FC<image>=({attr,margin})=>{
         titleAttr='default image';
         heightAttr=200;
         widthAttr=200;
-        srcsetAttr=`${defaultImgDesktop} 1600w, ${defaultImgTablet} 1000w, ${defaultImgMobile} 600w`;
-        console.log("srcsetAttr",srcsetAttr)
     }
 
     let marginStyle;
@@ -259,7 +252,7 @@ export const Image:React.FC<image>=({attr,margin})=>{
     } as React.CSSProperties;
 
     return (
-        <img src={srcAttr} srcSet={srcsetAttr} sizes="(max-width: 480px) 70vw, (max-width: 1024px) 50vw, 465px" loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
+        <img src={imageUrl!== ""? imageUrl : "/null"} loading={loadingAttr} alt={descriptionAttr} title={titleAttr} width={widthAttr} height={heightAttr} style={containerStyle} className={styles.image}></img>
     )
 
 }
