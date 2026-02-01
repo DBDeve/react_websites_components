@@ -3,7 +3,7 @@ import {CSSLength, FontStyle, FontVariant, FontWeight, FontStretch, LineHeight, 
 import {FlexDirection, FlexWrap, AlignContent, JustifyContent, AlignItems} from '../types';
 import styles from './HeroSection.module.css';
 import {Padding,Margin} from '../types'
-import {defaultImgHeroSectionDesktop,defaultImgHeroSectionMobile,defaultImgHeroSectionTablet} from './index';
+import {defaultImgHeroSectionDesktop,defaultImgHeroSectionMobile,defaultImgHeroSectionTablet,defaultImg} from './index';
 
 
 // ADD THIS TO CUSTOM BUTTON
@@ -11,7 +11,7 @@ import {defaultImgHeroSectionDesktop,defaultImgHeroSectionMobile,defaultImgHeroS
 
 
 type HeroSection={
-    backGroundImage?:{src:{desktop?:string, tablet?:string, mobile?:string}, brightness?:Color, objectFit?:string},
+    backGroundImage?:{src:string, brightness?:Color, objectFit?:string},
     padding?:{all?:Padding} | {top?:Padding, bottom?:Padding, right?:Padding, left?:Padding},
     height?:{mobile?:CSSLength, tablet?:CSSLength, desktop?:CSSLength},
     children: ReactNode
@@ -55,9 +55,7 @@ export const HeroSection:React.FC<HeroSection> = ({backGroundImage,padding,heigh
             <img 
                 className={styles.heroBackgroundImage}
                 style={backGroundImage1}
-                src={backGroundImage? backGroundImage.src?.desktop : defaultImgHeroSectionDesktop}
-                srcSet={`${backGroundImage? backGroundImage.src?.desktop :defaultImgHeroSectionDesktop} 1600w, ${backGroundImage? backGroundImage.src?.tablet :defaultImgHeroSectionTablet} 1000w, ${backGroundImage? backGroundImage.src?.mobile :defaultImgHeroSectionMobile} 600w`}
-                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 100vw, 100vw"
+                src={backGroundImage? backGroundImage.src : defaultImg}
                 alt="Background image" title="Background image" fetchPriority="high" loading="eager" height={'auto'} width={'auto'} />
             {children}
         </div>
